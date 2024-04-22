@@ -3,6 +3,8 @@ import About from "../components/home/About";
 import HeroSection from "../components/home/HeroSection";
 import MaxWrapper from "../components/shared/MaxWrapper";
 import HowItWorks from "../components/home/HowItWorks";
+import Services from "../components/home/Services";
+import Testimonial from "../components/home/Testimonial";
 
 
 const Home = () => {
@@ -12,6 +14,8 @@ const Home = () => {
             <About />
             <WhyStream />
             <HowItWorks />
+            <Services />
+            <Testimonial />
         </MaxWrapper>
     )
 }
