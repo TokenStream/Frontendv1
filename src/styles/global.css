@@ -82,3 +82,9 @@
     @apply bg-background text-foreground;
   }
 }
+
+
+#heroPattern {
+  background-image: url('../assets/bg-pattern.png');
+  background-size: 300px 300px;
+}
