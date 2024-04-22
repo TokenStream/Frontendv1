@@ -1,11 +1,13 @@
+import About from "../components/home/About";
 import HeroSection from "../components/home/HeroSection";
 import MaxWrapper from "../components/shared/MaxWrapper";
 
 
 const Home = () => {
     return (
-        <MaxWrapper className="w-full min-h-screen bg-gray-950 flex flex-col">
+        <MaxWrapper className="w-full min-h-screen flex flex-col">
             <HeroSection />
+            <About />
         </MaxWrapper>
     )
 }

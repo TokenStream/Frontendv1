@@ -11,7 +11,7 @@ import Footer from "./components/shared/Footer";
 const App = () => {
 
   return (
-    <main className='w-full min-h-screen bg-gray-950'>
+    <main className='w-full min-h-screen' id="heroPattern">
       <NavBar />
       <ScrollToTop />
       <Suspense fallback={''}>

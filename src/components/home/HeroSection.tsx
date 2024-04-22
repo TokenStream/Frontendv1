@@ -4,7 +4,7 @@ import { Button } from "../ui/button"
 
 const HeroSection = () => {
     return (
-        <main className="w-full overflow-hidden lg:h-[80vh] md:h-[50vh] h-screen flex items-center md:flex-row flex-col" id="heroPattern">
+        <main className="w-full overflow-hidden lg:h-[80vh] md:h-[50vh] h-screen flex items-center md:flex-row flex-col">
             <div className="flex-1 h-1/2 md:h-full flex order-2 md:order-1 flex-col gap-5 items-start justify-center lg:px-12 md:px-6 px-4">
                 <h1 className="lg:text-7xl text-4xl font-belanosima font-medium text-gray-200">Unlock the Future of Finance</h1>
                 <p className="text-xl font-barlow text-gray-400">Experience seamless token streaming that revolutionizes finance. Automate salaries, rewards, subscriptions, and more with StreamFlow. Take control of your financial journey today.</p>
@@ -12,9 +12,9 @@ const HeroSection = () => {
             </div>
             <div className="flex-1  h-1/2 md:h-full order-1 md:order-2 relative flex items-end justify-end flex-col before:absolute before:top-0 before:left-0 before:w-full before:h-full before:bg-gradient-to-l before:from-gray-950/30 before:to-transparent after:absolute after:bottom-0 after:right-0 after:w-full after:h-full after:bg-gradient-to-b after:from-gray-950 after:to-transparent">
                 <div className="lg:w-[600px] lg:h-[600px] w-[500px] h-[500px] rounded-full bg-gradient-to-t from-sky-400 to-emerald-400 flex justify-center items-center -mr-28 md:-mt-28 -mt-40">
-                    <div className="lg:w-[450px] lg:h-[450px] w-[400px] h-[400px] rounded-full bg-gray-950 flex justify-center items-center">
+                    <div className="lg:w-[450px] lg:h-[450px] w-[400px] h-[400px] rounded-full bg-gray-950 flex justify-center items-center" id="heroPattern">
                         <div className="lg:w-[300px] lg:h-[300px] w-[300px] h-[300px] rounded-full bg-gradient-to-r from-sky-400 to-emerald-400 flex justify-center items-center">
-                            <div className="w-[200px] h-[200px] rounded-full bg-gray-950"></div>
+                            <div className="w-[200px] h-[200px] rounded-full bg-gray-950 " id="heroPattern"></div>
                         </div>
                     </div>
                 </div>
