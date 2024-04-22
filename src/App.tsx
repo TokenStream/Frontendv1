@@ -1,16 +1,28 @@
-import { Button } from "./components/ui/button";
+import { Suspense } from "react";
+import NavBar from "./components/shared/NavBar";
+import { Route, Routes } from "react-router-dom";
+import routes from "./routes";
+import ScrollToTop from "./utils/ScrollToTop";
+import Footer from "./components/shared/Footer";
+
 
 
 
 const App = () => {
 
   return (
-    <div className="min-h-screen flex justify-center items-center">
-      <h1 className="text-3xl font-bold text-blue-600">
-        Installed Vite + React + Typescript + Tailwind CSS 3 + React-Router-Dom + Web3Modal + Shadcn
-      </h1>
-      <Button>Click me</Button>
-    </div>
+    <main className='w-full min-h-screen' id="heroPattern">
+      <NavBar />
+      <ScrollToTop />
+      <Suspense fallback={''}>
+        <Routes>
+          {routes.map(({ path, component: Component }, index) => (
+            <Route key={index} index={path === "/"} path={path} element={<Component />} />
+          ))}
+        </Routes>
+      </Suspense>
+      <Footer />
+    </main>
   );
 }
 

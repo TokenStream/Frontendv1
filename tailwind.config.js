@@ -53,6 +53,10 @@ const config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        flowverydark: "#101010",
+        flowdark: "#0f111a",
+        flowred: "#ff0420",
+        flowdarklight: "1e1e1e",
       },
       borderRadius: {
         lg: `var(--radius)`,
@@ -61,6 +65,9 @@ const config = {
       },
       fontFamily: {
         sans: ["var(--font-sans)", ...fontFamily.sans],
+        poppins: ["Poppins", "sans-serif"],
+        barlow: ["Barlow", "sans-serif"],
+        belanosima: ["Belanosima", "sans-serif"],
       },
       keyframes: {
         "accordion-down": {
