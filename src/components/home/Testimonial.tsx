@@ -7,7 +7,7 @@ const Testimonial = () => {
             <h1 className="text-4xl text-gray-200 font-belanosima">Testimonials</h1>
             <p className="text-gray-400 font-barlow text-center md:w-[50%]">Discover what our users are saying about StreamFlow:</p>
 
-            <div className="my-7 rounded-md flex flex-col font-barlow  dark:bg-grid-white/[0.05] items-center justify-center relative overflow-hidden">
+            <div className="my-7 w-full rounded-md flex flex-col font-barlow  dark:bg-grid-white/[0.05] items-center justify-center relative overflow-hidden">
                 <InfiniteMovingCards
                     items={testimonials}
                     direction="right"
