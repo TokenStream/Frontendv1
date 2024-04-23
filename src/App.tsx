@@ -9,7 +9,8 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import { lazy } from "react";
-import { guest_routes } from "./routes";
+import { guest_routes, onboarding_routes } from "./routes";
+import OnboardingLayout from "./layouts/OnboardingLayout";
 const Signup = lazy(() => import("./pages/auth/index"));
 
 const App = () => {
@@ -23,6 +24,13 @@ const App = () => {
             <Route key={index} index={path === "/"} path={path} element={<Component />} />
           ))}
           <Route path='/signup' element={<Signup />} />
+          <Route element={<OnboardingLayout />}>
+            {
+              onboarding_routes.map(({ path, component: Component }, index) => (
+                <Route key={index} path={path} element={<Component />} />
+              ))
+            }
+          </Route>
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </Suspense>

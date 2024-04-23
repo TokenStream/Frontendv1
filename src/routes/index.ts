@@ -1,6 +1,10 @@
 import { lazy } from "react";
 
 const Home = lazy(() => import("../pages/guest/index"));
+
+//onboarding routes
+const Setup = lazy(() => import("../pages/onboarding/index"));
+
 //user routes
 const UserDashboard = lazy(() => import("../pages/user/index"));
 //admin routes
@@ -22,6 +26,15 @@ const guestRoutes: coreRoutes = [
 ];
 
 export const guest_routes = [...guestRoutes];
+
+const onboardingRoutes: coreRoutes = [
+  {
+    path: "/onboarding",
+    title: "Onboarding",
+    component: Setup,
+  },
+];
+export const onboarding_routes = [...onboardingRoutes];
 
 const userRoutes: coreRoutes = [
   {
