@@ -23,3 +23,33 @@ export const NavLinks: NavArray = [
     path: "/faqs",
   },
 ];
+
+export const OtherLinks: NavArray = [
+  {
+    name: "News",
+    path: "/",
+  },
+  {
+    name: "Team",
+    path: "/",
+  },
+  {
+    name: "API Docs",
+    path: "/",
+  },
+];
+
+export const LegalLinks: NavArray = [
+  {
+    name: "Privacy Policy",
+    path: "/",
+  },
+  {
+    name: "Terms & Conditions",
+    path: "/",
+  },
+  {
+    name: "Disclaimer",
+    path: "/",
+  },
+];
