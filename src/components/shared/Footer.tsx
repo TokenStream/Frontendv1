@@ -4,7 +4,7 @@ import { Input } from "../ui/input"
 import { LegalLinks, NavLinks, OtherLinks } from "../../cms/Navlinks"
 import { Link } from "react-router-dom"
 import { useEffect, useState } from "react"
-
+import { Link as Spy } from 'react-scroll';
 
 const Footer = () => {
     // state for year
@@ -15,7 +15,7 @@ const Footer = () => {
     }, [year]);
 
     return (
-        <footer className="w-full lg:h-[520px] md:h-[700px] h-[925px] display flex justify-center items-end relative">
+        <footer className="w-full lg:h-[560px] md:h-[740px] h-[960px] display flex justify-center items-end relative">
             <div className="w-full ">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
                     <path fill="#0ea5e9" fill-opacity="1" d="M0,0L48,48C96,96,192,192,288,218.7C384,245,480,203,576,176C672,149,768,139,864,165.3C960,192,1056,256,1152,234.7C1248,213,1344,107,1392,53.3L1440,0L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
@@ -43,7 +43,7 @@ const Footer = () => {
                         <h3 className="md:text-xl text-gray-200 text-center font-belanosima">Quick Links</h3>
                         {
                             NavLinks.map(({ name, path }, index) => (
-                                <Link to={path} key={index} className="text-gray-400 font-barlow text-sm transition-all duration-200 hover:mr-2">{name}</Link>
+                                <Spy to={path} smooth={true} spy={true} activeClass="" duration={500} key={index} className="text-gray-400 font-barlow text-sm transition-all duration-200 hover:mr-2">{name}</Spy>
                             ))
                         }
                     </div>

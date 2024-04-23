@@ -1,6 +1,6 @@
 import { lazy } from "react";
 
-const Home = lazy(() => import("../pages/index"));
+const Home = lazy(() => import("../pages/guest/index"));
 
 type Route = {
   path: string;
@@ -9,7 +9,7 @@ type Route = {
 };
 type coreRoutes = Route[];
 
-const coreRoutes: coreRoutes = [
+const guestRoutes: coreRoutes = [
   {
     path: "/",
     title: "Home",
@@ -17,5 +17,5 @@ const coreRoutes: coreRoutes = [
   },
 ];
 
-const routes = [...coreRoutes];
+const routes = [...guestRoutes];
 export default routes;
