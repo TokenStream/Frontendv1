@@ -1,15 +1,15 @@
 import { NavLinks } from "../../cms/Navlinks";
 import { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom"
+import { Link } from "react-router-dom"
 import { Button } from "../ui/button";
 import { SiStreamrunners } from "react-icons/si";
 import { HiOutlineMenuAlt3 } from "react-icons/hi";
 import { LuLogIn } from "react-icons/lu";
 import { IoCloseOutline } from "react-icons/io5";
+import { Link as Spy } from 'react-scroll';
 
 
 const NavBar = () => {
-    const { pathname } = useLocation();
 
     const [openMenu, setOpenMenu] = useState<boolean>(false);
 
@@ -29,7 +29,7 @@ const NavBar = () => {
     }, [openMenu]);
 
     return (
-        <header className="w-full relative bg-gray-950 flex justify-between items-center py-6 md:px-8 px-3 overflow-hidden ">
+        <header className="w-full bg-gray-950 flex justify-between items-center py-6 md:px-8 px-3 overflow-hidden ">
             <Link to='/' className="flex items-center bg-gradient-to-r from-sky-400 to-emerald-400 text-transparent bg-clip-text gap-1">
                 <SiStreamrunners className="md:text-4xl text-3xl text-sky-400" />
                 <span className=" font-belanosima md:text-xl text-lg">StreamFlow</span>
@@ -39,7 +39,7 @@ const NavBar = () => {
                 {
                     NavLinks.map(({ name, path }, index) => (
                         <li className="block list-none group" key={index}>
-                            <Link className={`text-base relative font-barlow text-gray-200 before:absolute before:bottom-1 before:-left-2.5 before:bg-gradient-to-tr before:from-sky-400 before:to-emerald-400 before:rounded-full before:transition-all before:duration-300 hover:before:w-2 hover:before:h-2 ${pathname == path && "before:w-2 before:h-2"}`} to={path}>{name}</Link>
+                            <Spy to={path} smooth={true} spy={true} activeClass="before:w-2 before:h-2" duration={500} className={`text-base relative font-barlow text-gray-200 before:absolute before:bottom-1 before:-left-2.5 before:bg-gradient-to-tr before:from-sky-400 before:to-emerald-400 before:rounded-full before:transition-all before:duration-300 hover:before:w-2 hover:before:h-2`} >{name}</Spy>
                         </li>
                     ))
                 }
@@ -86,7 +86,7 @@ const NavBar = () => {
                         {
                             NavLinks.map(({ name, path }, index) => (
                                 <li className="block relative list-none group" key={index}>
-                                    <Link onClick={handleToggle} className={`text-base relative font-barlow text-gray-200 before:absolute before:bottom-1 before:-left-2.5 before:bg-gradient-to-tr before:from-sky-400 before:to-emerald-400 before:rounded-full before:transition-all before:duration-300 hover:before:w-2 hover:before:h-2 ${pathname == path && "before:w-2 before:h-2"}`} to={path}>{name}</Link>
+                                    <Spy to={path} smooth={true} spy={true} activeClass="before:w-2 before:h-2" duration={500} onClick={handleToggle} className={`text-base relative font-barlow text-gray-200 before:absolute before:bottom-1 before:-left-2.5 before:bg-gradient-to-tr before:from-sky-400 before:to-emerald-400 before:rounded-full before:transition-all before:duration-300 hover:before:w-2 hover:before:h-2`}>{name}</Spy>
                                 </li>
                             ))
                         }

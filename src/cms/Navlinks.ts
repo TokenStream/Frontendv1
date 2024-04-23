@@ -8,19 +8,23 @@ type NavArray = NavObject[];
 export const NavLinks: NavArray = [
   {
     name: "Home",
-    path: "/",
+    path: "home",
   },
   {
     name: "About Us",
-    path: "/about",
+    path: "about",
   },
   {
-    name: "Contact Us",
-    path: "/contact",
+    name: "Services",
+    path: "services",
   },
   {
     name: "FAQs",
-    path: "/faqs",
+    path: "faqs",
+  },
+  {
+    name: "Contact Us",
+    path: "contact",
   },
 ];
 

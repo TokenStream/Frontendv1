@@ -1,21 +1,18 @@
 import { Suspense } from "react";
-import NavBar from "./components/shared/NavBar";
 import { Route, Routes } from "react-router-dom";
 import routes from "./routes";
 import ScrollToTop from "./utils/ScrollToTop";
-import Footer from "./components/shared/Footer";
 import Preloader from "./utils/Preloader";
 import ScrollToTopButton from "./utils/ScrollToTopButton";
 import PageNotFound from "./utils/PageNotFound";
-
-
-
+import { ToastContainer } from 'react-toastify';
+//react-toastify css
+import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
 
   return (
     <main className='w-full min-h-screen bg-gray-950' id="heroPattern">
-      <NavBar />
       <ScrollToTop />
       <Suspense fallback={<Preloader />}>
         <Routes>
@@ -26,7 +23,7 @@ const App = () => {
         </Routes>
       </Suspense>
       <ScrollToTopButton />
-      <Footer />
+      <ToastContainer />
     </main>
   );
 }
