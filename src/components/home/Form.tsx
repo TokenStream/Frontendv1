@@ -42,9 +42,6 @@ const ContactForm = () => {
             <Form className="w-full flex flex-col gap-3">
                 {["name", "email", "message"].map((field) => (
                     <div key={field} className="relative w-full font-barlow">
-                        {/* <label htmlFor={field} className="text-sm text-gray-200 ml-1">
-                            {field.charAt(0).toUpperCase() + field.slice(1)}
-                        </label> */}
                         <Field
                             type={field === "message" ? "" : "text"}
                             as={field === "message" ? "textarea" : ""}

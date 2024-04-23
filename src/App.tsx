@@ -1,6 +1,5 @@
 import { Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
-import routes from "./routes";
 import ScrollToTop from "./utils/ScrollToTop";
 import Preloader from "./utils/Preloader";
 import ScrollToTopButton from "./utils/ScrollToTopButton";
@@ -9,6 +8,10 @@ import { ToastContainer } from 'react-toastify';
 //react-toastify css
 import 'react-toastify/dist/ReactToastify.css';
 
+import { lazy } from "react";
+import { guest_routes } from "./routes";
+const Signup = lazy(() => import("./pages/auth/index"));
+
 const App = () => {
 
   return (
@@ -16,9 +19,10 @@ const App = () => {
       <ScrollToTop />
       <Suspense fallback={<Preloader />}>
         <Routes>
-          {routes.map(({ path, component: Component }, index) => (
+          {guest_routes.map(({ path, component: Component }, index) => (
             <Route key={index} index={path === "/"} path={path} element={<Component />} />
           ))}
+          <Route path='/signup' element={<Signup />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </Suspense>
