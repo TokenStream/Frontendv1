@@ -24,10 +24,10 @@ const App = () => {
             <Route key={index} index={path === "/"} path={path} element={<Component />} />
           ))}
           <Route path='/signup' element={<Signup />} />
-          <Route element={<OnboardingLayout />}>
+          <Route path="/onboarding" element={<OnboardingLayout />}>
             {
               onboarding_routes.map(({ path, component: Component }, index) => (
-                <Route key={index} path={path} element={<Component />} />
+                <Route key={index} index={path === "/onboarding"} path={path} element={<Component />} />
               ))
             }
           </Route>

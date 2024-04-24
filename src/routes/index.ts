@@ -4,6 +4,11 @@ const Home = lazy(() => import("../pages/guest/index"));
 
 //onboarding routes
 const Setup = lazy(() => import("../pages/onboarding/index"));
+const StakingForm = lazy(() => import("../pages/onboarding/StakingForm"));
+const SalaryForm = lazy(() => import("../pages/onboarding/SalaryForm"));
+const SubscriptionForm = lazy(
+  () => import("../pages/onboarding/SubscriptionForm")
+);
 
 //user routes
 const UserDashboard = lazy(() => import("../pages/user/index"));
@@ -32,6 +37,21 @@ const onboardingRoutes: coreRoutes = [
     path: "/onboarding",
     title: "Onboarding",
     component: Setup,
+  },
+  {
+    path: "/onboarding/staking",
+    title: "Staking",
+    component: StakingForm,
+  },
+  {
+    path: "/onboarding/salary",
+    title: "Salary",
+    component: SalaryForm,
+  },
+  {
+    path: "/onboarding/subscription",
+    title: "Subscription",
+    component: SubscriptionForm,
   },
 ];
 export const onboarding_routes = [...onboardingRoutes];
