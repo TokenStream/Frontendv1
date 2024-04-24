@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 import { MdKeyboardDoubleArrowUp } from "react-icons/md";
 
@@ -33,9 +34,9 @@ const ScrollToTopButton = () => {
     return (
         <div className="fixed bottom-8 right-8 z-50">
             {isVisible && (
-                <button onClick={scrollToTop} className="bg-emerald-500 text-white rounded-md p-3 hover:bg-emerald-600 transition duration-300 focus:outline-none">
+                <Button onClick={scrollToTop} className="bg-emerald-500 text-white rounded-md p-3 hover:bg-emerald-600 transition duration-300 focus:outline-none">
                     <MdKeyboardDoubleArrowUp className="text-2xl" />
-                </button>
+                </Button>
             )}
         </div>
     )

@@ -4,7 +4,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "..
 const FAQs = () => {
     return (
         <main className='w-full flex flex-col items-center lg:my-24 my-12 lg:px-20 md:px-16 px-4'>
-            <h1 className="md:text-4xl text-3xl text-gray-200 font-belanosima">Frequently Asked Questions</h1>
+            <h1 className="md:text-4xl text-2xl text-gray-200 font-belanosima">Frequently Asked Questions</h1>
             <p className="text-gray-400 font-barlow text-center md:w-[50%]">Have questions? We have answers!</p>
 
             <section className="lg:w-[80%] md:w-[85%] w-full bg-gray-900 rounded-md md:px-8 md:py-6 p-4 mt-12">
