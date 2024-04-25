@@ -10,6 +10,7 @@ import Footer from "../../components/shared/Footer";
 import { Element } from "react-scroll"
 import FAQs from "../../components/home/FAQs";
 import Contact from "../../components/home/Contact";
+import StreamPlug from "@/components/home/StreamPlug";
 
 
 const Home = () => {
@@ -23,6 +24,7 @@ const Home = () => {
                 <Element name="about" className="w-full" >
                     <About />
                 </Element>
+                <StreamPlug />
                 <WhyStream />
                 <HowItWorks />
                 <Element name="services" className="w-full" >
