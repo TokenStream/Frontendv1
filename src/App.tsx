@@ -9,9 +9,15 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import { lazy } from "react";
-import { guest_routes, onboarding_routes } from "./routes";
-import OnboardingLayout from "./layouts/OnboardingLayout";
+import { guest_routes, user_routes } from "./routes";
+import UserLayout from "./layouts/UserLayout";
+import { configWeb3Modal } from "./connection";
+import AuthLayout from "./layouts/AuthLayout";
 const Signup = lazy(() => import("./pages/auth/index"));
+
+
+//web3 Modal configuration function call
+configWeb3Modal();
 
 const App = () => {
 
@@ -23,11 +29,13 @@ const App = () => {
           {guest_routes.map(({ path, component: Component }, index) => (
             <Route key={index} index={path === "/"} path={path} element={<Component />} />
           ))}
-          <Route path='/signup' element={<Signup />} />
-          <Route path="/onboarding" element={<OnboardingLayout />}>
+          <Route element={<AuthLayout />}>
+            <Route path='/signup' element={<Signup />} />
+          </Route>
+          <Route element={<UserLayout />}>
             {
-              onboarding_routes.map(({ path, component: Component }, index) => (
-                <Route key={index} index={path === "/onboarding"} path={path} element={<Component />} />
+              user_routes.map(({ path, component: Component }, index) => (
+                <Route key={index} index={path === "/user"} path={path} element={<Component />} />
               ))
             }
           </Route>

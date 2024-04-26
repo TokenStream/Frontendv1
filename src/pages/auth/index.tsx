@@ -8,10 +8,17 @@ import { TbLoaderQuarter } from "react-icons/tb";
 import { PiSignInFill } from "react-icons/pi";
 import { useNavigate } from "react-router-dom";
 import { IoIosArrowRoundBack } from "react-icons/io";
+import { WalletConnected } from "@/utils/WalletConnected";
+import { useWalletInfo, useWeb3Modal, useWeb3ModalAccount } from "@web3modal/ethers/react";
 
 
 const Signup = () => {
     const navigate = useNavigate();
+
+    const { open } = useWeb3Modal()
+    const { address, isConnected } = useWeb3ModalAccount()
+    const { walletInfo } = useWalletInfo()
+
     return (
         <section className="w-full h-screen flex bg-gray-950">
             <main className="w-full h-full grid lg:grid-cols-3 md:grid-cols-2">
@@ -21,8 +28,14 @@ const Signup = () => {
                 <aside className="flex flex-col items-center relative px-10 justify-center">
                     <SignupForm />
 
-                    <Button onClick={() => navigate('/')} className="bg-sky-400 text-white rounded-md p-3 hover:bg-sky-600 transition duration-300 focus:outline-none absolute top-8 left-8">
+                    <Button onClick={() => navigate('/')} className="bg-sky-500 text-white rounded-md p-3 hover:bg-sky-600 transition duration-300 focus:outline-none absolute top-8 left-8">
                         <IoIosArrowRoundBack className="text-2xl" />
+                    </Button>
+
+                    <Button onClick={() => open()} className="text-gray-200 text-sm font-barlow px-4 py-2 flex justify-center items-center gap-1 bg-sky-600 hover:bg-emerald-500 absolute top-8 right-8">
+                        {
+                            isConnected && <WalletConnected address={address} icon={walletInfo?.icon} />
+                        }
                     </Button>
                 </aside>
             </main>

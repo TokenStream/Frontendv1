@@ -2,14 +2,6 @@ import { lazy } from "react";
 
 const Home = lazy(() => import("../pages/guest/index"));
 
-//onboarding routes
-const Setup = lazy(() => import("../pages/onboarding/index"));
-const StakingForm = lazy(() => import("../pages/onboarding/StakingForm"));
-const SalaryForm = lazy(() => import("../pages/onboarding/SalaryForm"));
-const SubscriptionForm = lazy(
-  () => import("../pages/onboarding/SubscriptionForm")
-);
-
 //user routes
 const UserDashboard = lazy(() => import("../pages/user/index"));
 //admin routes
@@ -32,33 +24,9 @@ const guestRoutes: coreRoutes = [
 
 export const guest_routes = [...guestRoutes];
 
-const onboardingRoutes: coreRoutes = [
-  {
-    path: "/onboarding",
-    title: "Onboarding",
-    component: Setup,
-  },
-  {
-    path: "/onboarding/staking",
-    title: "Staking",
-    component: StakingForm,
-  },
-  {
-    path: "/onboarding/salary",
-    title: "Salary",
-    component: SalaryForm,
-  },
-  {
-    path: "/onboarding/subscription",
-    title: "Subscription",
-    component: SubscriptionForm,
-  },
-];
-export const onboarding_routes = [...onboardingRoutes];
-
 const userRoutes: coreRoutes = [
   {
-    path: "/user-dashboard",
+    path: "/user",
     title: "User Dashboard",
     component: UserDashboard,
   },
@@ -67,7 +35,7 @@ export const user_routes = [...userRoutes];
 
 const adminRoutes: coreRoutes = [
   {
-    path: "/admin-dashboard",
+    path: "/admin",
     title: "Admin Dashboard",
     component: AdminDashboard,
   },
