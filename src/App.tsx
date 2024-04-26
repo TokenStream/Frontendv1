@@ -11,7 +11,12 @@ import 'react-toastify/dist/ReactToastify.css';
 import { lazy } from "react";
 import { guest_routes, user_routes } from "./routes";
 import UserLayout from "./layouts/UserLayout";
+import { configWeb3Modal } from "./connection";
 const Signup = lazy(() => import("./pages/auth/index"));
+
+
+//web3 Modal configuration function call
+configWeb3Modal();
 
 const App = () => {
 

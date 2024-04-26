@@ -7,15 +7,20 @@ import { HiOutlineMenuAlt3 } from "react-icons/hi";
 import { LuLogIn } from "react-icons/lu";
 import { IoCloseOutline } from "react-icons/io5";
 import { Link as Spy } from 'react-scroll';
-
+import { useWalletInfo, useWeb3Modal, useWeb3ModalAccount } from '@web3modal/ethers/react'
 
 const NavBar = () => {
+    const { open } = useWeb3Modal()
+    const { address, isConnected } = useWeb3ModalAccount()
+    const { walletInfo } = useWalletInfo()
 
     const [openMenu, setOpenMenu] = useState<boolean>(false);
 
     const handleToggle = () => {
         setOpenMenu(!openMenu);
     }
+
+
 
     useEffect(() => {
         const toggleScroll = () => {
@@ -31,7 +36,7 @@ const NavBar = () => {
     return (
         <header className="w-full bg-gray-950 flex justify-between items-center py-6 md:px-8 px-3 overflow-hidden ">
             <Link to='/' className="flex items-center bg-gradient-to-r from-sky-400 to-emerald-400 text-transparent bg-clip-text gap-1">
-                <SiStreamrunners className="md:text-4xl text-3xl text-sky-400" />
+                <SiStreamrunners className="md:text-4xl text-3xl text-sky-500" />
                 <span className=" font-belanosima md:text-xl text-lg">StreamFlow</span>
             </Link>
 
@@ -52,10 +57,16 @@ const NavBar = () => {
                     <option value="FRA">FRA</option>
                 </select>
 
-                <Button className="text-gray-100 text-sm font-barlow px-4 py-2 flex justify-center items-center gap-1 bg-sky-500 hover:bg-emerald-500">
-                    <span>Connect Wallet</span>
-                    <LuLogIn className="text-lg hidden md:flex" />
+                <Button onClick={() => open()} className="text-gray-200 text-sm font-barlow px-4 py-2 flex justify-center items-center gap-1 bg-sky-600 hover:bg-emerald-500">
+                    {
+                        isConnected ? <WalletConnected address={address} icon={walletInfo?.icon} /> : <>
+                            <span>Connect Wallet</span>
+                            <LuLogIn className="text-lg hidden md:flex" />
+                        </>
+                    }
+
                 </Button>
+
                 <Button onClick={handleToggle} className="lg:hidden flex text-2xl border border-sky-400 px-2 text-sky-400 hover:text-emerald-400 hover:border-emerald-400" type="button">
                     <HiOutlineMenuAlt3 />
                 </Button>
@@ -98,3 +109,18 @@ const NavBar = () => {
 }
 
 export default NavBar
+
+
+const WalletConnected = ({ address, icon }: { address: string | undefined, icon: string | undefined }) => {
+    const formatAddress = (address: string | undefined) => {
+        return `${address?.slice(0, 6)}...${address?.slice(-4)}`
+    }
+    return (
+        <span className="flex items-center gap-1">
+            <span className="w-6 h-6 rounded-full overflow-hidden">
+                <img src={icon} alt="Icon" className="w-full h-full object-cover" />
+            </span>
+            <span className="text-gray-200">{formatAddress(address)}</span>
+        </span>
+    )
+}
