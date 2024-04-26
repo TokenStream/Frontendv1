@@ -36,7 +36,7 @@ const HowItWorks = () => {
         <main className='w-full flex flex-col items-center md:my-24 my-20 lg:px-20 md:px-16 px-4'>
             <h1 className="text-4xl text-gray-200 font-belanosima">How It Works</h1>
             <p className="text-gray-400 font-barlow text-center md:w-[50%]">StreamFlow makes token streaming easy and efficient, allowing you to automate financial processes with just a few simple steps:</p>
-            <div className="w-full  grid lg:grid-cols-3 md:grid-cols-2 gap-7 mt-12">
+            <div className="w-full  grid lg:grid-cols-3 md:grid-cols-2 gap-10 mt-12">
                 {
                     steps.map(({ caption, text, icon }, index) => (
                         <div className={`flex flex-col bg-gray-900 px-6 py-8 items-center gap-4 overflow-hidden relative cursor-pointer`} key={index}>
@@ -48,6 +48,7 @@ const HowItWorks = () => {
                             </div>
                             <h3 className="text-xl text-gray-200 font-belanosima">{caption}</h3>
                             <p className="text-gray-400 font-barlow">{text}</p>
+
                         </div>
                     ))
                 }

@@ -3,6 +3,7 @@ import SalaryImg from "../../assets/salary.png";
 import StakingImg from "../../assets/staking.png";
 import { Button } from "../ui/button";
 import { useNavigate } from "react-router-dom";
+import { BackgroundGradient } from "../ui/background-gradient";
 
 type ServiceTypes = {
     caption: string
@@ -40,7 +41,7 @@ export default Services
 export const ServiceCard = ({ caption, description, url, img }: ServiceTypes) => {
     const navigate = useNavigate()
     return (
-        <div className="w-full flex flex-col items-start bg-gray-950 ring-1 ring-gray-600 py-7 px-5 rounded-md cursor-pointer transition-all duration-200 hover:ring-emerald-500">
+        <BackgroundGradient className="w-full flex flex-col items-start bg-gray-900 py-7 px-5 rounded-[22px] cursor-pointer">
             <div className="w-full flex flex-col items-start">
                 <div className="w-32 h-32 md:w-40 md:h-40 bg-gradient-to-br from-sky-600 to-emerald-400 flex justify-center items-center" style={{ borderRadius: '30% 70% 70% 30% / 30% 30% 70% 70% ' }}>
                     <img src={img} alt={caption} className="w-full h-full object-contain" />
@@ -49,7 +50,7 @@ export const ServiceCard = ({ caption, description, url, img }: ServiceTypes) =>
                 <p className="text-gray-400 font-barlow text-sm">{description}</p>
             </div>
             <Button onClick={() => navigate(url)} className="text-gray-100 text-sm font-barlow px-4 py-2 flex justify-center items-center gap-1 bg-sky-500 hover:bg-emerald-500 mt-5" type="button">Get Started</Button>
-        </div>
+        </BackgroundGradient>
     )
 }
 
