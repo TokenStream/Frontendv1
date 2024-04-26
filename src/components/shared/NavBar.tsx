@@ -1,5 +1,5 @@
 import { NavLinks } from "../../cms/Navlinks";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { Link } from "react-router-dom"
 import { Button } from "../ui/button";
 import { SiStreamrunners } from "react-icons/si";
@@ -9,6 +9,7 @@ import { IoCloseOutline } from "react-icons/io5";
 import { Link as Spy } from 'react-scroll';
 import { useWalletInfo, useWeb3Modal, useWeb3ModalAccount } from '@web3modal/ethers/react'
 import { WalletConnected } from "@/utils/WalletConnected";
+import { useNavigate } from "react-router-dom"
 
 const NavBar = () => {
     const { open } = useWeb3Modal()
@@ -21,8 +22,6 @@ const NavBar = () => {
         setOpenMenu(!openMenu);
     }
 
-
-
     useEffect(() => {
         const toggleScroll = () => {
             document.body.style.overflow = openMenu ? 'hidden' : 'auto';
@@ -33,6 +32,19 @@ const NavBar = () => {
             document.body.style.overflow = 'auto';
         };
     }, [openMenu]);
+
+
+    const navigate = useNavigate();
+
+    const change = useCallback(async () => {
+        if (isConnected) {
+            navigate("/signup");
+        }
+    }, [isConnected, navigate]);
+
+    useEffect(() => {
+        change();
+    }, [change, isConnected]);
 
     return (
         <header className="w-full bg-gray-950 flex justify-between items-center py-6 md:px-8 px-3 overflow-hidden ">

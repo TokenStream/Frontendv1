@@ -3,8 +3,15 @@ import { Link } from "react-router-dom";
 import Greeting from "./Greeting";
 import { Button } from "../ui/button";
 import { LuLogIn } from "react-icons/lu";
+import { WalletConnected } from "@/utils/WalletConnected";
+import { useWalletInfo, useWeb3Modal, useWeb3ModalAccount } from "@web3modal/ethers/react";
 
 const Header = ({ sidebarOpen, setSidebarOpen }: { sidebarOpen: boolean, setSidebarOpen: React.Dispatch<React.SetStateAction<boolean>> }) => {
+
+    const { open } = useWeb3Modal()
+    const { address, isConnected } = useWeb3ModalAccount()
+    const { walletInfo } = useWalletInfo()
+
     return (
         <header className="sticky top-0 z-[999] flex w-full bg-gray-800 rounded-lg overflow-hidden drop-shadow-1">
             <div className="flex flex-grow items-center justify-between py-4 px-4 shadow md:px-6 2xl:px-11 relative before:absolute before:bottom-0 before:left-0 before:w-full before:h-px before:bg-gradient-to-l before:from-sky-400 before:to-emerald-400">
@@ -60,9 +67,13 @@ const Header = ({ sidebarOpen, setSidebarOpen }: { sidebarOpen: boolean, setSide
 
                 <div className="flex items-center gap-3 2xsm:gap-7">
                     {/* <!-- User Area --> */}
-                    <Button className="text-gray-100 text-sm font-barlow px-4 py-2 flex justify-center items-center gap-1 bg-sky-500 hover:bg-emerald-500">
-                        <span>Disconnect</span>
-                        <LuLogIn className="text-lg hidden md:flex" />
+                    <Button onClick={() => open()} className="text-gray-200 text-sm font-barlow px-4 py-2 flex justify-center items-center gap-1 bg-sky-600 hover:bg-emerald-500">
+                        {
+                            isConnected ? <WalletConnected address={address} icon={walletInfo?.icon} /> : <>
+                                <span>Connect Wallet</span>
+                                <LuLogIn className="text-lg hidden md:flex" />
+                            </>
+                        }
                     </Button>
                     {/* <!-- User Area --> */}
                 </div>
