@@ -8,6 +8,7 @@ import { LuLogIn } from "react-icons/lu";
 import { IoCloseOutline } from "react-icons/io5";
 import { Link as Spy } from 'react-scroll';
 import { useWalletInfo, useWeb3Modal, useWeb3ModalAccount } from '@web3modal/ethers/react'
+import { WalletConnected } from "@/utils/WalletConnected";
 
 const NavBar = () => {
     const { open } = useWeb3Modal()
@@ -64,7 +65,6 @@ const NavBar = () => {
                             <LuLogIn className="text-lg hidden md:flex" />
                         </>
                     }
-
                 </Button>
 
                 <Button onClick={handleToggle} className="lg:hidden flex text-2xl border border-sky-400 px-2 text-sky-400 hover:text-emerald-400 hover:border-emerald-400" type="button">
@@ -109,18 +109,3 @@ const NavBar = () => {
 }
 
 export default NavBar
-
-
-const WalletConnected = ({ address, icon }: { address: string | undefined, icon: string | undefined }) => {
-    const formatAddress = (address: string | undefined) => {
-        return `${address?.slice(0, 6)}...${address?.slice(-4)}`
-    }
-    return (
-        <span className="flex items-center gap-1">
-            <span className="w-6 h-6 rounded-full overflow-hidden">
-                <img src={icon} alt="Icon" className="w-full h-full object-cover" />
-            </span>
-            <span className="text-gray-200">{formatAddress(address)}</span>
-        </span>
-    )
-}
