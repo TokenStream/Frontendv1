@@ -8,14 +8,6 @@ export const NavLinks = [
     url: "/user/services",
   },
   {
-    name: "Fund Account",
-    url: "/user/fundaccount",
-  },
-  {
-    name: "Withdraw Funds",
-    url: "/user/withdrawfunds",
-  },
-  {
     name: "Subscriptions",
     subLinks: [
       {

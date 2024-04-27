@@ -4,6 +4,8 @@ const Home = lazy(() => import("../pages/guest/index"));
 
 //user routes
 const UserDashboard = lazy(() => import("../pages/user/index"));
+const Services = lazy(() => import("../pages/user/Services"));
+
 //admin routes
 const AdminDashboard = lazy(() => import("../pages/admin/index"));
 
@@ -29,6 +31,11 @@ const userRoutes: coreRoutes = [
     path: "/user",
     title: "User Dashboard",
     component: UserDashboard,
+  },
+  {
+    path: "/user/services",
+    title: "Services",
+    component: Services,
   },
 ];
 export const user_routes = [...userRoutes];
