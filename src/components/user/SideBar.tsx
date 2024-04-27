@@ -114,7 +114,7 @@ const SideBar = ({ sidebarOpen, setSidebarOpen }: { sidebarOpen: boolean, setSid
 
             <div className="no-scrollbar flex flex-col overflow-y-auto duration-300 ease-linear">
                 {/* <!-- Sidebar Menu --> */}
-                <nav className="mt-5 py-4 px-4 lg:mt-3 lg:px-6">
+                <nav className="mt-3 pb-4 px-4 lg:mt-3 lg:px-6">
                     {/* <!-- Menu Group --> */}
                     <div>
                         <ul className="font-barlow flex flex-col gap-1.5">

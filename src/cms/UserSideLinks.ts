@@ -35,10 +35,6 @@ export const NavLinks = [
         name: "Update Salary Stream",
         url: "/user/updatesalarystream",
       },
-      {
-        name: "View Salary Stream",
-        url: "/user/viewsalarystream",
-      },
     ],
   },
   {
