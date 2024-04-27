@@ -8,7 +8,7 @@ const HeroSection = () => {
     return (
         <main className="w-full overflow-hidden lg:h-[80vh] md:h-[50vh] h-screen flex items-center md:flex-row flex-col">
             <div className="flex-1 h-1/2 md:h-full flex order-2 md:order-1 flex-col gap-5 items-start justify-center lg:px-12 md:px-6 px-4">
-                <h1 className="lg:text-7xl text-4xl font-belanosima font-medium text-gray-200">Unlock the Future of Finance</h1>
+                <h1 className="lg:text-7xl text-4xl font-belanosima font-medium text-gray-200">Unlock the Future of Finance with <br /> <span className="bg-gradient-to-r from-sky-400 to-emerald-400 text-transparent bg-clip-text">StreamFlow</span></h1>
                 <p className="text-xl font-barlow text-gray-400">Experience seamless token streaming that revolutionizes finance. Automate salaries, rewards, subscriptions, and more with StreamFlow. Take control of your financial journey today.</p>
                 <Button onClick={() => navigate('/signup')} className="text-gray-100 text-sm font-barlow px-4 py-2 flex justify-center items-center gap-1 bg-sky-600 hover:bg-emerald-500" type="button">Start Streaming Now</Button>
             </div>

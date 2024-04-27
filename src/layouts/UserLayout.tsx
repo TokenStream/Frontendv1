@@ -28,7 +28,7 @@ const UserLayout = () => {
             {/* Sidebar End  */}
 
             {/* Content Area Start  */}
-            <div ref={scrollableRef} className="relative flex min-h-screen flex-1 flex-col justify-between overflow-y-auto overflow-x-hidden">
+            <div ref={scrollableRef} className="relative flex min-h-screen flex-1 flex-col justify-between overflow-y-auto overflow-x-hidden no-scrollbar">
 
                 <section>
                     {/*  Header Start */}
