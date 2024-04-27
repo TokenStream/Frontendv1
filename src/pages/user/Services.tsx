@@ -4,20 +4,20 @@ import StakingImg from "../../assets/staking.png";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import { GiStarShuriken } from "react-icons/gi"
-import { IoIosArrowRoundBack } from "react-icons/io";
 
-const SetUp = () => {
+const Services = () => {
     const navigate = useNavigate()
+
     return (
-        <main className="w-full min-h-screen bg-gray-950 flex flex-col justify-start items-center lg:py-24 lg:px-20 md:px-12 md:py-12 px-6 py-24 relative">
+        <main className="w-full h-full flex flex-col gap-4 mt-8 ml-2">
             <div className="w-full flex flex-col gap-2">
                 <h1 className="md:text-4xl text-2xl text-gray-300 font-belanosima">Choose Your Service</h1>
-                <p className="text-gray-400 font-barlow md:text-lg lg:w-[70%] md:w-[80%] w-full">Welcome to StreamFlow! As a registered user, you now have access to our range of services designed to streamline your financial transactions. Please select the service you're interested in:</p>
+                <p className="text-gray-400 font-barlow md:text-lg lg:w-[70%] md:w-[80%] w-full">As a registered user, you now have access to our range of services designed to streamline your financial transactions. Please select the service you're interested in:</p>
             </div>
-            <section className="w-full grid lg:grid-cols-3 md:grid-cols-2 gap-8 mt-6">
+            <section className="w-full grid lg:grid-cols-3 md:grid-cols-2 gap-8 mt-6 pr-4">
                 {
                     services.map(({ caption, list, url, img }, index) => (
-                        <div key={index} className="w-full flex flex-col items-start bg-gray-950 ring-1 ring-gray-600 py-7 px-5 rounded-md cursor-pointer transition-all duration-200 hover:ring-emerald-500">
+                        <div key={index} className="w-full flex flex-col items-start bg-gray-800 ring-1 ring-gray-600 py-7 px-5 rounded-md cursor-pointer transition-all duration-200 hover:ring-emerald-500">
                             <div className="w-full flex flex-col items-start">
                                 <div className="w-32 h-32 md:w-40 md:h-40 bg-gradient-to-br from-sky-600 to-emerald-400 flex justify-center items-center" style={{ borderRadius: '30% 70% 70% 30% / 30% 30% 70% 70% ' }}>
                                     <img src={img} alt={caption} className="w-full h-full object-contain" />
@@ -43,15 +43,12 @@ const SetUp = () => {
                 }
 
             </section>
-
-            <Button onClick={() => navigate('/')} className="bg-sky-400 text-white rounded-md p-3 hover:bg-sky-600 transition duration-300 focus:outline-none absolute top-8 md:left-8 left-6">
-                <IoIosArrowRoundBack className="text-2xl" />
-            </Button>
         </main>
     )
 }
 
-export default SetUp
+export default Services
+
 
 type ServiceTypes = {
     caption: string
@@ -64,17 +61,17 @@ const services: ServiceTypes[] = [
     {
         caption: 'Subscription Management',
         list: ["Easily manage recurring payments and subscriptions.", "Set up automated payments for your favorite services.", "Get reminders for upcoming subscription renewals."],
-        url: '/onboarding/subscription',
+        url: '/user/createsubscription',
         img: SubscriptionImg
     }, {
         caption: 'Staking/Rewards Distribution',
         list: ["Participate in our rewards program to earn tokens.", "Earn rewards based on your engagement and performance.", "Track your rewards and redeem them for exciting perks."],
-        url: '/onboarding/staking',
+        url: '/user/startstaking',
         img: StakingImg
     }, {
         caption: 'Salary Distributions',
         list: ["Streamline your salary distribution process.", "Ensure timely and accurate payments to your employees.", "Customize salary distribution based on your organization's needs."],
-        url: '/onboarding/salary',
+        url: '/user/createsalarystream',
         img: SalaryImg
     }
 ]

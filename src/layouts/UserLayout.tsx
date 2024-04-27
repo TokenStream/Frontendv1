@@ -1,3 +1,4 @@
+import BalanceStats from "@/components/user/BalanceStats";
 import DashboardFooter from "@/components/user/DashboardFooter";
 import Header from "@/components/user/Header";
 import SideBar from "@/components/user/SideBar";
@@ -37,7 +38,10 @@ const UserLayout = () => {
                     {/*  Main Content Start */}
                     <main>
                         <div className="mx-auto max-w-screen-2xl pt-4 pb-6 md:pt-4 md:pb-10 2xl:p-10">
-                            <Outlet />
+                            <BalanceStats />
+                            <section className="w-full">
+                                <Outlet />
+                            </section>
                         </div>
                     </main>
                 </section>
