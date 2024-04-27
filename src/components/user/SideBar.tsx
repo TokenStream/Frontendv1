@@ -152,7 +152,7 @@ const SideBar = ({ sidebarOpen, setSidebarOpen }: { sidebarOpen: boolean, setSid
                                                                 className={`translate transform overflow-hidden transition-all duration-300 ${!open && 'hidden'
                                                                     }`}
                                                             >
-                                                                <ul className="my-1 flex flex-col pl-10 gap-1">
+                                                                <ul className="my-1 flex flex-col pl-5 gap-1">
                                                                     {
                                                                         link?.subLinks?.map((sublink, index) => (
                                                                             <li key={index}>

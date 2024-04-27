@@ -18,10 +18,6 @@ export const NavLinks = [
         name: "Update Subscription",
         url: "/user/updatesubscription",
       },
-      {
-        name: "View Subscription",
-        url: "/user/viewsubscription",
-      },
     ],
   },
   {

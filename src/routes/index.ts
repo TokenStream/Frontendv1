@@ -5,7 +5,6 @@ const Home = lazy(() => import("../pages/guest/index"));
 //user routes
 const UserDashboard = lazy(() => import("../pages/user/index"));
 const Services = lazy(() => import("../pages/user/Services"));
-
 const CreateSalaryStream = lazy(
   () => import("../pages/user/CreateSalaryStream")
 );
@@ -15,9 +14,9 @@ const UpdateSalaryStream = lazy(
 const CreateSubscription = lazy(
   () => import("../pages/user/CreateSubscription")
 );
-// const UpdateSubscription = lazy(
-//   () => import("../pages/user/UpdateSubscription")
-// );
+const UpdateSubscription = lazy(
+  () => import("../pages/user/UpdateSubscription")
+);
 
 //admin routes
 const AdminDashboard = lazy(() => import("../pages/admin/index"));
@@ -54,6 +53,11 @@ const userRoutes: coreRoutes = [
     path: "/user/createsubscription",
     title: "Create Subscription",
     component: CreateSubscription,
+  },
+  {
+    path: "/user/updatesubscription",
+    title: "Update Subscription",
+    component: UpdateSubscription,
   },
   {
     path: "/user/createsalarystream",
