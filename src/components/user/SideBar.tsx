@@ -55,11 +55,11 @@ const SideBar = ({ sidebarOpen, setSidebarOpen }: { sidebarOpen: boolean, setSid
 
     const renderDropdownCaptionIcons = useCallback((element: number) => {
         switch (element) {
-            case 4:
+            case 2:
                 return <MdOutlineAddShoppingCart />;
-            case 5:
+            case 3:
                 return <RiSecurePaymentFill />
-            case 6:
+            case 4:
                 return <GiPayMoney />
             default:
                 return "";
@@ -152,7 +152,7 @@ const SideBar = ({ sidebarOpen, setSidebarOpen }: { sidebarOpen: boolean, setSid
                                                                 className={`translate transform overflow-hidden transition-all duration-300 ${!open && 'hidden'
                                                                     }`}
                                                             >
-                                                                <ul className="my-1 flex flex-col pl-5 gap-1">
+                                                                <ul className="my-1 flex flex-col pl-4 gap-1">
                                                                     {
                                                                         link?.subLinks?.map((sublink, index) => (
                                                                             <li key={index}>
