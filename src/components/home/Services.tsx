@@ -57,17 +57,17 @@ export const ServiceCard = ({ caption, description, url, img }: ServiceTypes) =>
 const services: ServiceTypes[] = [
     {
         caption: 'Subscription Management',
-        description: 'StreamFlow offers a robust subscription management service, allowing businesses to automate recurring payments and manage subscription tiers effortlessly.',
+        description: 'TRiver offers a robust subscription management service, allowing businesses to automate recurring payments and manage subscription tiers effortlessly.',
         url: '/onboarding/subscription',
         img: SubscriptionImg
     }, {
         caption: 'Staking/Rewards Distribution',
-        description: "Reward your users with StreamFlow's dynamic rewards distribution service.Customize performance metrics and automate reward payouts for maximum engagement",
+        description: "Reward your users with TRiver's dynamic rewards distribution service.Customize performance metrics and automate reward payouts for maximum engagement",
         url: '/onboarding/staking',
         img: StakingImg
     }, {
         caption: 'Salary Distributions',
-        description: "Simplify salary distributions with StreamFlow's automated service.Calculate pro- rata payments accurately and streamline payroll processes for your employees.",
+        description: "Simplify salary distributions with TRiver's automated service.Calculate pro- rata payments accurately and streamline payroll processes for your employees.",
         url: '/onboarding/salary',
         img: SalaryImg
     }

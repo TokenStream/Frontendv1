@@ -31,7 +31,7 @@ const StreamPlug = () => {
                     pathLengthFifth,
                 ]}
                 title="Automate Your Token Streams"
-                description="Plug in your tokens to streamline your distribution process and subscriptions. StreamFlow's intuitive interface makes it easy to activate, customize, and manage your streams in real-time."
+                description="Plug in your tokens to streamline your distribution process and subscriptions. TRiver's intuitive interface makes it easy to activate, customize, and manage your streams in real-time."
             />
         </div>
     )

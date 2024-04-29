@@ -20,6 +20,7 @@ const UpdateSubscription = lazy(
 
 //admin routes
 const AdminDashboard = lazy(() => import("../pages/admin/index"));
+const UsersList = lazy(() => import("../pages/admin/usersList"));
 
 type Route = {
   path: string;
@@ -77,6 +78,11 @@ const adminRoutes: coreRoutes = [
     path: "/admin",
     title: "Admin Dashboard",
     component: AdminDashboard,
+  },
+  {
+    path: "/admin/users",
+    title: "Users",
+    component: UsersList,
   },
 ];
 export const admin_routes = [...adminRoutes];

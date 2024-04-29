@@ -51,33 +51,3 @@ export const NavLinks = [
     ],
   },
 ];
-
-export const AdminLinks = [
-  {
-    name: "Profile",
-    url: "/adminProfile",
-  },
-  {
-    name: "Create Admin",
-    url: "/createAdmin",
-  },
-  {
-    name: "Create SuperAdmin",
-    url: "/createSuperAdmin",
-  },
-  {
-    name: "Update Password",
-    url: "/updatePassword",
-  },
-];
-
-export const AdminLinksDropdown = [
-  {
-    name: "Profile",
-    url: "/adminProfile",
-  },
-  {
-    name: "Update Password",
-    url: "/updatePassword",
-  },
-];
