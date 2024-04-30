@@ -50,7 +50,7 @@ const NavBar = () => {
         <header className="w-full bg-gray-950 flex justify-between items-center py-6 md:px-8 px-3 overflow-hidden ">
             <Link to='/' className="flex items-center bg-gradient-to-r from-sky-400 to-emerald-400 text-transparent bg-clip-text gap-1">
                 <SiStreamrunners className="md:text-4xl text-3xl text-sky-500" />
-                <span className=" font-belanosima md:text-xl text-lg">StreamFlow</span>
+                <span className=" font-belanosima md:text-xl text-lg">TRiver</span>
             </Link>
 
             <ul className="lg:flex hidden items-center gap-10">

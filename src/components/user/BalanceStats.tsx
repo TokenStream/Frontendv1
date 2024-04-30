@@ -92,10 +92,10 @@ const BalanceStats = () => {
             <div className="flex flex-col gap-5 bg-gray-800 rounded-lg p-6">
                 <div className="w-full flex flex-col gap-1">
                     <h4 className="text-gray-300 font-barlow">Total Reward</h4>
-                    <h1 className="md:text-4xl text-2xl text-emerald-500 font-belanosima font-medium">5.00 <span>SF</span></h1>
+                    <h1 className="md:text-4xl text-2xl text-emerald-500 font-belanosima font-medium">5.00 <span>TR</span></h1>
                 </div>
                 <div className="w-full flex flex-col gap-1">
-                    <h4 className="text-gray-300 font-barlow">Price per SF (Stream Flow Token)</h4>
+                    <h4 className="text-gray-300 font-barlow">Price per TR (TRiver Token)</h4>
                     <h1 className="text-gray-400 text-xl font-barlow">0.05 <span>USD</span></h1>
                 </div>
                 <div className="w-full grid">

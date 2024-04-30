@@ -29,27 +29,27 @@ export default FAQs
 
 const faqs: { question: string, answer: string }[] = [
     {
-        "question": "What is StreamFlow?",
-        "answer": "StreamFlow is a token streaming application that enables continuous, real-time transactions of tokens based on predefined criteria. It automates various financial processes such as salaries, subscriptions, rewards, and staking payouts without manual intervention."
+        "question": "What is TRiver?",
+        "answer": "TRiver is a token streaming application that enables continuous, real-time transactions of tokens based on predefined criteria. It automates various financial processes such as salaries, subscriptions, rewards, and staking payouts without manual intervention."
     },
     {
-        "question": "How does StreamFlow work?",
-        "answer": "StreamFlow works by allowing users to set up token streams with specific parameters such as amount, duration, and conditions. These streams are then activated, and tokens are automatically distributed according to the predefined criteria."
+        "question": "How does TRiver work?",
+        "answer": "TRiver works by allowing users to set up token streams with specific parameters such as amount, duration, and conditions. These streams are then activated, and tokens are automatically distributed according to the predefined criteria."
     },
     {
-        "question": "Is StreamFlow secure?",
-        "answer": "Yes, StreamFlow prioritizes security and employs rigorous testing and auditing processes to ensure the safety and integrity of transactions. Additionally, it utilizes smart contracts on the Optimism blockchain, providing an extra layer of security."
+        "question": "Is TRiver secure?",
+        "answer": "Yes, TRiver prioritizes security and employs rigorous testing and auditing processes to ensure the safety and integrity of transactions. Additionally, it utilizes smart contracts on the Optimism blockchain, providing an extra layer of security."
     },
     {
         "question": "Can I customize my token streams?",
-        "answer": "Yes, StreamFlow offers customization options to tailor token streams to your specific needs. You can configure parameters such as payment frequency, performance metrics for rewards, and subscription tiers."
+        "answer": "Yes, TRiver offers customization options to tailor token streams to your specific needs. You can configure parameters such as payment frequency, performance metrics for rewards, and subscription tiers."
     },
     {
-        "question": "How do I get started with StreamFlow?",
-        "answer": "To get started with StreamFlow, simply sign up for an account, configure your token streams, and activate them. Our user-friendly interface makes it easy to manage and monitor your streams in real-time."
+        "question": "How do I get started with TRiver?",
+        "answer": "To get started with TRiver, simply sign up for an account, configure your token streams, and activate them. Our user-friendly interface makes it easy to manage and monitor your streams in real-time."
     },
     {
-        "question": "What support is available for StreamFlow users?",
-        "answer": "StreamFlow provides comprehensive support for users, including documentation, tutorials, and a dedicated support team. If you have any questions or encounter any issues, you can reach out to us for assistance."
+        "question": "What support is available for TRiver users?",
+        "answer": "TRiver provides comprehensive support for users, including documentation, tutorials, and a dedicated support team. If you have any questions or encounter any issues, you can reach out to us for assistance."
     }
 ];

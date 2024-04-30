@@ -9,10 +9,11 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import { lazy } from "react";
-import { guest_routes, user_routes } from "./routes";
+import { admin_routes, guest_routes, user_routes } from "./routes";
 import UserLayout from "./layouts/UserLayout";
 import { configWeb3Modal } from "./connection";
 import AuthLayout from "./layouts/AuthLayout";
+import AdminLayout from "./layouts/AdminLayout";
 const Signup = lazy(() => import("./pages/auth/index"));
 
 
@@ -26,9 +27,11 @@ const App = () => {
       <ScrollToTop />
       <Suspense fallback={<Preloader />}>
         <Routes>
+
           {guest_routes.map(({ path, component: Component }, index) => (
             <Route key={index} index={path === "/"} path={path} element={<Component />} />
           ))}
+
           <Route element={<AuthLayout />}>
             <Route path='/signup' element={<Signup />} />
           </Route>
@@ -36,6 +39,13 @@ const App = () => {
             {
               user_routes.map(({ path, component: Component }, index) => (
                 <Route key={index} index={path === "/user"} path={path} element={<Component />} />
+              ))
+            }
+          </Route>
+          <Route element={<AdminLayout />}>
+            {
+              admin_routes.map(({ path, component: Component }, index) => (
+                <Route key={index} index={path === "/admin"} path={path} element={<Component />} />
               ))
             }
           </Route>

@@ -1,10 +1,10 @@
-# StreamFlow Frontend
+# TRiver Frontend
 
-Welcome to the StreamFlow frontend repository! StreamFlow is a token streaming application that facilitates continuous, real-time transactions of tokens based on predefined criteria. This frontend repository contains the code for the user interface of the StreamFlow application.
+Welcome to the TRiver frontend repository! TRiver is a token streaming application that facilitates continuous, real-time transactions of tokens based on predefined criteria. This frontend repository contains the code for the user interface of the TRiver application.
 
-## About StreamFlow
+## About TRiver
 
-StreamFlow is designed to enhance transaction fluidity and reliability in decentralized finance (DeFi) projects. It automates various financial processes such as salaries, subscriptions, rewards, and staking payouts without manual intervention. The application is built on the Optimism blockchain utilizing smart contracts to handle token streaming functionalities securely and efficiently.
+TRiver is designed to enhance transaction fluidity and reliability in decentralized finance (DeFi) projects. It automates various financial processes such as salaries, subscriptions, rewards, and staking payouts without manual intervention. The application is built on the Optimism blockchain utilizing smart contracts to handle token streaming functionalities securely and efficiently.
 
 ## Features
 
@@ -16,7 +16,7 @@ StreamFlow is designed to enhance transaction fluidity and reliability in decent
 
 ## Installation
 
-To run the StreamFlow frontend locally, follow these steps:
+To run the TRiver frontend locally, follow these steps:
 
 1. Clone this repository to your local machine.
 2. Navigate to the project directory in your terminal.
@@ -25,7 +25,7 @@ To run the StreamFlow frontend locally, follow these steps:
 
 ## Contributing
 
-Contributions are welcome! If you'd like to contribute to the StreamFlow frontend, please follow these steps:
+Contributions are welcome! If you'd like to contribute to the TRiver frontend, please follow these steps:
 
 1. Fork this repository.
 2. Create a new branch for your feature or bug fix: `git checkout -b feature-name`.
@@ -39,5 +39,5 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## Contact
 
-For any inquiries or feedback, please contact us at [StreamFlow](mailto:emmanuelomemgboji@gmail.com).
+For any inquiries or feedback, please contact us at [TRiver](mailto:emmanuelomemgboji@gmail.com).
 

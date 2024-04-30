@@ -32,7 +32,7 @@ export const GeminiEffect = ({
             <div className="w-full h-[890px] -top-60 md:-top-40  flex items-center justify-center bg-red-transparent absolute ">
                 <button className="flex items-center gap-1 bg-gradient-to-r from-sky-400 to-emerald-400 rounded-full md:px-7 md:py-3 px-2 py-1 md:mt-28 mt-8 z-30 md:text-base text-gray-800 text-xs  w-fit mx-auto ">
                     <SiStreamrunners className="md:text-2xl text-lg" />
-                    <span className=" font-belanosima">StreamFlow</span>
+                    <span className=" font-belanosima">TRiver</span>
                 </button>
             </div>
             <svg

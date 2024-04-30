@@ -6,7 +6,7 @@ const WhyStream = () => {
     const features: { caption: string, text: string }[] = [
         {
             caption: "Automated Token Streaming",
-            text: "StreamFlow enables users to set up automated token streams for various purposes, including salaries, rewards, subscriptions, and more."
+            text: "TRiver enables users to set up automated token streams for various purposes, including salaries, rewards, subscriptions, and more."
         },
         {
             caption: "User-Centric Design",
@@ -14,7 +14,7 @@ const WhyStream = () => {
         },
         {
             caption: "Security and Reliability",
-            text: "Built on the Optimism blockchain and rigorously tested for security and efficiency, StreamFlow ensures the safety of your transactions and the reliability of your financial operations."
+            text: "Built on the Optimism blockchain and rigorously tested for security and efficiency, TRiver ensures the safety of your transactions and the reliability of your financial operations."
         }
     ]
     return (
@@ -38,8 +38,8 @@ const WhyStream = () => {
                     </div>
                 </div>
                 <div className="flex flex-col order-2 md:order-1 items-start gap-1.5">
-                    <h1 className="text-3xl text-gray-200 font-belanosima">Why StreamFlow</h1>
-                    <p className="text-gray-400 font-barlow">With StreamFlow, you can say goodbye to manual transaction processes and hello to a new era of financial automation. Whether you're an individual looking to streamline your personal finances or a business seeking to optimize your operations, StreamFlow offers the tools and capabilities you need to succeed in the world of DeFi.</p>
+                    <h1 className="text-3xl text-gray-200 font-belanosima">Why TRiver</h1>
+                    <p className="text-gray-400 font-barlow">With TRiver, you can say goodbye to manual transaction processes and hello to a new era of financial automation. Whether you're an individual looking to streamline your personal finances or a business seeking to optimize your operations, TRiver offers the tools and capabilities you need to succeed in the world of DeFi.</p>
                     <h3 className="text-xl text-gray-200 font-belanosima mt-4">Key Features</h3>
                     <ul className="flex flex-col gap-2 text-gray-400 font-barlow">
                         {

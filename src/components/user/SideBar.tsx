@@ -55,11 +55,11 @@ const SideBar = ({ sidebarOpen, setSidebarOpen }: { sidebarOpen: boolean, setSid
 
     const renderDropdownCaptionIcons = useCallback((element: number) => {
         switch (element) {
-            case 4:
+            case 2:
                 return <MdOutlineAddShoppingCart />;
-            case 5:
+            case 3:
                 return <RiSecurePaymentFill />
-            case 6:
+            case 4:
                 return <GiPayMoney />
             default:
                 return "";
@@ -91,7 +91,7 @@ const SideBar = ({ sidebarOpen, setSidebarOpen }: { sidebarOpen: boolean, setSid
                 <div className="flex items-center justify-between gap-2  ">
                     <Link to='/user' className="flex items-center bg-gradient-to-r from-sky-400 to-emerald-400 text-transparent bg-clip-text gap-1">
                         <SiStreamrunners className="md:text-4xl text-3xl text-sky-400" />
-                        <span className=" font-belanosima md:text-xl text-lg">StreamFlow</span>
+                        <span className=" font-belanosima md:text-xl text-lg">TRiver</span>
                     </Link>
 
                     <button
@@ -152,7 +152,7 @@ const SideBar = ({ sidebarOpen, setSidebarOpen }: { sidebarOpen: boolean, setSid
                                                                 className={`translate transform overflow-hidden transition-all duration-300 ${!open && 'hidden'
                                                                     }`}
                                                             >
-                                                                <ul className="my-1 flex flex-col pl-5 gap-1">
+                                                                <ul className="my-1 flex flex-col pl-4 gap-1">
                                                                     {
                                                                         link?.subLinks?.map((sublink, index) => (
                                                                             <li key={index}>

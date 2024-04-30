@@ -1,6 +1,12 @@
 import { lazy } from "react";
 
+// guest routes
 const Home = lazy(() => import("../pages/guest/index"));
+const Disclaimer = lazy(() => import("../pages/guest/Disclaimer"));
+const PrivacyPolicy = lazy(() => import("../pages/guest/PrivacyPolicy"));
+const TermsAndCondition = lazy(
+  () => import("../pages/guest/TermsAndCondition")
+);
 
 //user routes
 const UserDashboard = lazy(() => import("../pages/user/index"));
@@ -20,6 +26,7 @@ const UpdateSubscription = lazy(
 
 //admin routes
 const AdminDashboard = lazy(() => import("../pages/admin/index"));
+const UsersList = lazy(() => import("../pages/admin/usersList"));
 
 type Route = {
   path: string;
@@ -28,16 +35,33 @@ type Route = {
 };
 type coreRoutes = Route[];
 
+// guest pages
 const guestRoutes: coreRoutes = [
   {
     path: "/",
     title: "Home",
     component: Home,
   },
+  {
+    path: "/disclaimer",
+    title: "Disclaimer",
+    component: Disclaimer,
+  },
+  {
+    path: "/privacy-policy",
+    title: "Privacy Policy",
+    component: PrivacyPolicy,
+  },
+  {
+    path: "/terms-and-conditions",
+    title: "Terms and Condition",
+    component: TermsAndCondition,
+  },
 ];
 
 export const guest_routes = [...guestRoutes];
 
+// users ROUTes
 const userRoutes: coreRoutes = [
   {
     path: "/user",
@@ -72,11 +96,17 @@ const userRoutes: coreRoutes = [
 ];
 export const user_routes = [...userRoutes];
 
+// admin routes
 const adminRoutes: coreRoutes = [
   {
     path: "/admin",
     title: "Admin Dashboard",
     component: AdminDashboard,
+  },
+  {
+    path: "/admin/users",
+    title: "Users",
+    component: UsersList,
   },
 ];
 export const admin_routes = [...adminRoutes];
