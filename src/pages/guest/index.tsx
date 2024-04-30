@@ -13,9 +13,6 @@ import Contact from "../../components/home/Contact";
 import StreamPlug from "@/components/home/StreamPlug";
 
 const Home = () => {
-
-
-
     return (
         <main className="w-full min-h-screen flex flex-col">
             <NavBar />

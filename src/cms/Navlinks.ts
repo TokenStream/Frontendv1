@@ -46,14 +46,14 @@ export const OtherLinks: NavArray = [
 export const LegalLinks: NavArray = [
   {
     name: "Privacy Policy",
-    path: "/",
+    path: "/privacy-policy",
   },
   {
     name: "Terms & Conditions",
-    path: "/",
+    path: "/terms-and-conditions",
   },
   {
     name: "Disclaimer",
-    path: "/",
+    path: "/disclaimer",
   },
 ];

@@ -27,9 +27,11 @@ const App = () => {
       <ScrollToTop />
       <Suspense fallback={<Preloader />}>
         <Routes>
+
           {guest_routes.map(({ path, component: Component }, index) => (
             <Route key={index} index={path === "/"} path={path} element={<Component />} />
           ))}
+
           <Route element={<AuthLayout />}>
             <Route path='/signup' element={<Signup />} />
           </Route>
