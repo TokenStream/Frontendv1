@@ -58,6 +58,9 @@ const PieChart = () => {
     const [state, setState] = useState({
         series: [5, 2, 8]
     })
+
+    setState({ ...state })
+
     return (
         <div className='w-full flex flex-col gap-3 font-barlow'>
             <h1 className='md:text-xl text-base text-gray-300'>Stream Analysis</h1>

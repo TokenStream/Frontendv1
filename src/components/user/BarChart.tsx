@@ -90,6 +90,8 @@ const BarChart = () => {
         }]
     });
 
+    setState({ ...state })
+
     return (
         <div className='w-full flex flex-col gap-3 font-barlow'>
             <h1 className='md:text-xl text-base text-gray-300'>Activity Analysis</h1>
