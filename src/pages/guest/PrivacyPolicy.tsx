@@ -2,7 +2,6 @@ import { Button } from "@/components/ui/button"
 import { IoIosArrowRoundBack } from "react-icons/io"
 import { useNavigate } from "react-router-dom"
 import { GiStarShuriken } from "react-icons/gi"
-import { SiSpringsecurity } from "react-icons/si"
 
 
 const PrivacyPolicy = () => {
@@ -91,7 +90,7 @@ const PrivacyPolicy = () => {
 
                         <div>
                             <h2 className="mt-5 font-belanosima text-gray-200 text-lg md:text-2xl lg:text-3xl">Informations We Collect</h2>
-                
+
                             <ul className="flex flex-col gap-2 text-gray-400 font-barlow">
                                 {
                                     features.map(({ caption, text }, index) => (
@@ -108,7 +107,7 @@ const PrivacyPolicy = () => {
 
                         <div className="mt-7">
                             <h2 className="mt-5 font-belanosima text-gray-200 text-lg md:text-2xl lg:text-3xl">How We Use Your Information</h2>
-                            
+
                             <ul className="flex flex-col gap-2 text-gray-400 font-barlow">
                                 {
                                     features2.map(({ caption, text }, index) => (
@@ -120,12 +119,12 @@ const PrivacyPolicy = () => {
                                         </li>
                                     ))
                                 }
-                            </ul> 
+                            </ul>
                         </div>
 
                         <div className="mt-7">
                             <h2 className="mt-5 font-belanosima text-gray-200 text-lg md:text-2xl lg:text-3xl">Data Security</h2>
-                            
+
                             <ul className="flex flex-col gap-2 text-gray-400 font-barlow">
                                 {
                                     features3.map(({ caption, text }, index) => (
@@ -137,12 +136,12 @@ const PrivacyPolicy = () => {
                                         </li>
                                     ))
                                 }
-                            </ul> 
+                            </ul>
                         </div>
 
                         <div className="mt-7">
                             <h2 className="mt-5 font-belanosima text-gray-200 text-lg md:text-2xl lg:text-3xl">Your Rights and Choices</h2>
-                            
+
                             <ul className="flex flex-col gap-2 text-gray-400 font-barlow">
                                 {
                                     features4.map(({ caption, text }, index) => (
@@ -154,12 +153,12 @@ const PrivacyPolicy = () => {
                                         </li>
                                     ))
                                 }
-                            </ul> 
+                            </ul>
                         </div>
 
                         <div className="mt-7">
                             <h2 className="mt-5 font-belanosima text-gray-200 text-lg md:text-2xl lg:text-3xl">Changes to this Privacy Policy</h2>
-                            
+
                             <ul className="flex flex-col gap-2 text-gray-400 font-barlow">
                                 {
                                     features5.map(({ caption, text }, index) => (
@@ -171,12 +170,12 @@ const PrivacyPolicy = () => {
                                         </li>
                                     ))
                                 }
-                            </ul> 
+                            </ul>
                         </div>
 
                         <div className="mt-7">
                             <h2 className="mt-5 font-belanosima text-gray-200 text-lg md:text-2xl lg:text-3xl">Children's Privacy</h2>
-                            
+
                             <ul className="flex flex-col gap-2 text-gray-400 font-barlow">
                                 {
                                     features7.map(({ caption, text }, index) => (
@@ -188,12 +187,12 @@ const PrivacyPolicy = () => {
                                         </li>
                                     ))
                                 }
-                            </ul> 
+                            </ul>
                         </div>
 
                         <div className="mt-7">
                             <h2 className="mt-5 font-belanosima text-gray-200 text-lg md:text-2xl lg:text-3xl">Contact</h2>
-                            
+
                             <ul className="flex flex-col gap-2 text-gray-400 font-barlow">
                                 {
                                     features6.map(({ caption, text }, index) => (
@@ -205,10 +204,10 @@ const PrivacyPolicy = () => {
                                         </li>
                                     ))
                                 }
-                            </ul> 
+                            </ul>
 
                             <div className="ml-7 mt-3">
-                            {/* <ul className="flex flex-col gap-2 text-gray-400 font-barlow">
+                                {/* <ul className="flex flex-col gap-2 text-gray-400 font-barlow">
                                 {
                                     features7.map(({ caption, text }, index) => (
                                         <li key={index} className="flex mt-2 items-start gap-2">
@@ -220,12 +219,12 @@ const PrivacyPolicy = () => {
                                     ))
                                 }
                             </ul>  */}
-                            <p className="font-belanosima text-gray-200 text-lg">Last Update: <span className="font-barlow text-gray-400 text-base">01-05-2024</span></p>
-                            <p className="bg-gradient-to-r from-sky-400 to-emerald-400 font-belanosima text-transparent mt-1 text-3xl bg-clip-text">TRiver</p>
+                                <p className="font-belanosima text-gray-200 text-lg">Last Update: <span className="font-barlow text-gray-400 text-base">01-05-2024</span></p>
+                                <p className="bg-gradient-to-r from-sky-400 to-emerald-400 font-belanosima text-transparent mt-1 text-3xl bg-clip-text">TRiver</p>
                             </div>
                         </div>
 
-                    </div>                    
+                    </div>
                 </div>
             </section>
         </main>
