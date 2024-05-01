@@ -1,6 +1,8 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useState } from "react";
 import { readOnlyProvider } from "@/constants/provider";
 import { getENSContract } from "@/constants/contracts";
+import { ethers } from "ethers";
 
 export const useCheckRegisteredUser = (address: any) => {
     const [user, setUser] = useState({});
@@ -9,12 +11,11 @@ export const useCheckRegisteredUser = (address: any) => {
         const contract = getENSContract(readOnlyProvider);
 
         contract
-            .getUserFromAddress(address)
+            .getUserInfo(address)
             .then((res) => {
                 const converted = {
-                    name: res[0],
-                    avatar: res[1],
-                    address: res[2],
+                    name: ethers.decodeBytes32String(res[0]),
+                    address: res[1],
                 };
 
                 setUser(converted);

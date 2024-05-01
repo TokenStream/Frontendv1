@@ -1,4 +1,5 @@
-import { useState } from "react";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { useCallback, useEffect, useState } from "react";
 import coverImg from "../../assets/authImage.webp";
 import { Button } from "@/components/ui/button";
 import { TbLoaderQuarter } from "react-icons/tb";
@@ -9,6 +10,8 @@ import { WalletConnected } from "@/utils/WalletConnected";
 import { useWalletInfo, useWeb3Modal, useWeb3ModalAccount } from "@web3modal/ethers/react";
 import useRegisterUsers from "@/hooks/useRegisterUsers";
 import { toast } from "react-toastify";
+import { useCheckRegisteredUser } from "@/hooks/useCheckRegisteredUser";
+import { ZeroAddress } from "ethers";
 
 
 const Signup = () => {
@@ -17,6 +20,25 @@ const Signup = () => {
     const { open } = useWeb3Modal()
     const { address, isConnected } = useWeb3ModalAccount()
     const { walletInfo } = useWalletInfo()
+
+    const user: any = useCheckRegisteredUser(address);
+
+
+    const change = useCallback(() => {
+        if (isConnected) {
+            if (user.address && user.address !== ZeroAddress) {
+                navigate("/user");
+            } else {
+                navigate("/signup");
+            }
+        } else {
+            navigate("/");
+        }
+    }, [isConnected, navigate, user.address]);
+
+    useEffect(() => {
+        change();
+    }, [change, isConnected, user.address]);
 
     return (
         <section className="w-full h-screen flex bg-gray-950">

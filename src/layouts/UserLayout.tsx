@@ -2,8 +2,9 @@ import BalanceStats from "@/components/user/BalanceStats";
 import DashboardFooter from "@/components/user/DashboardFooter";
 import Header from "@/components/user/Header";
 import SideBar from "@/components/user/SideBar";
+import { useWeb3ModalAccount } from "@web3modal/ethers/react";
 import { useEffect, useRef, useState } from "react";
-import { Outlet, useLocation } from "react-router-dom";
+import { Navigate, Outlet, useLocation } from "react-router-dom";
 
 
 const UserLayout = () => {
@@ -17,7 +18,9 @@ const UserLayout = () => {
         scrollableRef?.current?.scrollTo(0, 0);
     }, [pathname]);
 
-    return (<div className=" bg-gray-950 font-sansource lg:p-3" >
+    const { isConnected } = useWeb3ModalAccount()
+
+    return isConnected ? (<div className=" bg-gray-950 font-sansource lg:p-3" >
         {/* Page Wrapper Start  */}
         <div className="flex h-screen gap-3 overflow-hidden">
             {/* Sidebar Start */}
@@ -49,7 +52,7 @@ const UserLayout = () => {
             {/*  Content Area End  */}
         </div>
         {/*  Page Wrapper End  */}
-    </div>);
+    </div>) : <Navigate to="/" />
 }
 
 export default UserLayout

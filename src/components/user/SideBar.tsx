@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { NavLinks } from "@/cms/UserSideLinks";
 import { useCallback, useEffect, useRef } from "react";
 import { IoIosArrowRoundBack } from "react-icons/io";
@@ -13,6 +14,8 @@ import { RiSecurePaymentFill } from "react-icons/ri";
 import { GiPayMoney } from "react-icons/gi";
 import { IoCreateOutline } from "react-icons/io5";
 import { HiOutlineViewfinderCircle } from "react-icons/hi2";
+import { useCheckRegisteredUser } from "@/hooks/useCheckRegisteredUser";
+import { useWeb3ModalAccount } from "@web3modal/ethers/react";
 
 
 const SideBar = ({ sidebarOpen, setSidebarOpen }: { sidebarOpen: boolean, setSidebarOpen: React.Dispatch<React.SetStateAction<boolean>> }) => {
@@ -80,6 +83,10 @@ const SideBar = ({ sidebarOpen, setSidebarOpen }: { sidebarOpen: boolean, setSid
         }
     }, [])
 
+    const { address } = useWeb3ModalAccount()
+
+    const user: any = useCheckRegisteredUser(address);
+
     return (
         <aside
             ref={sidebar}
@@ -105,7 +112,7 @@ const SideBar = ({ sidebarOpen, setSidebarOpen }: { sidebarOpen: boolean, setSid
                     </button>
                 </div>
                 <h1 className='text-sm md:text-sm text-gray-200 uppercase'>
-                    Welcome Back
+                    Welcome Back {user?.name}
                 </h1>
             </div>
 
@@ -185,7 +192,7 @@ const SideBar = ({ sidebarOpen, setSidebarOpen }: { sidebarOpen: boolean, setSid
                         <div className="w-[30%] rounded-lg overflow-hidden border-2 border-gray-400">
                             <img src={`https://github.com/shadcn.png`} alt="avatar" className="w-full h-full object-cover" />
                         </div>
-                        <h3 className="text-gray-400 text-base ml-2 font-barlow">Signor</h3>
+                        <h3 className="text-gray-400 text-base ml-2 font-barlow">{user?.name}</h3>
                     </div>
 
                 </nav>
