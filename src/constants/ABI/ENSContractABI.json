@@ -88,6 +88,37 @@
     {
         "inputs": [
             {
+                "internalType": "address",
+                "name": "_userAddress",
+                "type": "address"
+            }
+        ],
+        "name": "getUserInfo",
+        "outputs": [
+            {
+                "components": [
+                    {
+                        "internalType": "bytes",
+                        "name": "name",
+                        "type": "bytes"
+                    },
+                    {
+                        "internalType": "address",
+                        "name": "address_",
+                        "type": "address"
+                    }
+                ],
+                "internalType": "struct Authentication.User",
+                "name": "",
+                "type": "tuple"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
                 "internalType": "bytes",
                 "name": "_name",
                 "type": "bytes"
