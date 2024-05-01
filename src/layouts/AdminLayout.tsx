@@ -4,7 +4,7 @@ import BalanceStats from "@/components/admin/BalanceStats";
 import DashboardFooter from "@/components/user/DashboardFooter";
 import { useWeb3ModalAccount } from "@web3modal/ethers/react";
 import { useEffect, useRef, useState } from "react";
-import { Outlet, useLocation } from "react-router-dom";
+import { Navigate, Outlet, useLocation } from "react-router-dom";
 
 const AdminLayout = () => {
 
@@ -18,9 +18,8 @@ const AdminLayout = () => {
     }, [pathname]);
 
     const { isConnected } = useWeb3ModalAccount();
-    console.log(isConnected);
 
-    return (<div className=" bg-gray-950 font-sansource lg:p-3" >
+    return isConnected ? (<div className=" bg-gray-950 font-sansource lg:p-3" >
         {/* Page Wrapper Start  */}
         <div className="flex h-screen gap-3 overflow-hidden">
             {/* Sidebar Start */}
@@ -52,7 +51,7 @@ const AdminLayout = () => {
             {/*  Content Area End  */}
         </div>
         {/*  Page Wrapper End  */}
-    </div>);
+    </div>) : <Navigate to="/" />;
 }
 
 export default AdminLayout

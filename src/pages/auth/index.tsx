@@ -1,15 +1,17 @@
-import { useState } from "react";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { useCallback, useEffect, useState } from "react";
 import coverImg from "../../assets/authImage.webp";
-import { Formik, Form, Field, ErrorMessage, FormikHelpers } from "formik";
-import * as Yup from "yup";
 import { Button } from "@/components/ui/button";
-import { BsExclamation } from "react-icons/bs";
 import { TbLoaderQuarter } from "react-icons/tb";
 import { PiSignInFill } from "react-icons/pi";
 import { useNavigate } from "react-router-dom";
 import { IoIosArrowRoundBack } from "react-icons/io";
 import { WalletConnected } from "@/utils/WalletConnected";
 import { useWalletInfo, useWeb3Modal, useWeb3ModalAccount } from "@web3modal/ethers/react";
+import useRegisterUsers from "@/hooks/useRegisterUsers";
+import { toast } from "react-toastify";
+import { useCheckRegisteredUser } from "@/hooks/useCheckRegisteredUser";
+import { ZeroAddress } from "ethers";
 
 
 const Signup = () => {
@@ -18,6 +20,25 @@ const Signup = () => {
     const { open } = useWeb3Modal()
     const { address, isConnected } = useWeb3ModalAccount()
     const { walletInfo } = useWalletInfo()
+
+    const user: any = useCheckRegisteredUser(address);
+
+
+    const change = useCallback(() => {
+        if (isConnected) {
+            if (user.address && user.address !== ZeroAddress) {
+                navigate("/user");
+            } else {
+                navigate("/signup");
+            }
+        } else {
+            navigate("/");
+        }
+    }, [isConnected, navigate, user.address]);
+
+    useEffect(() => {
+        change();
+    }, [change, isConnected, user.address]);
 
     return (
         <section className="w-full h-screen flex bg-gray-950">
@@ -46,69 +67,65 @@ const Signup = () => {
 export default Signup
 
 
-type ValueTypes = {
-    name: string
-}
-
 export const SignupForm = () => {
+    const [username, setUsername] = useState("");
     const [isSending, setIsSending] = useState(false);
 
-    const initialValues: ValueTypes = { name: "" };
+    const { address } = useWeb3ModalAccount()
 
-    const validationSchema = Yup.object({
-        name: Yup.string().required("Name is required"),
-    });
+    const handleSubmit = useRegisterUsers(address, username);
 
-    const onSubmit = (values: ValueTypes, { resetForm }: FormikHelpers<ValueTypes>) => {
+    const handleFormSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+
+        if (!username) return toast.error("Please enter a username", { position: "top-right" });
+
         setIsSending(true);
-        const { name } = values;
-        console.log(name);
-
+        await handleSubmit();
         setIsSending(false);
-        resetForm({ values: initialValues });
-        // toast.success("Message Sent Successfully", { position: "top-right" });
+        setUsername("");
     };
 
+
     return (
-        <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
-            <Form className="w-full flex flex-col gap-3 border border-gray-700 pt-24 pb-12 px-6 rounded-md relative">
-                <div className="w-full flex flex-col mb-2">
-                    <h1 className="text-4xl text-gray-200 font-belanosima">Signup</h1>
-                    <p className="text-gray-400 font-barlow">Enter your name to get started</p>
-                </div>
+        <form className="w-full flex flex-col gap-3 border border-gray-700 pt-24 pb-12 px-6 rounded-md relative" onSubmit={handleFormSubmit}>
+            <div className="w-full flex flex-col mb-2">
+                <h1 className="text-4xl text-gray-200 font-belanosima">Signup</h1>
+                <p className="text-gray-400 font-barlow">Enter your name to get started</p>
+            </div>
 
 
-                <div className="absolute -top-12 left-8 w-28 h-28 overflow-hidden rounded-full border-2 border-gray-700">
-                    <img src={`https://github.com/shadcn.png`} alt="avatar" className="w-full h-full object-cover" />
-                </div>
+            <div className="absolute -top-12 left-8 w-28 h-28 overflow-hidden rounded-full border-2 border-gray-700">
+                <img src={`https://github.com/shadcn.png`} alt="avatar" className="w-full h-full object-cover" />
+            </div>
 
-                <div className="relative w-full font-barlow">
-                    <Field
-                        type={"text"}
-                        id={"name"}
-                        className={`block w-full rounded-md border text-sm px-3 py-2 placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 disabled:cursor-not-allowed disabled:opacity-50 bg-gray-900 border-gray-700 focus-visible:ring-sky-400 font-barlow text-gray-200 h-10`}
-                        name='name'
-                        placeholder={`Enter your name`}
-                    />
-                    <ErrorMessage name={'name'}>{(errorMsg) => <div className="pt-0 ml-2 text-red-500 text-xs font-barlow font-light flex items-center">{errorMsg}<BsExclamation /></div>}</ErrorMessage>
-                </div>
+            <div className="relative w-full font-barlow">
+                <input
+                    type={"text"}
+                    id={"name"}
+                    onChange={(e) => setUsername(e.target.value)}
+                    className={`block w-full rounded-md border text-sm px-3 py-2 placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 disabled:cursor-not-allowed disabled:opacity-50 bg-gray-900 border-gray-700 focus-visible:ring-sky-400 font-barlow text-gray-200 h-10`}
+                    name='name'
+                    placeholder={`Enter your name`}
+                />
 
-                <Button
-                    type="submit"
-                    className={`text-gray-100 text-sm mt-4 font-barlow px-4 py-2 flex justify-center items-center gap-1 bg-sky-500 hover:bg-emerald-500 ${isSending ? "opacity-50 cursor-not-allowed" : ""}`}
-                    disabled={isSending}
-                >
-                    {
-                        isSending ? <span className="flex items-center">
-                            <TbLoaderQuarter className="animate-spin text-2xl mr-1" />
-                            Submitting...</span> :
-                            <span className="flex items-center">Submit
-                                <PiSignInFill className="text-xl ml-1" />
-                            </span>
-                    }
+            </div>
 
-                </Button>
-            </Form>
-        </Formik>
+            <Button
+                type="submit"
+                className={`text-gray-100 text-sm mt-4 font-barlow px-4 py-2 flex justify-center items-center gap-1 bg-sky-500 hover:bg-emerald-500 ${isSending ? "opacity-50 cursor-not-allowed" : ""}`}
+                disabled={isSending}
+            >
+                {
+                    isSending ? <span className="flex items-center">
+                        <TbLoaderQuarter className="animate-spin text-2xl mr-1" />
+                        Submitting...</span> :
+                        <span className="flex items-center">Submit
+                            <PiSignInFill className="text-xl ml-1" />
+                        </span>
+                }
+
+            </Button>
+        </form>
     )
 }
