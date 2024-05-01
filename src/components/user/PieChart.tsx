@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { useState } from "react"
+import { useMemo } from "react"
 import ReactApexChart from "react-apexcharts"
 import { ApexOptions } from "apexcharts";
 
@@ -55,16 +55,17 @@ const options: ApexOptions = {
 }
 
 const PieChart = () => {
-    const [state, setState] = useState({
-        series: [5, 2, 8]
-    })
 
-    setState({ ...state })
+    const data = useMemo(() => {
+        return {
+            series: [5, 2, 8]
+        }
+    }, [])
 
     return (
         <div className='w-full flex flex-col gap-3 font-barlow'>
             <h1 className='md:text-xl text-base text-gray-300'>Stream Analysis</h1>
-            <ReactApexChart options={options} series={state.series} type="pie" />
+            <ReactApexChart options={options} series={data.series} type="pie" />
         </div>
     )
 }

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { useState } from 'react';
+import { useMemo } from 'react';
 import ReactApexChart from 'react-apexcharts';
 import { ApexOptions } from "apexcharts";
 
@@ -84,18 +84,19 @@ const options: ApexOptions = {
 }
 
 const BarChart = () => {
-    const [state, setState] = useState({
-        series: [{
-            data: [400, 430, 448, 470, 540, 580, 690, 1100, 1200, 1380, 450, 900]
-        }]
-    });
 
-    setState({ ...state })
+    const data = useMemo(() => {
+        return {
+            series: [{
+                data: [400, 430, 448, 470, 540, 580, 690, 1100, 1200, 1380, 450, 900]
+            }]
+        }
+    }, [])
 
     return (
         <div className='w-full flex flex-col gap-3 font-barlow'>
             <h1 className='md:text-xl text-base text-gray-300'>Activity Analysis</h1>
-            <ReactApexChart options={options} series={state.series} type="bar" height={350} />
+            <ReactApexChart options={options} series={data.series} type="bar" height={350} />
         </div>
     )
 }
