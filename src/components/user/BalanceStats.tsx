@@ -3,23 +3,37 @@ import { GiPayMoney } from "react-icons/gi"
 import { Button } from "../ui/button"
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "../ui/dialog"
 import { useState } from "react"
+import { useWeb3ModalAccount } from "@web3modal/ethers/react"
+import { useGetOPBalance } from "@/hooks/useGetOPBalance"
+import useDeposit from "@/hooks/useDeposit"
 
 const BalanceStats = () => {
+
+    const { address } = useWeb3ModalAccount()
 
     const [depositAmount, setDepositAmount] = useState(0)
     const [withdrawAmount, setWithdrawAmount] = useState(0)
     const [widthdrawReward, setWidthdrawReward] = useState(0)
 
+    const userBalance: number = useGetOPBalance(address);
+
+    const handleSubmit = useDeposit(depositAmount);
+
+    const handleDeposit = async () => {
+        await handleSubmit();
+        setDepositAmount(0);
+    }
+
     return (
         <section className="w-full grid md:grid-cols-3 gap-4">
             <div className="flex flex-col gap-5 md:col-span-2 bg-gray-800 rounded-lg p-6">
                 <div className="w-full flex flex-col gap-1">
-                    <h4 className="text-gray-300 font-barlow">Total Balance</h4>
-                    <h1 className="md:text-4xl text-2xl text-emerald-500 font-belanosima font-medium">36,769.00 <span>OP</span></h1>
+                    <h4 className="text-gray-300 font-barlow">Your Balance</h4>
+                    <h1 className="md:text-4xl text-2xl text-emerald-500 font-belanosima font-medium">{userBalance} <span>OP</span></h1>
                 </div>
                 <div className="w-full flex flex-col gap-1">
                     <h4 className="text-gray-300 font-barlow">Price per OP</h4>
-                    <h1 className="text-gray-400 text-xl font-barlow">10.05 <span>USD</span></h1>
+                    <h1 className="text-gray-400 text-xl font-barlow">1.05 <span>USD</span></h1>
                 </div>
                 <div className="w-full grid grid-cols-2 gap-4">
                     <Dialog >
@@ -50,7 +64,7 @@ const BalanceStats = () => {
                                 </div>
                             </div>
                             <DialogFooter>
-                                <Button disabled={depositAmount <= 0 && true} type="submit" className="text-gray-100 text-sm font-barlow px-4 py-2 flex justify-between items-center gap-1 bg-sky-500 hover:bg-emerald-500 disabled:cursor-not-allowed">Deposit</Button>
+                                <Button type="button" onClick={handleDeposit} className="text-gray-100 text-sm font-barlow px-4 py-2 flex justify-between items-center gap-1 bg-sky-500 hover:bg-emerald-500 disabled:cursor-not-allowed">Deposit</Button>
                             </DialogFooter>
                         </DialogContent>
                     </Dialog>

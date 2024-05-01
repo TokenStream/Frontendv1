@@ -6,17 +6,14 @@ import {
 import { useCallback } from "react";
 import { toast } from "react-toastify";
 import { getProvider } from "@/constants/provider";
-import { useNavigate } from "react-router-dom";
 import { isSupportedChain } from "@/constants/chain";
-import { ZeroAddress, ethers } from "ethers";
-import { getENSContract } from "@/constants/contracts";
+import { ethers } from "ethers";
+import { getModalContract } from "@/constants/contracts";
 
 
-const useRegisterUsers = (address: any, username: string) => {
+const useDeposit = (amount: number) => {
     const { chainId } = useWeb3ModalAccount();
     const { walletProvider } = useWeb3ModalProvider();
-
-    const navigate = useNavigate();
 
     return useCallback(async () => {
         if (!isSupportedChain(chainId))
@@ -24,20 +21,25 @@ const useRegisterUsers = (address: any, username: string) => {
                 position: "top-right",
             });
 
-        if (address === ZeroAddress || !walletProvider)
+        if (!walletProvider)
             return toast.error("Please connect your wallet !", {
+                position: "top-right",
+            });
+
+        if (amount === 0)
+            return toast.error("Please enter an amount !", {
                 position: "top-right",
             });
 
         const readWriteProvider = getProvider(walletProvider);
         const signer = await readWriteProvider.getSigner();
 
-        const contract = getENSContract(signer);
+        const contract = getModalContract(signer);
 
-        const formattedName = ethers.encodeBytes32String(username);
+        // const formattedAmount = ethers.formatUnits(amount, 18);
 
         try {
-            const transaction = await contract.createAccount(formattedName);
+            const transaction = await contract.deposit(amount);
 
             console.log("transaction: ", transaction);
 
@@ -46,22 +48,21 @@ const useRegisterUsers = (address: any, username: string) => {
             console.log("receipt: ", receipt);
 
             if (receipt.status) {
-                navigate("/user");
-                return toast.success("Username created successfully !", {
+                return toast.success("Deposit successful !", {
                     position: "top-right",
                 });
             }
 
-            toast.error("Username creation failed !", {
+            toast.error("Deposit failed !", {
                 position: "top-right",
             });
         } catch (error: any) {
-            navigate("/signup");
+            console.error(error);
             toast.error(`${error.message.slice(0, 20)}...`, {
                 position: "top-right",
             });
         }
-    }, [address, username, chainId, walletProvider, navigate]);
+    }, [amount, chainId, walletProvider]);
 }
 
-export default useRegisterUsers
+export default useDeposit
