@@ -11,8 +11,27 @@ import { Element } from "react-scroll"
 import FAQs from "../../components/home/FAQs";
 import Contact from "../../components/home/Contact";
 import StreamPlug from "@/components/home/StreamPlug";
+import { useWeb3ModalAccount } from "@web3modal/ethers/react";
+import { useNavigate } from "react-router-dom";
+import { useCallback, useEffect } from "react";
 
 const Home = () => {
+    const { isConnected } = useWeb3ModalAccount();
+    const navigate = useNavigate();
+
+
+    const change = useCallback(async () => {
+        if (isConnected) {
+            navigate("/signup");
+        } else if (!isConnected) {
+            navigate("/");
+        }
+    }, [isConnected, navigate]);
+
+    useEffect(() => {
+        change();
+    }, [change, isConnected]);
+
     return (
         <main className="w-full min-h-screen flex flex-col">
             <NavBar />
