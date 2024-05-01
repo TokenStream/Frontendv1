@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState, CSSProperties } from 'react';
 import { TbLoaderQuarter } from "react-icons/tb";
 import { PiSignInFill } from "react-icons/pi";
@@ -39,8 +40,10 @@ const HandleForm = () => {
 
 
     const handleFormSubmit = (event: React.FormEvent) => {
+        setIsSending(true);
         event.preventDefault();
         uploadData(csvData, streamInterval);
+        setIsSending(false);
     };
 
     const uploadData = (data: any[], interval: string) => {

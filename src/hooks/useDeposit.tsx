@@ -7,7 +7,6 @@ import { useCallback } from "react";
 import { toast } from "react-toastify";
 import { getProvider } from "@/constants/provider";
 import { isSupportedChain } from "@/constants/chain";
-import { ethers } from "ethers";
 import { getModalContract } from "@/constants/contracts";
 
 
