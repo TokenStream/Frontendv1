@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button"
 import { IoIosArrowRoundBack } from "react-icons/io"
 import { useNavigate } from "react-router-dom"
 import { GiStarShuriken } from "react-icons/gi"
-import { SiSpringsecurity } from "react-icons/si"
+// import { SiSpringsecurity } from "react-icons/si"
 
 
 const PrivacyPolicy = () => {
