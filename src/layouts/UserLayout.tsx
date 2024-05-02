@@ -18,7 +18,7 @@ const UserLayout = () => {
         scrollableRef?.current?.scrollTo(0, 0);
     }, [pathname]);
 
-    const { isConnected } = useWeb3ModalAccount();
+    const { isConnected } = useWeb3ModalAccount()
 
     return isConnected ? (<div className=" bg-gray-950 font-sansource lg:p-3" >
         {/* Page Wrapper Start  */}
@@ -52,7 +52,7 @@ const UserLayout = () => {
             {/*  Content Area End  */}
         </div>
         {/*  Page Wrapper End  */}
-    </div>) : <Navigate to="/" />;
+    </div>) : <Navigate to="/" />
 }
 
 export default UserLayout

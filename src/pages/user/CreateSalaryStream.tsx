@@ -1,9 +1,13 @@
-import { useState } from "react";
-import { Formik, Form, Field, ErrorMessage, FormikHelpers } from "formik";
-import * as Yup from "yup";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { useState, CSSProperties } from 'react';
 import { TbLoaderQuarter } from "react-icons/tb";
 import { PiSignInFill } from "react-icons/pi";
 import { Button } from "@/components/ui/button";
+import {
+    useCSVReader,
+    lightenDarkenColor,
+    formatFileSize,
+} from 'react-papaparse';
 
 const CreateSalaryStream = () => {
     return (
@@ -22,123 +26,213 @@ const CreateSalaryStream = () => {
 export default CreateSalaryStream
 
 
-
-type ValueTypes = {
-    startDate: string
-    endDate: string
-    interval: string
-    amount: number
-    file: string
-}
-
 const HandleForm = () => {
+    const [csvData, setCsvData] = useState([]);
+    const [streamInterval, SetStreamInterval] = useState('');
 
     const [isSending, setIsSending] = useState(false);
 
-    const initialValues: ValueTypes = { startDate: "", endDate: "", interval: "", amount: 0, file: "" };
+    const { CSVReader } = useCSVReader();
+    const [zoneHover, setZoneHover] = useState(false);
+    const [removeHoverColor, setRemoveHoverColor] = useState(
+        DEFAULT_REMOVE_HOVER_COLOR
+    );
 
-    const validationSchema = Yup.object({
-        startDate: Yup.date().required("Start date is required"),
-        endDate: Yup.date(),
-        interval: Yup.string().required("Interval is required"),
-        amount: Yup.number().required("You need to fund your account"),
-        file: Yup.string().required("Upload CSV file"),
-    });
 
-    const onSubmit = (values: ValueTypes, { resetForm }: FormikHelpers<ValueTypes>) => {
+    const handleFormSubmit = (event: React.FormEvent) => {
         setIsSending(true);
-        const { startDate, endDate, interval, amount, file } = values;
-        console.log({ startDate, endDate, interval, amount, file });
-
+        event.preventDefault();
+        uploadData(csvData, streamInterval);
         setIsSending(false);
-        resetForm({ values: initialValues });
-        // toast.success("Message Sent Successfully", { position: "top-right" });
     };
 
+    const uploadData = (data: any[], interval: string) => {
+        console.log({ data, interval });
+    };
+
+
     return (
-        <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
-            <Form className="w-full grid md:grid-cols-2 md:gap-8 gap-4">
-                <div className="relative w-full font-barlow">
-                    <label className="text-gray-300 ml-1 mb-1">Start Date</label>
-                    <Field
-                        type="date"
-                        name={"startDate"}
-                        id={"startDate"}
-                        className="block w-full rounded-md border text-sm px-3 py-2 placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 disabled:cursor-not-allowed disabled:opacity-50 bg-transparent border-gray-600 focus-visible:ring-sky-400 font-barlow text-gray-200 h-12"
-                    />
-                    <ErrorMessage name={"startDate"} component="div" className="text-red-500 text-sm" />
-                </div>
+        <form className="w-full grid md:gap-14 gap-4 py-4" onSubmit={handleFormSubmit}>
 
-                <div className="relative w-full font-barlow">
-                    <label className="text-gray-300 ml-1 mb-1">End Date (optional)</label>
-                    <Field
-                        type="date"
-                        name={"endDate"}
-                        id={"endDate"}
-                        className="block w-full rounded-md border text-sm px-3 py-2 placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 disabled:cursor-not-allowed disabled:opacity-50 bg-transparent border-gray-600 focus-visible:ring-sky-400 font-barlow text-gray-200 h-12"
-                    />
-                    <ErrorMessage name={"endDate"} component="div" className="text-red-500 text-sm" />
-                </div>
+            <div className="relative w-full font-barlow">
 
-                <div className="relative w-full font-barlow">
-                    <label className="text-gray-300 ml-1 mb-1">Set Interval</label>
-                    <Field
-                        as="select"
-                        name={"interval"}
-                        id={"interval"}
-                        className="block w-full rounded-md border text-sm px-3 py-2 placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 disabled:cursor-not-allowed disabled:opacity-50 bg-transparent border-gray-600 focus-visible:ring-sky-400 font-barlow text-gray-200 h-12"
-                    >
-                        <option value="">Select Interval</option>
-                        <option value="daily">Daily</option>
-                        <option value="weekly">Weekly</option>
-                        <option value="biweekly">Bi-Weekly</option>
-                        <option value="monthly">Monthly</option>
-                        <option value="yearly">Yearly</option>
-                    </Field>
-                    <ErrorMessage name={"interval"} component="div" className="text-red-500 text-sm" />
-                </div>
+                <CSVReader
+                    config={{ header: true, skipEmptyLines: true }}
+                    onUploadAccepted={(results: any) => {
+                        setCsvData(results.data);
+                        console.log(results);
+                        setZoneHover(false);
+                    }}
+                    onDragOver={(event: DragEvent) => {
+                        event.preventDefault();
+                        setZoneHover(true);
+                    }}
+                    onDragLeave={(event: DragEvent) => {
+                        event.preventDefault();
+                        setZoneHover(false);
+                    }}
+                    noDrag
+                >
+                    {({
+                        getRootProps,
+                        acceptedFile,
+                        ProgressBar,
+                        getRemoveFileProps,
+                        Remove,
+                    }: any) => (
+                        <>
+                            <div
+                                {...getRootProps()}
+                                style={Object.assign(
+                                    {},
+                                    styles.zone,
+                                    zoneHover && styles.zoneHover
+                                )}
+                            >
+                                {acceptedFile ? (
+                                    <>
+                                        <div style={styles.file}>
+                                            <div style={styles.info}>
+                                                <span style={styles.size}>
+                                                    {formatFileSize(acceptedFile.size)}
+                                                </span>
+                                                <span style={styles.name}>{acceptedFile.name}</span>
+                                            </div>
+                                            <div style={styles.progressBar}>
+                                                <ProgressBar />
+                                            </div>
+                                            <div
+                                                {...getRemoveFileProps()}
+                                                style={styles.remove}
+                                                onMouseOver={(event: Event) => {
+                                                    event.preventDefault();
+                                                    setRemoveHoverColor(REMOVE_HOVER_COLOR_LIGHT);
+                                                }}
+                                                onMouseOut={(event: Event) => {
+                                                    event.preventDefault();
+                                                    setRemoveHoverColor(DEFAULT_REMOVE_HOVER_COLOR);
+                                                }}
+                                            >
+                                                <Remove color={removeHoverColor} />
+                                            </div>
+                                        </div>
+                                    </>
+                                ) : (
+                                    'Click to upload'
+                                )}
+                            </div>
+                        </>
+                    )}
+                </CSVReader>
+                <small className="ml-1 mt-2 tracking-wider block text-sm text-gray-400">Upload csv file containing only this data - (amount and recipient address)</small>
+            </div>
 
-                <div className="relative w-full font-barlow">
-                    <label className="text-gray-300 ml-1 mb-1">Amount</label>
-                    <Field
-                        type="number"
-                        name={"amount"}
-                        id={"amount"}
-                        className="block w-full rounded-md border text-sm px-3 py-2 placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 disabled:cursor-not-allowed disabled:opacity-50 bg-transparent border-gray-600 focus-visible:ring-sky-400 font-barlow text-gray-200 h-12"
-                    />
-                    <ErrorMessage name={"amount"} component="div" className="text-red-500 text-sm" />
-                </div>
+            <div className="relative w-full font-barlow">
+                <label className="text-gray-300 ml-1 mb-1">Set Interval</label>
+                <select
+                    name={"interval"}
+                    id={"interval"}
+                    onChange={(e) => SetStreamInterval(e.target.value)}
+                    className="block w-full rounded-md border text-sm px-3 py-2 placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 disabled:cursor-not-allowed disabled:opacity-50 bg-transparent border-gray-600 focus-visible:ring-sky-400 font-barlow text-gray-200 h-12"
+                >
+                    <option value="">Select Interval</option>
+                    <option value="daily">Daily</option>
+                    <option value="monthly">Monthly</option>
+                </select>
+            </div>
 
-                <div className="relative w-full md:col-span-2 font-barlow">
-                    <label className="text-gray-300 ml-1 mb-1">CSV Upload</label>
-                    <Field
-                        type="file"
-                        name={"file"}
-                        id={"file"}
-                        className="block w-full rounded-md border text-sm px-3 py-2 placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 disabled:cursor-not-allowed disabled:opacity-50 bg-transparent border-gray-600 focus-visible:ring-sky-400 font-barlow text-gray-200 h-12"
-                    />
-                    <small className="ml-1 block text-sm text-gray-400">Upload csv file containing the employee data-(amount, address etc)</small>
-                    <ErrorMessage name={"file"} component="div" className="text-red-500 text-sm" />
-                </div>
+            <div className="w-full">
+                <Button
+                    type="submit"
+                    className={`text-gray-100 text-sm font-barlow px-4 py-2 flex justify-center items-center gap-1 bg-sky-500 hover:bg-emerald-500 ${isSending ? "opacity-50 cursor-not-allowed" : ""}`}
+                    disabled={isSending}
+                >
+                    {
+                        isSending ? <span className="flex items-center">
+                            <TbLoaderQuarter className="animate-spin text-2xl mr-1" />
+                            Submitting...</span> :
+                            <span className="flex items-center">Submit
+                                <PiSignInFill className="text-xl ml-1" />
+                            </span>
+                    }
 
-                <div className="md:col-span-2">
-                    <Button
-                        type="submit"
-                        className={`text-gray-100 text-sm mt-4 font-barlow px-4 py-2 flex justify-center items-center gap-1 bg-sky-500 hover:bg-emerald-500 ${isSending ? "opacity-50 cursor-not-allowed" : ""}`}
-                        disabled={isSending}
-                    >
-                        {
-                            isSending ? <span className="flex items-center">
-                                <TbLoaderQuarter className="animate-spin text-2xl mr-1" />
-                                Submitting...</span> :
-                                <span className="flex items-center">Submit
-                                    <PiSignInFill className="text-xl ml-1" />
-                                </span>
-                        }
-
-                    </Button>
-                </div>
-            </Form>
-        </Formik>
+                </Button>
+            </div>
+        </form>
     )
 }
+
+
+const GREY = '#CCC';
+const DEFAULT_REMOVE_HOVER_COLOR = '#A01919';
+const REMOVE_HOVER_COLOR_LIGHT = lightenDarkenColor(
+    DEFAULT_REMOVE_HOVER_COLOR,
+    40
+);
+const GREY_DIM = '#686868';
+const GRAY_DARK = '#111827';
+
+const styles = {
+    zone: {
+        alignItems: 'center',
+        border: `2px dashed ${GREY}`,
+        color: `${GREY}`,
+        borderRadius: 20,
+        display: 'flex',
+        flexDirection: 'column',
+        height: '100%',
+        justifyContent: 'center',
+        padding: 20,
+    } as CSSProperties,
+    file: {
+        background: 'linear-gradient(to bottom, #EEE, #DDD)',
+        borderRadius: 20,
+        display: 'flex',
+        height: 120,
+        width: 120,
+        position: 'relative',
+        zIndex: 10,
+        flexDirection: 'column',
+        justifyContent: 'center',
+    } as CSSProperties,
+    info: {
+        alignItems: 'center',
+        display: 'flex',
+        flexDirection: 'column',
+        paddingLeft: 10,
+        paddingRight: 10,
+    } as CSSProperties,
+    size: {
+        color: GRAY_DARK,
+        borderRadius: 3,
+        marginBottom: '0.5em',
+        justifyContent: 'center',
+        display: 'flex',
+    } as CSSProperties,
+    name: {
+        color: GRAY_DARK,
+        borderRadius: 3,
+        fontSize: 12,
+        marginBottom: '0.5em',
+    } as CSSProperties,
+    progressBar: {
+        bottom: 14,
+        position: 'absolute',
+        width: '100%',
+        paddingLeft: 10,
+        paddingRight: 10,
+    } as CSSProperties,
+    zoneHover: {
+        borderColor: GREY_DIM,
+    } as CSSProperties,
+    default: {
+        borderColor: GREY,
+    } as CSSProperties,
+    remove: {
+        height: 23,
+        position: 'absolute',
+        right: 6,
+        top: 6,
+        width: 23,
+    } as CSSProperties,
+};
