@@ -92,13 +92,11 @@ const TermsAndCondition = () => {
                             </p>
 
                             <p className="text-gray-400 font-barlow">
-                               If you have any questions or concerns about these terms and conditions, please contact us at: <span onClick={() => navigate('"/https://mail.google.com/mail/u/0/#inbox?compose=new"')} className="text-blue-500 cursor-pointer">team.triverstream@gmail.com</span>
+                               If you have any questions or concerns about these terms and conditions, please contact us at: <span className="text-blue-500 cursor-pointer"><a href="mailto:team.triverstream@gmail.com">team.triverstream@gmail.com</a></span>
                             </p>
                             <p className="font-belanosima mt-5 text-gray-200 text-lg">Last Update: <span className="font-barlow text-gray-400 text-base">01-05-2024</span></p>
                             
-                            <p className="text-gray-400 font-barlow">
-                                Thank you for choosing TRiver!
-                            </p>
+                            <p className="font-belanosima mt-1 flex text-lg gap-2">Thank You for using <span onClick={() => navigate('/')} className="bg-gradient-to-r from-sky-400 cursor-pointer to-emerald-400 font-belanosima text-transparent mt-1 text-3xl bg-clip-text">TRiver</span></p>
                         </div>
                     </div>
             </section>
