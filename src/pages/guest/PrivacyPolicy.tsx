@@ -219,8 +219,8 @@ const PrivacyPolicy = () => {
                                     ))
                                 }
                             </ul>  */}
-                            <p className="font-belanosima text-gray-200 text-lg">Last Update: <span className="font-barlow text-gray-400 text-base">01-05-2024</span></p>
-                            <p className="font-belanosima flex mt-1 text-lg gap-2">Thank You for using <span onClick={() => navigate('/')} className="bg-gradient-to-r from-sky-400 cursor-pointer to-emerald-400 font-belanosima text-transparent mt-1 text-3xl bg-clip-text">TRiver</span></p>
+                                <p className="font-belanosima text-gray-200 text-lg">Last Update: <span className="font-barlow text-gray-400 text-base">01-05-2024</span></p>
+                                <p className="font-belanosima flex mt-1 text-lg gap-2">Thank You for using <span onClick={() => navigate('/')} className="bg-gradient-to-r from-sky-400 cursor-pointer to-emerald-400 font-belanosima text-transparent mt-1 text-3xl bg-clip-text">TRiver</span></p>
                             </div>
                         </div>
 

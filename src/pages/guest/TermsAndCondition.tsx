@@ -30,20 +30,20 @@ const TermsAndCondition = () => {
             <section className="w-full flex text-gray-300 flex-col pt-28 lg:px-20 md:px-12 px-4">
                 <h1 className="text-gray-300 text-2xl md:text-3xl lg:text-5xl tracking-wider  font-belanosima">Terms & Conditions</h1>
 
-                    <div className="mt-5 mb-16">
-                        <p className="font-barlow text-gray-400 pt-3">
+                <div className="mt-5 mb-16">
+                    <p className="font-barlow text-gray-400 pt-3">
                         Welcome to TRiver Token Streaming Platform! By accessing or using our platform, you agree to comply with and be bound by the following terms and conditions. Please read these terms carefully before using the platform. If you do not agree with any part of these terms, you may not access or use the platform.
-                        </p>
+                    </p>
 
-                        <div className="">
-                        <h2 className="mt-5 font-belanosima text-gray-200 text-lg md:text-2xl lg:text-3xl"> What are our obligations</h2> 
+                    <div className="">
+                        <h2 className="mt-5 font-belanosima text-gray-200 text-lg md:text-2xl lg:text-3xl"> What are our obligations</h2>
                         <p className="font-barlow text-gray-400">Subject to the Customer remaining compliant with the terms of this agreement we will grant the Customer a licence for the term in order to:</p>
-                        
+
                         <div>
-                        
-                       <div className="md:flex mt-5 md:gap-3">
-                                    
-                            <div className="">
+
+                            <div className="md:flex mt-5 md:gap-3">
+
+                                <div className="">
                                     <h2 className="font-belanosima text-lg">TRiver's Obligation</h2>
                                     <ul className="list-disc ml-4 mt-2">
                                         <li className="font-belanosima mb-2 text-base text-gray-200">Service Availability: <span className="font-barlow text-sm text-gray-400">TRiver Token Streaming Platform makes reasonable efforts to ensure that the platform is available and accessible to users at all times. However, we do not guarantee uninterrupted access or operation of the platform.</span></li>
@@ -64,41 +64,41 @@ const TermsAndCondition = () => {
                                         <li className="font-belanosima mb-2 text-base text-gray-200">Payment Obligations: <span className="font-barlow text-sm text-gray-400">Users agree to pay any applicable fees or charges associated with their use of the platform, as outlined in our pricing and payment terms.</span></li>
                                     </ul>
                                 </div>
-                       </div>
-                       </div>
-                        </div>
-                    <div>
-                            <h2 className="mt-5 font-belanosima text-gray-200 text-lg md:text-2xl lg:text-3xl">Applicable Law</h2>
-                
-                            <ul className="flex flex-col gap-2 text-gray-400 font-barlow">
-                                {
-                                    features.map(({ caption, text }, index) => (
-                                        <li key={index} className="flex mt-2 items-start gap-2">
-                                            <span className="text-emerald-400 mt-1.5">
-                                                <GiStarShuriken />
-                                            </span>
-                                            <p className="text-gray-400"><span className="text-gray-300 font-belanosima">{caption}:</span> {text}</p>
-                                        </li>
-                                    ))
-                                }
-                            </ul>
-                        </div>
-
-                        <div>
-                            <h2 className="font-belanosima text-gray-200 text-lg mt-5 md:text-2xl lg:text-3xl">Conclusion</h2>
-
-                            <p className="text-gray-400 font-barlow mt-1">
-                               Thank you for reviewing our terms and conditions. By using the TRiver Token Streaming Platform, you agree to be bound by the terms outlined in this document. 
-                            </p>
-
-                            <p className="text-gray-400 font-barlow">
-                               If you have any questions or concerns about these terms and conditions, please contact us at: <span className="text-blue-500 cursor-pointer"><a href="mailto:team.triverstream@gmail.com">team.triverstream@gmail.com</a></span>
-                            </p>
-                            <p className="font-belanosima mt-5 text-gray-200 text-lg">Last Update: <span className="font-barlow text-gray-400 text-base">01-05-2024</span></p>
-                            
-                            <p className="font-belanosima mt-1 flex text-lg gap-2">Thank You for using <span onClick={() => navigate('/')} className="bg-gradient-to-r from-sky-400 cursor-pointer to-emerald-400 font-belanosima text-transparent mt-1 text-3xl bg-clip-text">TRiver</span></p>
+                            </div>
                         </div>
                     </div>
+                    <div>
+                        <h2 className="mt-5 font-belanosima text-gray-200 text-lg md:text-2xl lg:text-3xl">Applicable Law</h2>
+
+                        <ul className="flex flex-col gap-2 text-gray-400 font-barlow">
+                            {
+                                features.map(({ caption, text }, index) => (
+                                    <li key={index} className="flex mt-2 items-start gap-2">
+                                        <span className="text-emerald-400 mt-1.5">
+                                            <GiStarShuriken />
+                                        </span>
+                                        <p className="text-gray-400"><span className="text-gray-300 font-belanosima">{caption}:</span> {text}</p>
+                                    </li>
+                                ))
+                            }
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h2 className="font-belanosima text-gray-200 text-lg mt-5 md:text-2xl lg:text-3xl">Conclusion</h2>
+
+                        <p className="text-gray-400 font-barlow mt-1">
+                            Thank you for reviewing our terms and conditions. By using the TRiver Token Streaming Platform, you agree to be bound by the terms outlined in this document.
+                        </p>
+
+                        <p className="text-gray-400 font-barlow">
+                            If you have any questions or concerns about these terms and conditions, please contact us at: <span className="text-blue-500 cursor-pointer"><a href="mailto:team.triverstream@gmail.com">team.triverstream@gmail.com</a></span>
+                        </p>
+                        <p className="font-belanosima mt-5 text-gray-200 text-lg">Last Update: <span className="font-barlow text-gray-400 text-base">01-05-2024</span></p>
+
+                        <p className="font-belanosima mt-1 flex text-lg gap-2">Thank You for using <span onClick={() => navigate('/')} className="bg-gradient-to-r from-sky-400 cursor-pointer to-emerald-400 font-belanosima text-transparent mt-1 text-3xl bg-clip-text">TRiver</span></p>
+                    </div>
+                </div>
             </section>
         </main>
     )
