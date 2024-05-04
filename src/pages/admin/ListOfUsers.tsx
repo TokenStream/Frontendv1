@@ -42,7 +42,7 @@ const UserTable = () => {
                 </TableRow>
             </TableHeader>
             <TableBody>
-                {allUsers?.map((user, index) => (
+                {allUsers?.map((user: any, index: number) => (
                     <TableRow key={index} className="hover:bg-gray-400 group border-gray-600 font-barlow">
                         <TableCell className="font-medium text-gray-400 group-hover:text-gray-800">{index + 1}</TableCell>
                         <TableCell className="text-gray-400 group-hover:text-gray-800">{user.name}</TableCell>
