@@ -8,6 +8,7 @@ import {
     TableHeader,
     TableRow,
 } from "@/components/ui/table"
+import { useWeb3ModalAccount } from "@web3modal/ethers/react"
 
 
 const UpdateSalaryStream = () => {
@@ -31,7 +32,11 @@ export default UpdateSalaryStream
 
 const UserTable = () => {
 
+    const { address } = useWeb3ModalAccount()
+
     const data: any = useGetAllMonthlyStream();
+
+    const filteredData = data.filter((user: any) => user.streamer === address);
 
     return (
         <Table>
@@ -46,7 +51,7 @@ const UserTable = () => {
                 </TableRow>
             </TableHeader>
             <TableBody>
-                {data?.map((user: any, index: number) => (
+                {filteredData?.map((user: any, index: number) => (
                     <TableRow key={index} className="hover:bg-gray-400 group border-gray-600 font-barlow">
                         <TableCell className="font-medium text-gray-400 group-hover:text-gray-800">{index + 1}</TableCell>
                         <TableCell className="text-gray-400 group-hover:text-gray-800">{user.recipient}</TableCell>
