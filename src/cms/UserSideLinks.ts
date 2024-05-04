@@ -33,21 +33,4 @@ export const NavLinks = [
       },
     ],
   },
-  {
-    name: "Staking/Reward",
-    subLinks: [
-      {
-        name: "Create Pool",
-        url: "/user/createpool",
-      },
-      {
-        name: "Start Staking",
-        url: "/user/startstaking",
-      },
-      {
-        name: "View Stakings",
-        url: "/user/viewstakings",
-      },
-    ],
-  },
 ];
