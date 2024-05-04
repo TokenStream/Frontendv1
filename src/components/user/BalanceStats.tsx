@@ -61,6 +61,7 @@ const BalanceStats = () => {
                                         className="block w-full rounded-md border text-sm px-3 py-2 placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 disabled:cursor-not-allowed disabled:opacity-50 bg-transparent border-gray-700 focus-visible:ring-sky-400 font-barlow text-gray-200 h-11"
                                     />
                                 </div>
+                                <small className="text-emerald-500 mt-1.5">A charge of 0.05% will be deducted</small>
                             </div>
                             <DialogFooter>
                                 <Button type="button" onClick={handleDeposit} className="text-gray-100 text-sm font-barlow px-4 py-2 flex justify-between items-center gap-1 bg-sky-500 hover:bg-emerald-500 disabled:cursor-not-allowed">Deposit</Button>
