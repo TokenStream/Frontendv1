@@ -200,7 +200,7 @@ const PrivacyPolicy = () => {
                                             <span className="text-emerald-400 mt-1.5">
                                                 <GiStarShuriken />
                                             </span>
-                                            <p className="text-gray-400"><span className="text-gray-300 font-belanosima">{caption}:</span> {text} <span onClick={() => navigate('"/https://mail.google.com/mail/u/0/#inbox?compose=new"')} className="text-blue-500 cursor-pointer">team.triverstream@gmail.com</span></p>
+                                            <p className="text-gray-400"><span className="text-gray-300 font-belanosima">{caption}:</span> {text} <span className="text-blue-500 cursor-pointer"><a href="mailto:team.triverstream@gmail.com">team.triverstream@gmail.com</a></span></p>
                                         </li>
                                     ))
                                 }
@@ -220,7 +220,7 @@ const PrivacyPolicy = () => {
                                 }
                             </ul>  */}
                                 <p className="font-belanosima text-gray-200 text-lg">Last Update: <span className="font-barlow text-gray-400 text-base">01-05-2024</span></p>
-                                <p className="bg-gradient-to-r from-sky-400 to-emerald-400 font-belanosima text-transparent mt-1 text-3xl bg-clip-text">TRiver</p>
+                                <p className="font-belanosima flex mt-1 text-lg gap-2">Thank You for using <span onClick={() => navigate('/')} className="bg-gradient-to-r from-sky-400 cursor-pointer to-emerald-400 font-belanosima text-transparent mt-1 text-3xl bg-clip-text">TRiver</span></p>
                             </div>
                         </div>
 
