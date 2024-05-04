@@ -8,6 +8,8 @@ import {
     lightenDarkenColor,
     formatFileSize,
 } from 'react-papaparse';
+import useCreateSalaryStream from '@/hooks/useCreateSalaryStream';
+import { useWeb3ModalAccount } from '@web3modal/ethers/react';
 
 const CreateSalaryStream = () => {
     return (
@@ -37,17 +39,15 @@ const HandleForm = () => {
     const [removeHoverColor, setRemoveHoverColor] = useState(
         DEFAULT_REMOVE_HOVER_COLOR
     );
+    const { address } = useWeb3ModalAccount()
 
+    const uploadData = useCreateSalaryStream(address, csvData, streamInterval)
 
-    const handleFormSubmit = (event: React.FormEvent) => {
+    const handleFormSubmit = async (event: React.FormEvent) => {
         setIsSending(true);
         event.preventDefault();
-        uploadData(csvData, streamInterval);
+        await uploadData();
         setIsSending(false);
-    };
-
-    const uploadData = (data: any[], interval: string) => {
-        console.log({ data, interval });
     };
 
 
