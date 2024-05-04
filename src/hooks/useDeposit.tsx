@@ -7,7 +7,8 @@ import { useCallback } from "react";
 import { toast } from "react-toastify";
 import { getProvider } from "@/constants/provider";
 import { isSupportedChain } from "@/constants/chain";
-import { getModalContract } from "@/constants/contracts";
+import { getModalContract, getOPTokenContract } from "@/constants/contracts";
+
 
 
 const useDeposit = (amount: number) => {
@@ -35,9 +36,18 @@ const useDeposit = (amount: number) => {
 
         const contract = getModalContract(signer);
 
+        const tokenContract = getOPTokenContract(signer);
+
         // const formattedAmount = ethers.formatUnits(amount, 18);
 
         try {
+            const tx = await tokenContract.approve(contract.target, amount);
+            await tx.wait();
+
+            toast.success("Approve Successful !", {
+                position: "top-right",
+            });
+
             const transaction = await contract.deposit(amount);
 
             console.log("transaction: ", transaction);

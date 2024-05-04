@@ -33,7 +33,7 @@ export const useGetOPBalance = (address: any) => {
             topics: [ethers.id("DepositSuccessiful(address,uint256)")],
         };
 
-        wssProvider.getLogs({ ...filter, fromBlock: 5815378 }).then((events) => {
+        wssProvider.getLogs({ ...filter, fromBlock: 5834079 }).then((events) => {
             setCount(events.length + 1);
         });
 
