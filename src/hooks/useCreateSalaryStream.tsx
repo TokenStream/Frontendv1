@@ -37,6 +37,10 @@ const useCreateSalaryStream = (address: any, csvData: any, streamInterval: strin
                 interval = 1;
             } else if (streamInterval === "monthly") {
                 interval = 2;
+            } else {
+                return toast.error("Invalid interval !", {
+                    position: "top-right",
+                })
             }
 
             const transaction = await contract.createStream(csvData, interval);

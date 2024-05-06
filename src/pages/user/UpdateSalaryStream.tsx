@@ -1,14 +1,6 @@
-import useGetAllMonthlyStream from "@/hooks/useGetAllMonthlyStream"
+
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import {
-    Table,
-    TableBody,
-    TableCell,
-    TableHead,
-    TableHeader,
-    TableRow,
-} from "@/components/ui/table"
-import { useWeb3ModalAccount } from "@web3modal/ethers/react"
+import SalaryUpdateTable from "./SalaryUpdateTable"
 
 
 const UpdateSalaryStream = () => {
@@ -20,7 +12,7 @@ const UpdateSalaryStream = () => {
                 <p className="text-gray-400 font-barlow md:text-lg lg:w-[70%] md:w-[80%] w-full">Effortlessly manage your employee salaries with precision and ease using StreamFlow's Salary Distribution Setup</p>
             </div>
             <section className="w-full flex flex-col gap-3 border border-gray-600 bg-gray-800 py-6 md:px-10 px-6 rounded-md mt-8">
-                <UserTable />
+                <SalaryUpdateTable />
             </section>
         </main>
     )
@@ -30,39 +22,39 @@ export default UpdateSalaryStream
 
 
 
-const UserTable = () => {
+// const UserTable = () => {
 
-    const { address } = useWeb3ModalAccount()
+//     const { address } = useWeb3ModalAccount()
 
-    const data: any = useGetAllMonthlyStream();
+//     const data: any = useGetAllMonthlyStream();
 
-    const filteredData = data.filter((user: any) => user.streamer === address);
+//     const filteredData = data.filter((user: any) => user.streamer === address);
 
-    return (
-        <Table>
-            <TableHeader>
-                <TableRow className="hover:bg-transparent border-gray-600">
-                    <TableHead className="w-[100px] font-barlow text-gray-200">S/N</TableHead>
-                    <TableHead className="font-barlow text-gray-200 ">Recipient</TableHead>
-                    <TableHead className=" font-barlow text-gray-200">Amount</TableHead>
-                    <TableHead className=" font-barlow text-gray-200">Interval</TableHead>
-                    <TableHead className=" font-barlow text-gray-200">Status</TableHead>
-                    <TableHead className=" font-barlow text-gray-200">Streamer</TableHead>
-                </TableRow>
-            </TableHeader>
-            <TableBody>
-                {filteredData?.map((user: any, index: number) => (
-                    <TableRow key={index} className="hover:bg-gray-400 group border-gray-600 font-barlow">
-                        <TableCell className="font-medium text-gray-400 group-hover:text-gray-800">{index + 1}</TableCell>
-                        <TableCell className="text-gray-400 group-hover:text-gray-800">{user.recipient}</TableCell>
-                        <TableCell className=" text-gray-400 group-hover:text-gray-800">{user.amount}</TableCell>
-                        <TableCell className=" text-gray-400 group-hover:text-gray-800">{user.intervalType === 1 ? "Daily" : "Monthly"}</TableCell>
-                        <TableCell className=" text-gray-400 group-hover:text-gray-800">{user.isactive ? "Active" : "Inactive"}</TableCell>
-                        <TableCell className=" text-gray-400 group-hover:text-gray-800">{user.streamer}</TableCell>
-                    </TableRow>
-                ))}
-            </TableBody>
-        </Table>
+//     return (
+//         <Table>
+//             <TableHeader>
+//                 <TableRow className="hover:bg-transparent border-gray-600">
+//                     <TableHead className="w-[100px] font-barlow text-gray-200">S/N</TableHead>
+//                     <TableHead className="font-barlow text-gray-200 ">Recipient</TableHead>
+//                     <TableHead className=" font-barlow text-gray-200">Amount</TableHead>
+//                     <TableHead className=" font-barlow text-gray-200">Interval</TableHead>
+//                     <TableHead className=" font-barlow text-gray-200">Status</TableHead>
+//                     <TableHead className=" font-barlow text-gray-200">Streamer</TableHead>
+//                 </TableRow>
+//             </TableHeader>
+//             <TableBody>
+//                 {filteredData?.map((user: any, index: number) => (
+//                     <TableRow key={index} className="hover:bg-gray-400 group border-gray-600 font-barlow">
+//                         <TableCell className="font-medium text-gray-400 group-hover:text-gray-800">{index + 1}</TableCell>
+//                         <TableCell className="text-gray-400 group-hover:text-gray-800">{user.recipient}</TableCell>
+//                         <TableCell className=" text-gray-400 group-hover:text-gray-800">{user.amount}</TableCell>
+//                         <TableCell className=" text-gray-400 group-hover:text-gray-800">{user.intervalType === 1 ? "Daily" : "Monthly"}</TableCell>
+//                         <TableCell className=" text-gray-400 group-hover:text-gray-800">{user.isactive ? "Active" : "Inactive"}</TableCell>
+//                         <TableCell className=" text-gray-400 group-hover:text-gray-800">{user.streamer}</TableCell>
+//                     </TableRow>
+//                 ))}
+//             </TableBody>
+//         </Table>
 
-    )
-}
+//     )
+// }
