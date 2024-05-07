@@ -11,7 +11,6 @@ const useGetUserSalaryStream = (address: any) => {
     const [streamResumedCount, setStreamResumedCount] = useState<number>(0);
 
     const fetchUserSalaryStreams = useCallback(async () => {
-        console.log(streamCount, streamPausedCount, streamResumedCount);
         try {
             const contract = getSalaryStreamContract(readOnlyProvider);
             const res = await contract.getStreamsByOwner(address);
@@ -29,7 +28,7 @@ const useGetUserSalaryStream = (address: any) => {
         } catch (error) {
             console.error(error);
         }
-    }, [address, streamCount, streamPausedCount, streamResumedCount]);
+    }, [address]);
 
     const trackingSalaryStreamCreated = useCallback(() => {
         setStreamCount((prevValue) => prevValue + 1);
