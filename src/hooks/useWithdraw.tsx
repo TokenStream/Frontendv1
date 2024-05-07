@@ -7,14 +7,13 @@ import { useCallback } from "react";
 import { toast } from "react-toastify";
 import { getProvider } from "@/constants/provider";
 import { isSupportedChain } from "@/constants/chain";
-import { getModalContract, getOPTokenContract } from "@/constants/contracts";
+import { getModalContract } from "@/constants/contracts";
 import { ethers } from "ethers";
 
-
-
-const useDeposit = (amount: number) => {
+const useWithdraw = (amount: number) => {
     const { chainId } = useWeb3ModalAccount();
     const { walletProvider } = useWeb3ModalProvider();
+
 
     return useCallback(async () => {
         if (!isSupportedChain(chainId))
@@ -37,19 +36,11 @@ const useDeposit = (amount: number) => {
 
         const contract = getModalContract(signer);
 
-        const tokenContract = getOPTokenContract(signer);
-
         const formattedAmount = ethers.parseUnits(amount.toString(), 18);
 
         try {
-            const tx = await tokenContract.approve(contract.target, formattedAmount);
-            await tx.wait();
 
-            toast.success("Approve Successful !", {
-                position: "top-right",
-            });
-
-            const transaction = await contract.deposit(formattedAmount);
+            const transaction = await contract.withdraw(formattedAmount);
 
             console.log("transaction: ", transaction);
 
@@ -58,12 +49,12 @@ const useDeposit = (amount: number) => {
             console.log("receipt: ", receipt);
 
             if (receipt.status) {
-                return toast.success("Deposit successful !", {
+                return toast.success("Withdrawal successful !", {
                     position: "top-right",
                 });
             }
 
-            toast.error("Deposit failed !", {
+            toast.error("Withdrawal failed !", {
                 position: "top-right",
             });
         } catch (error: any) {
@@ -75,4 +66,4 @@ const useDeposit = (amount: number) => {
     }, [amount, chainId, walletProvider]);
 }
 
-export default useDeposit
+export default useWithdraw

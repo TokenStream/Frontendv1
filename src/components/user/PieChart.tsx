@@ -14,8 +14,8 @@ const options: ApexOptions = {
     theme: {
         mode: 'dark',
     },
-    colors: ['#0284c7', '#4f46e5', '#059669'],
-    labels: ['Salary', 'Subscription', 'Stakings'],
+    colors: ['#0284c7', '#059669'],
+    labels: ['Salary', 'Subscription'],
     legend: {
         show: true,
         position: 'bottom',
@@ -58,7 +58,7 @@ const PieChart = () => {
 
     const data = useMemo(() => {
         return {
-            series: [5, 2, 8]
+            series: [5, 8]
         }
     }, [])
 

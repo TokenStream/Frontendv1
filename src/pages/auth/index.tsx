@@ -12,6 +12,7 @@ import useRegisterUsers from "@/hooks/useRegisterUsers";
 import { toast } from "react-toastify";
 import { useCheckRegisteredUser } from "@/hooks/useCheckRegisteredUser";
 import { ZeroAddress } from "ethers";
+import useGetOwner from "@/hooks/useGetOwner";
 
 
 const Signup = () => {
@@ -23,10 +24,14 @@ const Signup = () => {
 
     const user: any = useCheckRegisteredUser(address);
 
+    const owner = useGetOwner();
 
-    const change = useCallback(() => {
+
+    const change = useCallback(async () => {
         if (isConnected) {
-            if (user.address && user.address !== ZeroAddress) {
+            if (owner === address) {
+                navigate("/admin");
+            } else if (user.address && user.address !== ZeroAddress) {
                 navigate("/user");
             } else {
                 navigate("/signup");
@@ -34,7 +39,7 @@ const Signup = () => {
         } else {
             navigate("/");
         }
-    }, [isConnected, navigate, user.address]);
+    }, [isConnected, navigate, user.address, owner, address]);
 
     useEffect(() => {
         change();

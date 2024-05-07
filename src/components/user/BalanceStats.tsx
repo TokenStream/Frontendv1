@@ -1,11 +1,12 @@
 import { BiMoneyWithdraw } from "react-icons/bi"
 import { GiPayMoney } from "react-icons/gi"
 import { Button } from "../ui/button"
-import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "../ui/dialog"
+import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger, DialogClose } from "../ui/dialog"
 import { useState } from "react"
 import { useWeb3ModalAccount } from "@web3modal/ethers/react"
 import { useGetOPBalance } from "@/hooks/useGetOPBalance"
 import useDeposit from "@/hooks/useDeposit"
+import useWithdraw from "@/hooks/useWithdraw"
 
 const BalanceStats = () => {
 
@@ -14,13 +15,20 @@ const BalanceStats = () => {
     const [depositAmount, setDepositAmount] = useState(0)
     const [withdrawAmount, setWithdrawAmount] = useState(0)
 
-    const userBalance: number = useGetOPBalance(address);
+    const userBalance: number | string = useGetOPBalance(address);
 
     const handleSubmit = useDeposit(depositAmount);
 
     const handleDeposit = async () => {
         await handleSubmit();
         setDepositAmount(0);
+    }
+
+    const handleWithdrawSubmit = useWithdraw(withdrawAmount);
+
+    const handleWithdraw = async () => {
+        await handleWithdrawSubmit();
+        setWithdrawAmount(0);
     }
 
     return (
@@ -61,10 +69,12 @@ const BalanceStats = () => {
                                         className="block w-full rounded-md border text-sm px-3 py-2 placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 disabled:cursor-not-allowed disabled:opacity-50 bg-transparent border-gray-700 focus-visible:ring-sky-400 font-barlow text-gray-200 h-11"
                                     />
                                 </div>
-                                <small className="text-emerald-500 mt-1.5">A charge of 0.05% will be deducted</small>
+                                <small className="text-emerald-500 mt-1.5">A service fee of 3 OP token will be deducted when you stream</small>
                             </div>
                             <DialogFooter>
-                                <Button type="button" onClick={handleDeposit} className="text-gray-100 text-sm font-barlow px-4 py-2 flex justify-between items-center gap-1 bg-sky-500 hover:bg-emerald-500 disabled:cursor-not-allowed">Deposit</Button>
+                                <DialogClose asChild>
+                                    <Button type="button" onClick={handleDeposit} className="text-gray-100 text-sm font-barlow px-4 py-2 flex justify-between items-center gap-1 bg-sky-500 hover:bg-emerald-500 disabled:cursor-not-allowed">Deposit</Button>
+                                </DialogClose>
                             </DialogFooter>
                         </DialogContent>
                     </Dialog>
@@ -97,7 +107,9 @@ const BalanceStats = () => {
                                 </div>
                             </div>
                             <DialogFooter>
-                                <Button disabled={withdrawAmount <= 0 && true} type="submit" className="text-gray-100 text-sm font-barlow px-4 py-2 flex justify-between items-center gap-1 bg-sky-500 hover:bg-emerald-500 disabled:cursor-not-allowed">Withdraw</Button>
+                                <DialogClose asChild>
+                                    <Button onClick={handleWithdraw} type="submit" className="text-gray-100 text-sm font-barlow px-4 py-2 flex justify-between items-center gap-1 bg-sky-500 hover:bg-emerald-500 disabled:cursor-not-allowed">Withdraw</Button>
+                                </DialogClose>
                             </DialogFooter>
                         </DialogContent>
                     </Dialog>

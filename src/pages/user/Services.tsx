@@ -66,7 +66,7 @@ const services: ServiceTypes[] = [
     }, {
         caption: 'Staking/Rewards Distribution',
         list: ["Participate in our rewards program to earn tokens.", "Earn rewards based on your engagement and performance.", "Track your rewards and redeem them for exciting perks."],
-        url: '/user/startstaking',
+        url: '/user/services',
         img: StakingImg
     }, {
         caption: 'Salary Distributions',
