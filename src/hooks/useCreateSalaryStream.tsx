@@ -7,12 +7,15 @@ import { useCallback } from "react";
 import { toast } from "react-toastify";
 import { getProvider } from "@/constants/provider";
 import { isSupportedChain } from "@/constants/chain";
-import { ZeroAddress } from "ethers";
+import { ZeroAddress, ethers } from "ethers";
 import { getSalaryStreamContract } from "@/constants/contracts";
+import { useNavigate } from "react-router-dom";
 
 const useCreateSalaryStream = (address: any, csvData: any, streamInterval: string) => {
     const { chainId } = useWeb3ModalAccount();
     const { walletProvider } = useWeb3ModalProvider();
+
+    const navigate = useNavigate();
 
 
     return useCallback(async () => {
@@ -31,6 +34,11 @@ const useCreateSalaryStream = (address: any, csvData: any, streamInterval: strin
 
         const contract = getSalaryStreamContract(signer);
 
+        const formattedCsvData = csvData.map((item: any) => ({
+            amount: ethers.parseUnits(item.amount, 18),
+            recipient: item.recipient
+        }))
+
         try {
             let interval;
             if (streamInterval === "daily") {
@@ -43,7 +51,7 @@ const useCreateSalaryStream = (address: any, csvData: any, streamInterval: strin
                 })
             }
 
-            const transaction = await contract.createStream(csvData, interval);
+            const transaction = await contract.createStream(formattedCsvData, interval);
 
             console.log("transaction: ", transaction);
 
@@ -52,6 +60,7 @@ const useCreateSalaryStream = (address: any, csvData: any, streamInterval: strin
             console.log("receipt: ", receipt);
 
             if (receipt.status) {
+                navigate("/user/updatesalarystream");
                 return toast.success("Salary stream created successfully !", {
                     position: "top-right",
                 });
@@ -65,7 +74,7 @@ const useCreateSalaryStream = (address: any, csvData: any, streamInterval: strin
                 position: "top-right",
             });
         }
-    }, [address, csvData, streamInterval, chainId, walletProvider]);
+    }, [address, csvData, streamInterval, chainId, walletProvider, navigate]);
 }
 
 export default useCreateSalaryStream
