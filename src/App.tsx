@@ -4,9 +4,10 @@ import ScrollToTop from "./utils/ScrollToTop";
 import Preloader from "./utils/Preloader";
 import ScrollToTopButton from "./utils/ScrollToTopButton";
 import PageNotFound from "./utils/PageNotFound";
-import { ToastContainer } from 'react-toastify';
+// import { ToastContainer } from "react-toastify";
+import { Toaster } from "sonner";
 //react-toastify css
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 
 import { lazy } from "react";
 import { admin_routes, guest_routes, user_routes } from "./routes";
@@ -16,46 +17,52 @@ import AuthLayout from "./layouts/AuthLayout";
 import AdminLayout from "./layouts/AdminLayout";
 const Signup = lazy(() => import("./pages/auth/index"));
 
-
 //web3 Modal configuration function call
 configWeb3Modal();
 
 const App = () => {
-
   return (
-    <main className='w-full min-h-screen bg-gray-950' id="heroPattern">
+    <main className="w-full min-h-screen bg-gray-950" id="heroPattern">
       <ScrollToTop />
       <Suspense fallback={<Preloader />}>
         <Routes>
-
           {guest_routes.map(({ path, component: Component }, index) => (
-            <Route key={index} index={path === "/"} path={path} element={<Component />} />
+            <Route
+              key={index}
+              index={path === "/"}
+              path={path}
+              element={<Component />}
+            />
           ))}
 
           <Route element={<AuthLayout />}>
-            <Route path='/signup' element={<Signup />} />
+            <Route path="/signup" element={<Signup />} />
           </Route>
           <Route element={<UserLayout />}>
-            {
-              user_routes.map(({ path, component: Component }, index) => (
-                <Route key={index} index={path === "/user"} path={path} element={<Component />} />
-              ))
-            }
+            {user_routes.map(({ path, component: Component }, index) => (
+              <Route
+                key={index}
+                index={path === "/user"}
+                path={path}
+                element={<Component />}
+              />
+            ))}
           </Route>
           <Route element={<AdminLayout />}>
-            {
-              admin_routes.map(({ path, component: Component }, index) => (
-                <Route key={index} index={path === "/admin"} path={path} element={<Component />} />
-              ))
-            }
+            {admin_routes.map(({ path, component: Component }, index) => (
+              <Route
+                key={index}
+                index={path === "/admin"}
+                path={path}
+                element={<Component />}
+              />
+            ))}
           </Route>
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </Suspense>
-      <ScrollToTopButton />
-      <ToastContainer />
     </main>
   );
-}
+};
 
-export default App
+export default App;
