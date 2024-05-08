@@ -3,6 +3,7 @@ import useGetAllUsers from "@/hooks/useGetAllUsers"
 
 const Admin = () => {
     const allUsers = useGetAllUsers();
+
     return (
         <main className="w-full grid grid-cols-3 gap-4 mt-4">
             <div className="flex flex-col gap-5 bg-gray-800 rounded-lg p-6">

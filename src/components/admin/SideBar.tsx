@@ -6,6 +6,7 @@ import { RxDashboard } from "react-icons/rx";
 import { NavLinks } from "@/cms/AdminSideLinks";
 import { FaUsers } from "react-icons/fa6";
 import { IoCreateOutline } from "react-icons/io5";
+import { RxUpdate } from "react-icons/rx";
 
 
 const SideBar = ({ sidebarOpen, setSidebarOpen }: { sidebarOpen: boolean, setSidebarOpen: React.Dispatch<React.SetStateAction<boolean>> }) => {
@@ -39,6 +40,8 @@ const SideBar = ({ sidebarOpen, setSidebarOpen }: { sidebarOpen: boolean, setSid
                 return <FaUsers />;
             case 2:
                 return <IoCreateOutline />;
+            case 3:
+                return <RxUpdate />;
             default:
                 return "";
         }

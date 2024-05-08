@@ -8,7 +8,6 @@ const useGetRevenue = () => {
     const [contractRevenue, setContractRevenue] = useState<number | string>(0);
     const [depositCount, setDepositCount] = useState<number>(0);
 
-
     const fetchContractRevenue = useCallback(async () => {
         try {
             const contract = getModalContract(readOnlyProvider);

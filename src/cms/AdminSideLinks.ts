@@ -11,4 +11,8 @@ export const NavLinks = [
     name: "Create Subscription Plans",
     url: "/admin/createsubscriptionplan",
   },
+  {
+    name: "Update Sub Plans",
+    url: "/admin/updatesubscriptionplan",
+  },
 ];
