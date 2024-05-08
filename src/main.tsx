@@ -8,7 +8,7 @@ import { Toaster } from "sonner";
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <BrowserRouter>
-      <Toaster closeButton richColors position="top-right" />
+      <Toaster richColors position="top-right" />
       <App />
     </BrowserRouter>
   </React.StrictMode>
