@@ -5,7 +5,6 @@ import Preloader from "./utils/Preloader";
 import ScrollToTopButton from "./utils/ScrollToTopButton";
 import PageNotFound from "./utils/PageNotFound";
 // import { ToastContainer } from "react-toastify";
-import { Toaster } from "sonner";
 //react-toastify css
 import "react-toastify/dist/ReactToastify.css";
 
