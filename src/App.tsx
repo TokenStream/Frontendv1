@@ -6,7 +6,7 @@ import ScrollToTopButton from "./utils/ScrollToTopButton";
 import PageNotFound from "./utils/PageNotFound";
 // import { ToastContainer } from "react-toastify";
 //react-toastify css
-import "react-toastify/dist/ReactToastify.css";
+// import "react-toastify/dist/ReactToastify.css";
 
 import { lazy } from "react";
 import { admin_routes, guest_routes, user_routes } from "./routes";
