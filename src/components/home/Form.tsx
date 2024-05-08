@@ -1,8 +1,7 @@
 import emailjs from "@emailjs/browser";
-//for comment validation
 import { Formik, Form, Field, ErrorMessage, FormikHelpers } from "formik";
 import { useState } from "react";
-import { toast } from "react-toastify";
+import { toast } from "sonner";
 import * as Yup from "yup";
 import { BsExclamation } from "react-icons/bs";
 import { Button } from "../ui/button";

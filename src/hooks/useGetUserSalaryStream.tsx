@@ -55,7 +55,7 @@ const useGetUserSalaryStream = (address: any) => {
             topics: [ethers.id("StreamCreated(uint256,address,IntervalType)")],
         };
 
-        wssProvider.getLogs({ ...streamCreatedFilter, fromBlock: 5854745 }).then((events) => {
+        wssProvider.getLogs({ ...streamCreatedFilter, fromBlock: 5861556 }).then((events) => {
             setStreamCount(events.length + 1);
         });
 
@@ -64,7 +64,7 @@ const useGetUserSalaryStream = (address: any) => {
             topics: [ethers.id("StreamPaused(address,IntervalType)")],
         };
 
-        wssProvider.getLogs({ ...streamPausedFilter, fromBlock: 5854745 }).then((events) => {
+        wssProvider.getLogs({ ...streamPausedFilter, fromBlock: 5861556 }).then((events) => {
             setStreamPausedCount(events.length + 1);
         });
 
@@ -73,7 +73,7 @@ const useGetUserSalaryStream = (address: any) => {
             topics: [ethers.id("StreamResumed(address,IntervalType)")],
         };
 
-        wssProvider.getLogs({ ...streamResumedFilter, fromBlock: 5854745 }).then((events) => {
+        wssProvider.getLogs({ ...streamResumedFilter, fromBlock: 5861556 }).then((events) => {
             setStreamResumedCount(events.length + 1);
         });
 
