@@ -60,6 +60,7 @@ const App = () => {
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </Suspense>
+      <ScrollToTopButton />
     </main>
   );
 };
