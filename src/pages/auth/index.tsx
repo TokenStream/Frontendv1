@@ -9,7 +9,7 @@ import { IoIosArrowRoundBack } from "react-icons/io";
 import { WalletConnected } from "@/utils/WalletConnected";
 import { useWalletInfo, useWeb3Modal, useWeb3ModalAccount } from "@web3modal/ethers/react";
 import useRegisterUsers from "@/hooks/useRegisterUsers";
-import { toast } from "react-toastify";
+import { toast } from "sonner";
 import { useCheckRegisteredUser } from "@/hooks/useCheckRegisteredUser";
 import { ZeroAddress } from "ethers";
 import useGetOwner from "@/hooks/useGetOwner";
