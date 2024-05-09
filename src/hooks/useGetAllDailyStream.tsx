@@ -4,7 +4,7 @@ import { readOnlyProvider, wssProvider } from "@/constants/provider";
 import { ethers } from "ethers";
 import { getSalaryStreamContract } from "@/constants/contracts";
 
-const useGetUserSalaryStream = (address: any) => {
+const useGetAllDailyStream = () => {
     const [data, setData] = useState([]);
     const [streamCount, setStreamCount] = useState<number>(0);
     const [streamPausedCount, setStreamPausedCount] = useState<number>(0);
@@ -13,7 +13,7 @@ const useGetUserSalaryStream = (address: any) => {
     const fetchUserSalaryStreams = useCallback(async () => {
         try {
             const contract = getSalaryStreamContract(readOnlyProvider);
-            const res = await contract.getStreamsByOwner(address);
+            const res = await contract.getAllDailyStreams();
             const converted = res.map((item: any) => ({
                 id: Number(item[0]),
                 recipient: item[1],
@@ -28,7 +28,7 @@ const useGetUserSalaryStream = (address: any) => {
         } catch (error) {
             console.error(error);
         }
-    }, [address]);
+    }, []);
 
     const trackingSalaryStreamCreated = useCallback(() => {
         setStreamCount((prevValue) => prevValue + 1);
@@ -99,4 +99,4 @@ const useGetUserSalaryStream = (address: any) => {
     return data;
 }
 
-export default useGetUserSalaryStream
+export default useGetAllDailyStream

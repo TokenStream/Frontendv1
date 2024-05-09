@@ -10,6 +10,7 @@ export const useGetOPBalance = (address: any) => {
     const [depositCount, setDepositCount] = useState<number>(0);
     const [withdrawCount, setWithdrawCount] = useState<number>(0);
     const [feeCount, setFeeCount] = useState<number>(0);
+    const [subCount, setSubCount] = useState<number>(0);
 
     const fetchUserOpBalance = useCallback(async () => {
         try {
@@ -34,6 +35,11 @@ export const useGetOPBalance = (address: any) => {
 
     const trackingFee = useCallback(() => {
         setFeeCount((prevValue) => prevValue + 1);
+        fetchUserOpBalance();
+    }, [fetchUserOpBalance])
+
+    const trackingSub = useCallback(() => {
+        setSubCount((prevValue) => prevValue + 1);
         fetchUserOpBalance();
     }, [fetchUserOpBalance])
 
@@ -73,6 +79,17 @@ export const useGetOPBalance = (address: any) => {
             setFeeCount(events.length + 1);
         });
 
+        const subfilter = {
+            address: import.meta.env.VITE_SUBSCRIPTION_ADDRESS,
+            topics: [
+                ethers.id("SubscriptionStarted(address,uint256)")
+            ],
+        };
+
+        wssProvider.getLogs({ ...subfilter, fromBlock: 5864071 }).then((events) => {
+            setSubCount(events.length + 1);
+        });
+
         const provider = new ethers.WebSocketProvider(
             import.meta.env.VITE_WEB_SOCKET_RPC_URL
         );
@@ -83,14 +100,17 @@ export const useGetOPBalance = (address: any) => {
 
         provider.on(feefilter, trackingFee);
 
+        provider.on(subfilter, trackingSub);
+
         return () => {
             // Perform cleanup
             provider.off(depositfilter, trackingDeposit);
             provider.off(withdrawfilter, trackingWithdraw);
             provider.off(feefilter, trackingFee);
+            provider.off(subfilter, trackingSub);
         };
 
-    }, [fetchUserOpBalance, trackingDeposit, depositCount, trackingWithdraw, withdrawCount, trackingFee, feeCount]);
+    }, [fetchUserOpBalance, trackingDeposit, depositCount, trackingWithdraw, withdrawCount, trackingFee, feeCount, trackingSub, subCount]);
 
     return userBalance;
 }

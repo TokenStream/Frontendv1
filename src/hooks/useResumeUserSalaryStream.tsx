@@ -4,9 +4,7 @@ import {
   useWeb3ModalProvider,
 } from "@web3modal/ethers/react";
 import { useCallback } from "react";
-// import { toast } from "react-toastify";
 import { toast } from "sonner";
-
 import { getProvider } from "@/constants/provider";
 import { isSupportedChain } from "@/constants/chain";
 import { getSalaryStreamContract } from "@/constants/contracts";
@@ -47,6 +45,7 @@ const useResumeUserSalaryStream = () => {
             position: "top-right",
           });
         } catch (error: any) {
+          console.log(error);
           toast.error(`${error.message.slice(0, 20)}...`, {
             position: "top-right",
           });

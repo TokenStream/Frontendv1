@@ -37,7 +37,7 @@ const UserTable = () => {
             <TableHeader>
                 <TableRow className="hover:bg-transparent border-gray-600">
                     <TableHead className="w-[100px] font-barlow text-gray-200">S/N</TableHead>
-                    <TableHead className="font-barlow text-gray-200 ">Name</TableHead>
+                    <TableHead className="font-barlow text-gray-200 ">ENS</TableHead>
                     <TableHead className=" font-barlow text-gray-200">Address</TableHead>
                 </TableRow>
             </TableHeader>

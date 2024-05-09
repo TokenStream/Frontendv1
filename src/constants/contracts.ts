@@ -3,6 +3,7 @@ import ENSContractABI from "./ABI/ENSContractABI.json";
 import ModaContractABI from "./ABI/ModaContractABI.json";
 import IERC20ABI from "./ABI/IERC20ABI.json";
 import SalaryABI from "./ABI/SalaryABI.json";
+import SubscriptionABI from "./ABI/SubscriptionABI.json";
 
 export const getENSContract = (
   providerOrSigner: ethers.Provider | ethers.Signer
@@ -40,6 +41,16 @@ export const getSalaryStreamContract = (
   return new ethers.Contract(
     import.meta.env.VITE_SALARY_STREAMING_ADDRESS,
     SalaryABI,
+    providerOrSigner
+  );
+};
+
+export const getSubscriptionContract = (
+  providerOrSigner: ethers.Provider | ethers.Signer
+) => {
+  return new ethers.Contract(
+    import.meta.env.VITE_SUBSCRIPTION_ADDRESS,
+    SubscriptionABI,
     providerOrSigner
   );
 };

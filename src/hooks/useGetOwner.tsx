@@ -12,7 +12,6 @@ const useGetOwner = () => {
         contract
             .owner()
             .then((res) => {
-                console.log(res);
                 setOwnerAddress(res);
             })
             .catch((err) => {

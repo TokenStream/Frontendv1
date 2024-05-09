@@ -3,9 +3,8 @@
 import { useEffect, useState } from "react"
 import ReactApexChart from "react-apexcharts"
 import { ApexOptions } from "apexcharts";
-import useGetUserSalaryStream from "@/hooks/useGetUserSalaryStream";
-import { useWeb3ModalAccount } from "@web3modal/ethers/react";
-import useGetUserSubscriptions from "@/hooks/useGetUserSubscriptions";
+import useGetAllDailyStream from "@/hooks/useGetAllDailyStream";
+import useGetAllMonthlyStream from "@/hooks/useGetAllMonthlyStream";
 
 const options: ApexOptions = {
     chart: {
@@ -19,7 +18,7 @@ const options: ApexOptions = {
         mode: 'dark',
     },
     colors: ['#0284c7', '#059669'],
-    labels: ['Salary', 'Subscription'],
+    labels: ['Daily Salary Streams', 'Monthly Salary Streams'],
     legend: {
         show: true,
         position: 'bottom',
@@ -59,26 +58,26 @@ const options: ApexOptions = {
 }
 
 const PieChart = () => {
-    const { address } = useWeb3ModalAccount()
-    const salaryStreams: any = useGetUserSalaryStream(address);
-    const subscriptions: any = useGetUserSubscriptions(address);
+
+    const dailyStreams: any = useGetAllDailyStream();
+    const monthlyStreams: any = useGetAllMonthlyStream();
 
     const [data, setData] = useState({
         series: [0, 0],
     })
 
     useEffect(() => {
-        if (salaryStreams && subscriptions) {
+        if (dailyStreams && monthlyStreams) {
             setData({
-                series: [salaryStreams.length, subscriptions.length]
+                series: [dailyStreams.length, monthlyStreams.length]
             })
         }
-    }, [salaryStreams, subscriptions])
+    }, [dailyStreams, monthlyStreams])
 
 
     return (
         <div className='w-full flex flex-col gap-3 font-barlow'>
-            <h1 className='md:text-xl text-base text-gray-300'>Stream Analysis</h1>
+            <h1 className='md:text-xl text-base text-gray-300'>Salary Stream Analysis</h1>
             <ReactApexChart options={options} series={data.series} type="pie" />
         </div>
     )
