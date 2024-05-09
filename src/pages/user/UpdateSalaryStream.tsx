@@ -81,8 +81,8 @@ const UserTable = () => {
                                 </DropdownMenuTrigger>
                                 <DropdownMenuContent align="end" className="font-barlow">
                                     <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                                    <DropdownMenuItem onClick={() => handleStopStream(user.recipient, user.intervalType)}>Stop Stream</DropdownMenuItem>
-                                    <DropdownMenuItem onClick={() => handleResumeStream(user.recipient, user.intervalType)}>Resume Stream</DropdownMenuItem>
+                                    <DropdownMenuItem onClick={() => handleStopStream(user.recipient, user.intervalType, user.id)}>Stop Stream</DropdownMenuItem>
+                                    <DropdownMenuItem onClick={() => handleResumeStream(user.recipient, user.intervalType, user.id)}>Resume Stream</DropdownMenuItem>
                                 </DropdownMenuContent>
                             </DropdownMenu>
                         </TableCell>

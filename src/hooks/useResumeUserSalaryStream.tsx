@@ -14,7 +14,7 @@ const useResumeUserSalaryStream = () => {
   const { walletProvider } = useWeb3ModalProvider();
 
   return useCallback(
-    async (recipient: any, interval: any) => {
+    async (recipient: any, interval: any, id: any) => {
       if (!isSupportedChain(chainId))
         return toast.error("Wrong network !", {
           position: "top-right",
@@ -27,7 +27,7 @@ const useResumeUserSalaryStream = () => {
 
       if (interval === 1) {
         try {
-          const transaction = await contract.resumeDailyStream(recipient);
+          const transaction = await contract.resumeDailyStream(recipient, id);
 
           console.log("transaction: ", transaction);
 
@@ -52,7 +52,7 @@ const useResumeUserSalaryStream = () => {
         }
       } else if (interval === 2) {
         try {
-          const transaction = await contract.resumeMonthlyStream(recipient);
+          const transaction = await contract.resumeMonthlyStream(recipient, id);
 
           console.log("transaction: ", transaction);
 
