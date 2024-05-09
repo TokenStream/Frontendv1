@@ -472,6 +472,11 @@
                 "internalType": "address",
                 "name": "recipient",
                 "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "_streamId",
+                "type": "uint256"
             }
         ],
         "name": "resumeDailyStream",
@@ -485,6 +490,11 @@
                 "internalType": "address",
                 "name": "recipient",
                 "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "_streamId",
+                "type": "uint256"
             }
         ],
         "name": "resumeMonthlyStream",
@@ -498,6 +508,11 @@
                 "internalType": "address",
                 "name": "recipient",
                 "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "_streamId",
+                "type": "uint256"
             }
         ],
         "name": "stopDailyStream",
@@ -511,6 +526,11 @@
                 "internalType": "address",
                 "name": "recipient",
                 "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "_streamId",
+                "type": "uint256"
             }
         ],
         "name": "stopMonthlyStream",
