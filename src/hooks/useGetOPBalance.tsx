@@ -86,7 +86,7 @@ export const useGetOPBalance = (address: any) => {
             ],
         };
 
-        wssProvider.getLogs({ ...subfilter, fromBlock: 5864071 }).then((events) => {
+        wssProvider.getLogs({ ...subfilter, fromBlock: 5868689 }).then((events) => {
             setSubCount(events.length + 1);
         });
 
