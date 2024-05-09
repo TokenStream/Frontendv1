@@ -55,7 +55,7 @@ const useGetAllMonthlyStream = () => {
             topics: [ethers.id("StreamCreated(uint256,address,IntervalType)")],
         };
 
-        wssProvider.getLogs({ ...streamCreatedFilter, fromBlock: 5867106 }).then((events) => {
+        wssProvider.getLogs({ ...streamCreatedFilter, fromBlock: 5868228 }).then((events) => {
             setStreamCount(events.length + 1);
         });
 
@@ -64,7 +64,7 @@ const useGetAllMonthlyStream = () => {
             topics: [ethers.id("StreamPaused(address,IntervalType)")],
         };
 
-        wssProvider.getLogs({ ...streamPausedFilter, fromBlock: 5867106 }).then((events) => {
+        wssProvider.getLogs({ ...streamPausedFilter, fromBlock: 5868228 }).then((events) => {
             setStreamPausedCount(events.length + 1);
         });
 
@@ -73,7 +73,7 @@ const useGetAllMonthlyStream = () => {
             topics: [ethers.id("StreamResumed(address,IntervalType)")],
         };
 
-        wssProvider.getLogs({ ...streamResumedFilter, fromBlock: 5867106 }).then((events) => {
+        wssProvider.getLogs({ ...streamResumedFilter, fromBlock: 5868228 }).then((events) => {
             setStreamResumedCount(events.length + 1);
         });
 

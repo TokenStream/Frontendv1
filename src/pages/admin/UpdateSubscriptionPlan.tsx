@@ -50,7 +50,7 @@ const UpdateSubscriptionPlan = () => {
         }
     }
 
-    const ImageArray = useMemo(() => [dstv, netflix, startlink, spotify], []);
+    const ImageArray = useMemo(() => [netflix, dstv, startlink, spotify], []);
 
     return (
         <main className="w-full h-full flex flex-col gap-4 mt-8 ml-2 pr-4">
