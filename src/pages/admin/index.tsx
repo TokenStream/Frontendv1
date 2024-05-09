@@ -1,8 +1,11 @@
 import useGetAllUsers from "@/hooks/useGetAllUsers"
+import useGetSubscriptionPlans from "@/hooks/useGetSubscriptionPlans";
 
 
 const Admin = () => {
     const allUsers = useGetAllUsers();
+
+    const plans = useGetSubscriptionPlans();
 
     return (
         <main className="w-full grid grid-cols-3 gap-4 mt-4">
@@ -15,13 +18,13 @@ const Admin = () => {
             <div className="flex flex-col gap-5 bg-gray-800 rounded-lg p-6">
                 <div className="w-full flex flex-col gap-1">
                     <h4 className="text-gray-300 font-barlow">No. of Subscription Plan</h4>
-                    <h1 className="md:text-4xl text-2xl text-emerald-500 font-belanosima font-medium">30,069</h1>
+                    <h1 className="md:text-4xl text-2xl text-emerald-500 font-belanosima font-medium">{plans?.length}</h1>
                 </div>
             </div>
             <div className="flex flex-col gap-5 bg-gray-800 rounded-lg p-6">
                 <div className="w-full flex flex-col gap-1">
                     <h4 className="text-gray-300 font-barlow">No. of Subscribers</h4>
-                    <h1 className="md:text-4xl text-2xl text-emerald-500 font-belanosima font-medium">5,069</h1>
+                    <h1 className="md:text-4xl text-2xl text-emerald-500 font-belanosima font-medium">8</h1>
                 </div>
             </div>
         </main>
