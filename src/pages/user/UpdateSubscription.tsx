@@ -18,6 +18,8 @@ import {
 } from "@/components/ui/table"
 import { MoreHorizontal } from "lucide-react"
 import useGetUserSubscriptions from "@/hooks/useGetUserSubscriptions";
+import usePauseUserSubscription from "@/hooks/usePauseUserSubscription";
+import useResumeUserSubscription from "@/hooks/useResumeUserSubscription";
 
 
 const UpdateSubscription = () => {
@@ -43,13 +45,13 @@ const UserTable = () => {
 
     const data: any = useGetUserSubscriptions(address);
 
-    const handleSubscriptionPause = useStopUserSalaryStream();
+    const handleSubscriptionPause = usePauseUserSubscription();
 
     const handlePauseSubscription = async (id: number) => {
         await handleSubscriptionPause(id)
     }
 
-    const handleSubscriptionResume = useResumeUserSalaryStream();
+    const handleSubscriptionResume = useResumeUserSubscription();
 
     const handleResumeSubscription = async (id: number) => {
         await handleSubscriptionResume(id)

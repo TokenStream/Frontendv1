@@ -5,8 +5,9 @@ import { Link, NavLink, useLocation } from "react-router-dom";
 import { RxDashboard } from "react-icons/rx";
 import { NavLinks } from "@/cms/AdminSideLinks";
 import { FaUsers } from "react-icons/fa6";
-import { IoCreateOutline } from "react-icons/io5";
+import { IoCreateOutline, IoTodayOutline } from "react-icons/io5";
 import { RxUpdate } from "react-icons/rx";
+import { MdCalendarMonth } from "react-icons/md";
 
 
 const SideBar = ({ sidebarOpen, setSidebarOpen }: { sidebarOpen: boolean, setSidebarOpen: React.Dispatch<React.SetStateAction<boolean>> }) => {
@@ -42,6 +43,10 @@ const SideBar = ({ sidebarOpen, setSidebarOpen }: { sidebarOpen: boolean, setSid
                 return <IoCreateOutline />;
             case 3:
                 return <RxUpdate />;
+            case 4:
+                return <IoTodayOutline />;
+            case 5:
+                return <MdCalendarMonth />;
             default:
                 return "";
         }

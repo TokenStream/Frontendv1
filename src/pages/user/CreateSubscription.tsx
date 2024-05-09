@@ -19,7 +19,7 @@ const CreateSubscription = () => {
         await handleSubmit(id);
     }
 
-    const ImageArray = useMemo(() => [dstv, netflix, startlink, spotify], []);
+    const ImageArray = useMemo(() => [netflix, dstv, startlink, spotify], []);
     return (
         <main className="w-full h-full flex flex-col gap-4 mt-8 ml-2 pr-4">
             <div className="w-full flex flex-col gap-2">

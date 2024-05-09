@@ -33,6 +33,12 @@ const CreateSubscriptionPlan = lazy(
 const UpdateSubscriptionPlan = lazy(
   () => import("../pages/admin/UpdateSubscriptionPlan")
 );
+const DailySalaryStream = lazy(
+  () => import("../pages/admin/DailySalaryStream")
+);
+const MonthlySalaryStream = lazy(
+  () => import("../pages/admin/MonthlySalaryStream")
+);
 
 type Route = {
   path: string;
@@ -123,6 +129,16 @@ const adminRoutes: coreRoutes = [
     path: "/admin/updatesubscriptionplan",
     title: "Update Subscription Plan",
     component: UpdateSubscriptionPlan,
+  },
+  {
+    path: "/admin/dailysalarystreams",
+    title: "Daily Salary Streams",
+    component: DailySalaryStream,
+  },
+  {
+    path: "/admin/monthlysalarystreams",
+    title: "Monthly Salary Streams",
+    component: MonthlySalaryStream,
   },
 ];
 export const admin_routes = [...adminRoutes];
