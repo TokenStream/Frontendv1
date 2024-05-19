@@ -3,9 +3,10 @@
 import { useEffect, useState } from "react"
 import ReactApexChart from "react-apexcharts"
 import { ApexOptions } from "apexcharts";
-import useGetUserSalaryStream from "@/hooks/useGetUserSalaryStream";
 import { useWeb3ModalAccount } from "@web3modal/ethers/react";
 import useGetUserSubscriptions from "@/hooks/useGetUserSubscriptions";
+import useGetAllDailyStream from "@/hooks/useGetAllDailyStream";
+import useGetAllMonthlyStream from "@/hooks/useGetAllMonthlyStream";
 
 const options: ApexOptions = {
     chart: {
@@ -60,7 +61,13 @@ const options: ApexOptions = {
 
 const PieChart = () => {
     const { address } = useWeb3ModalAccount()
-    const salaryStreams: any = useGetUserSalaryStream(address);
+
+    const daily: any = useGetAllDailyStream();
+    const filteredDaily = daily.filter((item: any) => item.streamer === address);
+
+    const monthly: any = useGetAllMonthlyStream();
+    const filteredMonthly = monthly.filter((item: any) => item.streamer === address);
+
     const subscriptions: any = useGetUserSubscriptions(address);
 
     const [data, setData] = useState({
@@ -68,12 +75,12 @@ const PieChart = () => {
     })
 
     useEffect(() => {
-        if (salaryStreams && subscriptions) {
+        if (subscriptions) {
             setData({
-                series: [salaryStreams.length, subscriptions.length]
+                series: [(filteredDaily.length + filteredMonthly.length), subscriptions.length]
             })
         }
-    }, [salaryStreams, subscriptions])
+    }, [filteredDaily, filteredMonthly, subscriptions])
 
 
     return (

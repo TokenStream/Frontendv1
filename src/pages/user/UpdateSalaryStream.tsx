@@ -64,6 +64,8 @@ const UserTable = () => {
 
     const handleResumeMonthlyStream = useResumeUserMonthlyStreams();
 
+    let serialNumber = 1;
+
     return (
         <Table>
             <TableHeader>
@@ -79,7 +81,7 @@ const UserTable = () => {
             <TableBody>
                 {filteredDaily?.map((user: any, index: number) => (
                     <TableRow key={index} className="hover:bg-gray-400 group border-gray-600 font-barlow">
-                        <TableCell className="font-medium text-gray-400 group-hover:text-gray-800">{index + 1}</TableCell>
+                        <TableCell className="font-medium text-gray-400 group-hover:text-gray-800">{serialNumber++}</TableCell>
                         <TableCell className="text-gray-400 group-hover:text-gray-800">{user.recipient}</TableCell>
                         <TableCell className=" text-gray-400 group-hover:text-gray-800">{user.amount}</TableCell>
                         <TableCell className=" text-gray-400 group-hover:text-gray-800">{user.intervalType === 1 ? "Daily" : "Monthly"}</TableCell>
@@ -94,8 +96,11 @@ const UserTable = () => {
                                 </DropdownMenuTrigger>
                                 <DropdownMenuContent align="end" className="font-barlow">
                                     <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                                    <DropdownMenuItem onClick={() => handlePauseDailyStream(user.id)}>Pause Stream</DropdownMenuItem>
-                                    <DropdownMenuItem onClick={() => handleResumeDailyStream(user.id)}>Resume Stream</DropdownMenuItem>
+                                    {
+                                        user.isactive
+                                            ? <DropdownMenuItem onClick={() => handlePauseDailyStream(user.id)}>Pause Stream</DropdownMenuItem>
+                                            : <DropdownMenuItem onClick={() => handleResumeDailyStream(user.id)}>Resume Stream</DropdownMenuItem>
+                                    }
                                 </DropdownMenuContent>
                             </DropdownMenu>
                         </TableCell>
@@ -104,7 +109,7 @@ const UserTable = () => {
 
                 {filteredMonthly?.map((user: any, index: number) => (
                     <TableRow key={index} className="hover:bg-gray-400 group border-gray-600 font-barlow">
-                        <TableCell className="font-medium text-gray-400 group-hover:text-gray-800">{index + 1}</TableCell>
+                        <TableCell className="font-medium text-gray-400 group-hover:text-gray-800">{serialNumber++}</TableCell>
                         <TableCell className="text-gray-400 group-hover:text-gray-800">{user.recipient}</TableCell>
                         <TableCell className=" text-gray-400 group-hover:text-gray-800">{user.amount}</TableCell>
                         <TableCell className=" text-gray-400 group-hover:text-gray-800">{user.intervalType === 1 ? "Daily" : "Monthly"}</TableCell>
@@ -119,8 +124,11 @@ const UserTable = () => {
                                 </DropdownMenuTrigger>
                                 <DropdownMenuContent align="end" className="font-barlow">
                                     <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                                    <DropdownMenuItem onClick={() => handlePauseMonthlyStream(user.id)}>Pause Stream</DropdownMenuItem>
-                                    <DropdownMenuItem onClick={() => handleResumeMonthlyStream(user.id)}>Resume Stream</DropdownMenuItem>
+                                    {
+                                        user.isactive
+                                            ? <DropdownMenuItem onClick={() => handlePauseMonthlyStream(user.id)}>Pause Stream</DropdownMenuItem>
+                                            : <DropdownMenuItem onClick={() => handleResumeMonthlyStream(user.id)}>Resume Stream</DropdownMenuItem>
+                                    }
                                 </DropdownMenuContent>
                             </DropdownMenu>
                         </TableCell>
