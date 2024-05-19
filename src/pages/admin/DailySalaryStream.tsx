@@ -39,6 +39,7 @@ const UserTable = () => {
                     <TableHead className=" font-barlow text-gray-200">Amount</TableHead>
                     <TableHead className=" font-barlow text-gray-200">Interval</TableHead>
                     <TableHead className=" font-barlow text-gray-200">Status</TableHead>
+                    <TableHead className=" font-barlow text-gray-200">Streamer</TableHead>
                 </TableRow>
             </TableHeader>
             <TableBody>
@@ -49,6 +50,7 @@ const UserTable = () => {
                         <TableCell className=" text-gray-400 group-hover:text-gray-800">{user.amount}</TableCell>
                         <TableCell className=" text-gray-400 group-hover:text-gray-800">{user.intervalType === 1 ? "Daily" : "Monthly"}</TableCell>
                         <TableCell className=" text-gray-400 group-hover:text-gray-800">{user.isactive ? "Active" : "Inactive"}</TableCell>
+                        <TableCell className=" text-gray-400 group-hover:text-gray-800">{user.streamer}</TableCell>
                     </TableRow>
                 ))}
             </TableBody>

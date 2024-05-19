@@ -43,6 +43,10 @@ export const useGetOPBalance = (address: any) => {
         fetchUserOpBalance();
     }, [fetchUserOpBalance])
 
+    setTimeout(() => {
+        fetchUserOpBalance();
+    }, 3000)
+
     useEffect(() => {
         fetchUserOpBalance();
 
@@ -86,7 +90,7 @@ export const useGetOPBalance = (address: any) => {
             ],
         };
 
-        wssProvider.getLogs({ ...subfilter, fromBlock: 5868689 }).then((events) => {
+        wssProvider.getLogs({ ...subfilter, fromBlock: 5931584 }).then((events) => {
             setSubCount(events.length + 1);
         });
 

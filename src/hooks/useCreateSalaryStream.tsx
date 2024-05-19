@@ -42,6 +42,10 @@ const useCreateSalaryStream = (
       recipient: item.recipient,
     }));
 
+    const toastId = toast.loading("Processing...", {
+      position: "top-right",
+    });
+
     try {
       let interval;
       if (streamInterval === "daily") {
@@ -66,16 +70,19 @@ const useCreateSalaryStream = (
       console.log("receipt: ", receipt);
 
       if (receipt.status) {
+        toast.dismiss(toastId);
         navigate("/user/updatesalarystream");
         return toast.success("Salary stream created successfully !", {
           position: "top-right",
         });
       }
 
+      toast.dismiss(toastId);
       toast.error("Salary stream creation failed !", {
         position: "top-right",
       });
     } catch (error: any) {
+      toast.dismiss(toastId);
       toast.error(`${error.message.slice(0, 20)}...`, {
         position: "top-right",
       });

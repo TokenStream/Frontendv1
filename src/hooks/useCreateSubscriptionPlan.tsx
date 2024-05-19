@@ -44,6 +44,10 @@ const useCreateSubscriptionPlan = (planName: string, planPrice: number) => {
 
         const formattedAmount = ethers.parseUnits(planPrice.toString(), 18);
 
+        const toastId = toast.loading("Processing...", {
+            position: "top-right",
+        });
+
         try {
             const transaction = await contract.addSubscriptionPlan(planName, formattedAmount);
 
@@ -54,16 +58,19 @@ const useCreateSubscriptionPlan = (planName: string, planPrice: number) => {
             console.log("receipt: ", receipt);
 
             if (receipt.status) {
+                toast.dismiss(toastId);
                 return toast.success("Subscription Plan Created !", {
                     position: "top-right",
                 });
             }
 
+            toast.dismiss(toastId);
             toast.error("Subscription Plan Creation failed !", {
                 position: "top-right",
             });
         } catch (error: any) {
             console.error(error);
+            toast.dismiss(toastId);
             toast.error(`${error.message.slice(0, 20)}...`, {
                 position: "top-right",
             });

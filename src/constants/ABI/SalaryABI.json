@@ -339,67 +339,6 @@
         "type": "function"
     },
     {
-        "inputs": [
-            {
-                "internalType": "address",
-                "name": "owner",
-                "type": "address"
-            }
-        ],
-        "name": "getStreamsByOwner",
-        "outputs": [
-            {
-                "components": [
-                    {
-                        "internalType": "uint256",
-                        "name": "id",
-                        "type": "uint256"
-                    },
-                    {
-                        "internalType": "address",
-                        "name": "recipient",
-                        "type": "address"
-                    },
-                    {
-                        "internalType": "uint256",
-                        "name": "amount",
-                        "type": "uint256"
-                    },
-                    {
-                        "internalType": "uint256",
-                        "name": "lastPayment",
-                        "type": "uint256"
-                    },
-                    {
-                        "internalType": "uint256",
-                        "name": "startTime",
-                        "type": "uint256"
-                    },
-                    {
-                        "internalType": "enum SalaryStreaming.IntervalType",
-                        "name": "intervalType",
-                        "type": "uint8"
-                    },
-                    {
-                        "internalType": "bool",
-                        "name": "active",
-                        "type": "bool"
-                    },
-                    {
-                        "internalType": "address",
-                        "name": "streamOwner",
-                        "type": "address"
-                    }
-                ],
-                "internalType": "struct SalaryStreaming.Stream[]",
-                "name": "",
-                "type": "tuple[]"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
         "inputs": [],
         "name": "modalContract",
         "outputs": [
@@ -469,10 +408,31 @@
     {
         "inputs": [
             {
-                "internalType": "address",
-                "name": "recipient",
-                "type": "address"
-            },
+                "internalType": "uint256",
+                "name": "_streamId",
+                "type": "uint256"
+            }
+        ],
+        "name": "pauseDailyStream",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "_streamId",
+                "type": "uint256"
+            }
+        ],
+        "name": "pauseMonthlyStream",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
             {
                 "internalType": "uint256",
                 "name": "_streamId",
@@ -487,53 +447,12 @@
     {
         "inputs": [
             {
-                "internalType": "address",
-                "name": "recipient",
-                "type": "address"
-            },
-            {
                 "internalType": "uint256",
                 "name": "_streamId",
                 "type": "uint256"
             }
         ],
         "name": "resumeMonthlyStream",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "inputs": [
-            {
-                "internalType": "address",
-                "name": "recipient",
-                "type": "address"
-            },
-            {
-                "internalType": "uint256",
-                "name": "_streamId",
-                "type": "uint256"
-            }
-        ],
-        "name": "stopDailyStream",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "inputs": [
-            {
-                "internalType": "address",
-                "name": "recipient",
-                "type": "address"
-            },
-            {
-                "internalType": "uint256",
-                "name": "_streamId",
-                "type": "uint256"
-            }
-        ],
-        "name": "stopMonthlyStream",
         "outputs": [],
         "stateMutability": "nonpayable",
         "type": "function"
@@ -560,17 +479,12 @@
     {
         "inputs": [
             {
-                "internalType": "address",
-                "name": "",
-                "type": "address"
-            },
-            {
                 "internalType": "uint256",
                 "name": "",
                 "type": "uint256"
             }
         ],
-        "name": "streamsByOwner",
+        "name": "streamsById",
         "outputs": [
             {
                 "internalType": "uint256",

@@ -29,6 +29,10 @@ const usePauseUserSubscription = () => {
 
         const contract = getSubscriptionContract(signer);
 
+        const toastId = toast.loading("Processing...", {
+            position: "top-right",
+        });
+
         try {
             const transaction = await contract.pauseSubscription(planId);
 
@@ -39,16 +43,19 @@ const usePauseUserSubscription = () => {
             console.log("receipt: ", receipt);
 
             if (receipt.status) {
+                toast.dismiss(toastId);
                 return toast.success("Subscription paused!", {
                     position: "top-right",
                 });
             }
 
+            toast.dismiss(toastId);
             toast.error("Pausing of subscription failed !", {
                 position: "top-right",
             });
         } catch (error: any) {
             console.error(error);
+            toast.dismiss(toastId);
             toast.error(`${error.message.slice(0, 20)}...`, {
                 position: "top-right",
             });

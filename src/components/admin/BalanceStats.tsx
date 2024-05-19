@@ -20,7 +20,7 @@ const BalanceStats = () => {
                 </div>
                 <div className="w-full flex flex-col gap-1">
                     <h4 className="text-gray-300 font-barlow">Price per OP</h4>
-                    <h1 className="text-gray-400 text-xl font-barlow">10.05 <span>USD</span></h1>
+                    <h1 className="text-gray-400 text-xl font-barlow">1.05 <span>USD</span></h1>
                 </div>
             </div>
 
@@ -31,7 +31,7 @@ const BalanceStats = () => {
                 </div>
                 <div className="w-full flex flex-col gap-1">
                     <h4 className="text-gray-300 font-barlow">Price per OP</h4>
-                    <h1 className="text-gray-400 text-xl font-barlow">10.05 <span>USD</span></h1>
+                    <h1 className="text-gray-400 text-xl font-barlow">1.05 <span>USD</span></h1>
                 </div>
             </div>
 
@@ -42,7 +42,7 @@ const BalanceStats = () => {
                 </div>
                 <div className="w-full flex flex-col gap-1">
                     <h4 className="text-gray-300 font-barlow">Price per OP</h4>
-                    <h1 className="text-gray-400 text-xl font-barlow">10.05 <span>USD</span></h1>
+                    <h1 className="text-gray-400 text-xl font-barlow">1.05 <span>USD</span></h1>
                 </div>
             </div>
         </section>

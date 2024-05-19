@@ -1,6 +1,5 @@
 import SubscriptionImg from "../../assets/subscribe.png";
 import SalaryImg from "../../assets/salary.png";
-import StakingImg from "../../assets/staking.png";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import { GiStarShuriken } from "react-icons/gi"
@@ -14,7 +13,7 @@ const Services = () => {
                 <h1 className="md:text-4xl text-2xl text-gray-300 font-belanosima">Choose Your Service</h1>
                 <p className="text-gray-400 font-barlow md:text-lg lg:w-[70%] md:w-[80%] w-full">As a registered user, you now have access to our range of services designed to streamline your financial transactions. Please select the service you're interested in:</p>
             </div>
-            <section className="w-full grid lg:grid-cols-3 md:grid-cols-2 gap-8 mt-6 pr-4">
+            <section className="w-full grid md:grid-cols-2 justify-center gap-8 mt-6 pr-4 lg:px-24">
                 {
                     services.map(({ caption, list, url, img }, index) => (
                         <div key={index} className="w-full flex flex-col items-start bg-gray-800 ring-1 ring-gray-600 py-7 px-5 rounded-md cursor-pointer transition-all duration-200 hover:ring-emerald-500">
@@ -63,12 +62,8 @@ const services: ServiceTypes[] = [
         list: ["Easily manage recurring payments and subscriptions.", "Set up automated payments for your favorite services.", "Get reminders for upcoming subscription renewals."],
         url: '/user/createsubscription',
         img: SubscriptionImg
-    }, {
-        caption: 'Staking/Rewards Distribution',
-        list: ["Participate in our rewards program to earn tokens.", "Earn rewards based on your engagement and performance.", "Track your rewards and redeem them for exciting perks."],
-        url: '/user/services',
-        img: StakingImg
-    }, {
+    },
+    {
         caption: 'Salary Distributions',
         list: ["Streamline your salary distribution process.", "Ensure timely and accurate payments to your employees.", "Customize salary distribution based on your organization's needs."],
         url: '/user/createsalarystream',
