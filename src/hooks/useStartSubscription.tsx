@@ -30,6 +30,10 @@ const useStartSubscription = () => {
 
         const contract = getSubscriptionContract(signer);
 
+        const toastId = toast.loading("Processing...", {
+            position: "top-right",
+        });
+
         try {
             const transaction = await contract.startSubscription(planId);
 
@@ -40,16 +44,19 @@ const useStartSubscription = () => {
             console.log("receipt: ", receipt);
 
             if (receipt.status) {
+                toast.dismiss(toastId);
                 return toast.success("Subscription Started !", {
                     position: "top-right",
                 });
             }
 
+            toast.dismiss(toastId);
             toast.error("Subscription starting failed !", {
                 position: "top-right",
             });
         } catch (error: any) {
             console.error(error);
+            toast.dismiss(toastId);
             toast.error(`${error.message.slice(0, 20)}...`, {
                 position: "top-right",
             });
