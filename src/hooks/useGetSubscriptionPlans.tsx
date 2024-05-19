@@ -47,6 +47,10 @@ const useGetSubscriptionPlans = () => {
         fetchPlans();
     }, [fetchPlans]);
 
+    setTimeout(() => {
+        fetchPlans();
+    }, 3000)
+
 
     useEffect(() => {
         fetchPlans();

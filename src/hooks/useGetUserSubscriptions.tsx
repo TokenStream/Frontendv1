@@ -43,6 +43,10 @@ const useGetUserSubscriptions = (address: any) => {
         fetchUserSubscriptions();
     }, [fetchUserSubscriptions]);
 
+    setTimeout(() => {
+        fetchUserSubscriptions();
+    }, 3000)
+
 
     useEffect(() => {
         fetchUserSubscriptions();

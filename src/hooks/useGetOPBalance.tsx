@@ -43,6 +43,10 @@ export const useGetOPBalance = (address: any) => {
         fetchUserOpBalance();
     }, [fetchUserOpBalance])
 
+    setTimeout(() => {
+        fetchUserOpBalance();
+    }, 3000)
+
     useEffect(() => {
         fetchUserOpBalance();
 

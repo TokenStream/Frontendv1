@@ -46,6 +46,10 @@ const useGetAllMonthlyStream = () => {
         fetchUserSalaryStreams();
     }, [fetchUserSalaryStreams]);
 
+    setTimeout(() => {
+        fetchUserSalaryStreams();
+    }, 3000)
+
 
     useEffect(() => {
         fetchUserSalaryStreams();
