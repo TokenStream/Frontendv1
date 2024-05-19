@@ -87,8 +87,13 @@ const UserTable = () => {
                                 </DropdownMenuTrigger>
                                 <DropdownMenuContent align="end" className="font-barlow">
                                     <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                                    <DropdownMenuItem onClick={() => handlePauseSubscription(user.planId)}>Pause Subscription</DropdownMenuItem>
-                                    <DropdownMenuItem onClick={() => handleResumeSubscription(user.planId)}>Resume Subscription</DropdownMenuItem>
+                                    {
+                                        user.status ? (
+                                            <DropdownMenuItem onClick={() => handlePauseSubscription(user.planId)}>Pause Subscription</DropdownMenuItem>
+                                        ) : (
+                                            <DropdownMenuItem onClick={() => handleResumeSubscription(user.planId)}>Resume Subscription</DropdownMenuItem>
+                                        )
+                                    }
                                 </DropdownMenuContent>
                             </DropdownMenu>
                         </TableCell>
