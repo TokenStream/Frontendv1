@@ -4,7 +4,6 @@ import {
   useWeb3ModalProvider,
 } from "@web3modal/ethers/react";
 import { useCallback } from "react";
-// import { toast } from "react-toastify";
 import { toast } from "sonner";
 import { getProvider } from "@/constants/provider";
 import { useNavigate } from "react-router-dom";
@@ -36,6 +35,10 @@ const useRegisterUsers = (address: any, username: string) => {
 
     const formattedName = ethers.encodeBytes32String(username);
 
+    const toastId = toast.loading("Processing...", {
+      position: "top-right",
+    });
+
     try {
       const transaction = await contract.createAccount(formattedName);
 
@@ -46,16 +49,19 @@ const useRegisterUsers = (address: any, username: string) => {
       console.log("receipt: ", receipt);
 
       if (receipt.status) {
+        toast.dismiss(toastId);
         navigate("/user");
         return toast.success("Username created successfully !", {
           position: "top-right",
         });
       }
 
+      toast.dismiss(toastId);
       toast.error("Username creation failed !", {
         position: "top-right",
       });
     } catch (error: any) {
+      toast.dismiss(toastId);
       navigate("/signup");
       toast.error(`${error.message.slice(0, 20)}...`, {
         position: "top-right",

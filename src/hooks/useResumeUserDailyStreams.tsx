@@ -26,6 +26,10 @@ const useResumeUserDailyStreams = () => {
 
             const contract = getSalaryStreamContract(signer);
 
+            const toastId = toast.loading("Processing...", {
+                position: "top-right",
+            });
+
             try {
                 const transaction = await contract.resumeDailyStream(id);
 
@@ -36,15 +40,18 @@ const useResumeUserDailyStreams = () => {
                 console.log("receipt: ", receipt);
 
                 if (receipt.status) {
+                    toast.dismiss(toastId);
                     return toast.success("User salary stream resumed successfully !", {
                         position: "top-right",
                     });
                 }
 
+                toast.dismiss(toastId);
                 toast.error("Resuming user salary stream failed !", {
                     position: "top-right",
                 });
             } catch (error: any) {
+                toast.dismiss(toastId);
                 console.log(error);
                 toast.error(`${error.message.slice(0, 20)}...`, {
                     position: "top-right",
