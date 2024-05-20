@@ -25,10 +25,6 @@ const useGetTotalDeposit = () => {
         fetchTotalDeposits();
     }, [fetchTotalDeposits]);
 
-    setTimeout(() => {
-        fetchTotalDeposits();
-    }, 4000)
-
 
     useEffect(() => {
         fetchTotalDeposits();
