@@ -14,7 +14,7 @@ const useStartSubscription = () => {
     const { chainId } = useWeb3ModalAccount();
     const { walletProvider } = useWeb3ModalProvider();
 
-    return useCallback(async (planId: number) => {
+    return useCallback(async (planId: number, email: string, password: string) => {
         if (!isSupportedChain(chainId))
             return toast.error("Wrong network !", {
                 position: "top-right",
@@ -22,6 +22,16 @@ const useStartSubscription = () => {
 
         if (!walletProvider)
             return toast.error("Please connect your wallet !", {
+                position: "top-right",
+            });
+
+        if (email === "")
+            return toast.error("Please enter your email !", {
+                position: "top-right",
+            });
+
+        if (password === "")
+            return toast.error("Please enter your password !", {
                 position: "top-right",
             });
 
@@ -35,7 +45,7 @@ const useStartSubscription = () => {
         });
 
         try {
-            const transaction = await contract.startSubscription(planId);
+            const transaction = await contract.startSubscription(planId, email, password);
 
             console.log("transaction: ", transaction);
 

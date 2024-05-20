@@ -70,6 +70,12 @@ const UserTable = () => {
                 </TableRow>
             </TableHeader>
             <TableBody>
+                {
+                    data?.length === 0 && <TableRow className="hover:bg-gray-400 group border-gray-600 font-barlow">
+                        <TableCell colSpan={6} className="font-medium text-gray-400 group-hover:text-gray-800 text-base text-center">No Subscription Found
+                        </TableCell>
+                    </TableRow>
+                }
                 {data?.map((user: any, index: number) => (
                     <TableRow key={index} className="hover:bg-gray-400 group border-gray-600 font-barlow">
                         <TableCell className="font-medium text-gray-400 group-hover:text-gray-800">{index + 1}</TableCell>

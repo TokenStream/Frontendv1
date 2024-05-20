@@ -28,6 +28,11 @@ const UpdateSubscriptionPlan = () => {
         resetPlanForm();
     }
 
+    const resetPlanForm = () => {
+        setPlanName("");
+        setPlanFee(0);
+    }
+
     const handleActivatePlan = async (id: number) => {
         await handleActivate(id);
     }
@@ -36,10 +41,6 @@ const UpdateSubscriptionPlan = () => {
         await handleDeactivate(id);
     }
 
-    const resetPlanForm = () => {
-        setPlanName("");
-        setPlanFee(0);
-    }
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target;
