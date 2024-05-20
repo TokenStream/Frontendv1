@@ -1,6 +1,5 @@
 import SubscriptionImg from "../../assets/subscribe.png";
 import SalaryImg from "../../assets/salary.png";
-import StakingImg from "../../assets/staking.png";
 import { Button } from "../ui/button";
 import { useNavigate } from "react-router-dom";
 import { BackgroundGradient } from "../ui/background-gradient";
@@ -19,7 +18,7 @@ const Services = () => {
             <h1 className="text-4xl text-gray-200 font-belanosima">Our Services</h1>
             <p className="text-gray-400 font-barlow text-center md:w-[50%]">Explore our range of services tailored to meet your financial needs:</p>
 
-            <div className="w-full  grid lg:grid-cols-3 md:grid-cols-2 gap-7 mt-12">
+            <div className="w-full grid md:grid-cols-2 lg:px-40 md:px-8 px-3 gap-7 mt-12">
                 {
                     services.map(({ caption, description, url, img }, index) => (
                         <ServiceCard
@@ -60,12 +59,8 @@ const services: ServiceTypes[] = [
         description: 'TRiver offers a robust subscription management service, allowing businesses to automate recurring payments and manage subscription tiers effortlessly.',
         url: '/onboarding/subscription',
         img: SubscriptionImg
-    }, {
-        caption: 'Staking/Rewards Distribution',
-        description: "Reward your users with TRiver's dynamic rewards distribution service.Customize performance metrics and automate reward payouts for maximum engagement",
-        url: '/onboarding/staking',
-        img: StakingImg
-    }, {
+    },
+    {
         caption: 'Salary Distributions',
         description: "Simplify salary distributions with TRiver's automated service.Calculate pro- rata payments accurately and streamline payroll processes for your employees.",
         url: '/onboarding/salary',

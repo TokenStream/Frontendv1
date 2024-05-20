@@ -25,11 +25,6 @@ const useGetRevenue = () => {
     }, [fetchContractRevenue]);
 
 
-    setTimeout(() => {
-        fetchContractRevenue();
-    }, 4000)
-
-
     useEffect(() => {
         fetchContractRevenue();
 
