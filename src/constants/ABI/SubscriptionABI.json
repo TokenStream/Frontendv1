@@ -2,6 +2,50 @@
     {
         "inputs": [
             {
+                "internalType": "uint256",
+                "name": "planId",
+                "type": "uint256"
+            }
+        ],
+        "name": "activateSubscriptionPlan",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "string",
+                "name": "_name",
+                "type": "string"
+            },
+            {
+                "internalType": "uint256",
+                "name": "_fee",
+                "type": "uint256"
+            }
+        ],
+        "name": "addSubscriptionPlan",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "planId",
+                "type": "uint256"
+            }
+        ],
+        "name": "deactivateSubscriptionPlan",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
                 "internalType": "address",
                 "name": "_modal",
                 "type": "address"
@@ -41,9 +85,65 @@
         "type": "error"
     },
     {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "planId",
+                "type": "uint256"
+            }
+        ],
+        "name": "pauseSubscription",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
         "inputs": [],
         "name": "PLAN_IS_NOT_ACTIVE",
         "type": "error"
+    },
+    {
+        "inputs": [],
+        "name": "processSubscriptionPayments",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "planId",
+                "type": "uint256"
+            }
+        ],
+        "name": "resumeSubscription",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "planId",
+                "type": "uint256"
+            },
+            {
+                "internalType": "string",
+                "name": "_email",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "_password",
+                "type": "string"
+            }
+        ],
+        "name": "startSubscription",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
     },
     {
         "inputs": [],
@@ -224,9 +324,19 @@
                 "internalType": "uint256",
                 "name": "planId",
                 "type": "uint256"
+            },
+            {
+                "internalType": "string",
+                "name": "_name",
+                "type": "string"
+            },
+            {
+                "internalType": "uint256",
+                "name": "_fee",
+                "type": "uint256"
             }
         ],
-        "name": "activateSubscriptionPlan",
+        "name": "updateSubscriptionPlan",
         "outputs": [],
         "stateMutability": "nonpayable",
         "type": "function"
@@ -253,24 +363,6 @@
             }
         ],
         "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "inputs": [
-            {
-                "internalType": "string",
-                "name": "_name",
-                "type": "string"
-            },
-            {
-                "internalType": "uint256",
-                "name": "_fee",
-                "type": "uint256"
-            }
-        ],
-        "name": "addSubscriptionPlan",
-        "outputs": [],
-        "stateMutability": "nonpayable",
         "type": "function"
     },
     {
@@ -303,19 +395,6 @@
             }
         ],
         "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "inputs": [
-            {
-                "internalType": "uint256",
-                "name": "planId",
-                "type": "uint256"
-            }
-        ],
-        "name": "deactivateSubscriptionPlan",
-        "outputs": [],
-        "stateMutability": "nonpayable",
         "type": "function"
     },
     {
@@ -384,6 +463,16 @@
                         "internalType": "uint256",
                         "name": "subPlanId",
                         "type": "uint256"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "email",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "password",
+                        "type": "string"
                     }
                 ],
                 "internalType": "struct SubscriptionService.Subscriber[]",
@@ -418,52 +507,6 @@
             }
         ],
         "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "inputs": [
-            {
-                "internalType": "uint256",
-                "name": "planId",
-                "type": "uint256"
-            }
-        ],
-        "name": "pauseSubscription",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "inputs": [],
-        "name": "processSubscriptionPayments",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "inputs": [
-            {
-                "internalType": "uint256",
-                "name": "planId",
-                "type": "uint256"
-            }
-        ],
-        "name": "resumeSubscription",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "inputs": [
-            {
-                "internalType": "uint256",
-                "name": "planId",
-                "type": "uint256"
-            }
-        ],
-        "name": "startSubscription",
-        "outputs": [],
-        "stateMutability": "nonpayable",
         "type": "function"
     },
     {
@@ -524,6 +567,16 @@
                 "internalType": "uint256",
                 "name": "subPlanId",
                 "type": "uint256"
+            },
+            {
+                "internalType": "string",
+                "name": "email",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "password",
+                "type": "string"
             }
         ],
         "stateMutability": "view",
@@ -568,32 +621,19 @@
                 "internalType": "uint256",
                 "name": "subPlanId",
                 "type": "uint256"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "inputs": [
-            {
-                "internalType": "uint256",
-                "name": "planId",
-                "type": "uint256"
             },
             {
                 "internalType": "string",
-                "name": "_name",
+                "name": "email",
                 "type": "string"
             },
             {
-                "internalType": "uint256",
-                "name": "_fee",
-                "type": "uint256"
+                "internalType": "string",
+                "name": "password",
+                "type": "string"
             }
         ],
-        "name": "updateSubscriptionPlan",
-        "outputs": [],
-        "stateMutability": "nonpayable",
+        "stateMutability": "view",
         "type": "function"
     }
 ]
