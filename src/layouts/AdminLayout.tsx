@@ -11,6 +11,7 @@ const AdminLayout = () => {
     const [sidebarOpen, setSidebarOpen] = useState(false);
 
     const scrollableRef = useRef<HTMLDivElement>(null);
+
     const { pathname } = useLocation();
 
     useEffect(() => {

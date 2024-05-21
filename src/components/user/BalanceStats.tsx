@@ -12,8 +12,8 @@ const BalanceStats = () => {
 
     const { address } = useWeb3ModalAccount()
 
-    const [depositAmount, setDepositAmount] = useState(0)
-    const [withdrawAmount, setWithdrawAmount] = useState(0)
+    const [depositAmount, setDepositAmount] = useState<number | string>("")
+    const [withdrawAmount, setWithdrawAmount] = useState<number | string>("")
 
     const userBalance: number | string = useGetOPBalance(address);
 

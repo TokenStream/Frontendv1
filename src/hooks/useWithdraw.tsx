@@ -10,7 +10,7 @@ import { isSupportedChain } from "@/constants/chain";
 import { getModalContract } from "@/constants/contracts";
 import { ethers } from "ethers";
 
-const useWithdraw = (amount: number) => {
+const useWithdraw = (amount: number | string) => {
   const { chainId } = useWeb3ModalAccount();
   const { walletProvider } = useWeb3ModalProvider();
 
@@ -25,7 +25,7 @@ const useWithdraw = (amount: number) => {
         position: "top-right",
       });
 
-    if (amount === 0)
+    if (amount === 0 || amount === "")
       return toast.error("Please enter an amount !", {
         position: "top-right",
       });
