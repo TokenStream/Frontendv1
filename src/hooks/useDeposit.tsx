@@ -39,9 +39,6 @@ const useDeposit = (amount: number) => {
 
     const formattedAmount = ethers.parseUnits(amount.toString(), 18);
 
-    const toastId = toast.loading("Processing...", {
-      position: "top-right",
-    });
 
     try {
       const tx = await tokenContract.approve(contract.target, formattedAmount);
@@ -60,19 +57,16 @@ const useDeposit = (amount: number) => {
       console.log("receipt: ", receipt);
 
       if (receipt.status) {
-        toast.dismiss(toastId);
         return toast.success("Deposit successful !", {
           position: "top-right",
         });
       }
 
-      toast.dismiss(toastId);
       toast.error("Deposit failed !", {
         position: "top-right",
       });
     } catch (error: any) {
       console.error(error);
-      toast.dismiss(toastId);
       toast.error(`${error.message.slice(0, 20)}...`, {
         position: "top-right",
       });
