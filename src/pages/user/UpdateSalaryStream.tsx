@@ -23,6 +23,7 @@ import useResumeUserDailyStreams from "@/hooks/useResumeUserDailyStreams";
 import useResumeUserMonthlyStreams from "@/hooks/useResumeUserMonthlyStreams";
 import { useWeb3ModalAccount } from "@web3modal/ethers/react";
 import { MoreHorizontal } from "lucide-react"
+import { useMemo } from "react";
 
 
 const UpdateSalaryStream = () => {
@@ -50,11 +51,11 @@ const UserTable = () => {
 
     const data: any = useGetAllDailyStream();
 
-    const filteredDaily = data.filter((item: any) => item.streamer === address);
+    const filteredDaily = useMemo(() => data.filter((item: any) => item.streamer === address), [address, data]);
 
     const monthly: any = useGetAllMonthlyStream();
 
-    const filteredMonthly = monthly.filter((item: any) => item.streamer === address);
+    const filteredMonthly = useMemo(() => monthly.filter((item: any) => item.streamer === address), [address, monthly]);
 
     const handlePauseDailyStream = usePauseUserDailyStream();
 
