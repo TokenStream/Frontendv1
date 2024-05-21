@@ -10,7 +10,7 @@ import { isSupportedChain } from "@/constants/chain";
 import { getModalContract, getOPTokenContract } from "@/constants/contracts";
 import { ethers } from "ethers";
 
-const useDeposit = (amount: number) => {
+const useDeposit = (amount: number | string) => {
   const { chainId } = useWeb3ModalAccount();
   const { walletProvider } = useWeb3ModalProvider();
 
@@ -25,7 +25,7 @@ const useDeposit = (amount: number) => {
         position: "top-right",
       });
 
-    if (amount === 0)
+    if (amount === 0 || amount === "")
       return toast.error("Please enter an amount !", {
         position: "top-right",
       });
