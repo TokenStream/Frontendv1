@@ -21,14 +21,14 @@ const BalanceStats = () => {
 
     const handleDeposit = async () => {
         await handleSubmit();
-        setDepositAmount(0);
+        setDepositAmount("");
     }
 
     const handleWithdrawSubmit = useWithdraw(withdrawAmount);
 
     const handleWithdraw = async () => {
         await handleWithdrawSubmit();
-        setWithdrawAmount(0);
+        setWithdrawAmount("");
     }
 
     return (
