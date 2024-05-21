@@ -3,6 +3,7 @@ import { useCallback, useEffect, useState } from "react";
 import { readOnlyProvider, wssProvider } from "@/constants/provider";
 import { ethers } from "ethers";
 import { getSubscriptionContract } from "@/constants/contracts";
+import { useLocation } from "react-router-dom";
 
 const useGetSubscriptionPlans = () => {
     const [plans, setPlans] = useState([]);
@@ -10,6 +11,8 @@ const useGetSubscriptionPlans = () => {
     const [updateCount, setUpdateCount] = useState<number>(0);
     const [activateCount, setActivateCount] = useState<number>(0);
     const [deactivateCount, setDeactivateCount] = useState<number>(0);
+
+    const { pathname } = useLocation();
 
     const fetchPlans = useCallback(async () => {
         try {
@@ -47,9 +50,12 @@ const useGetSubscriptionPlans = () => {
         fetchPlans();
     }, [fetchPlans]);
 
-    setTimeout(() => {
-        fetchPlans();
-    }, 3000)
+    if (pathname === "/user/createsubscription" || pathname === "/admin/updatesubscriptionplan") {
+        setTimeout(() => {
+            fetchPlans();
+        }, 8000)
+    }
+
 
 
     useEffect(() => {

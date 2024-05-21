@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { useEffect, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 import ReactApexChart from "react-apexcharts"
 import { ApexOptions } from "apexcharts";
 import { useWeb3ModalAccount } from "@web3modal/ethers/react";
@@ -63,10 +63,18 @@ const PieChart = () => {
     const { address } = useWeb3ModalAccount()
 
     const daily: any = useGetAllDailyStream();
-    const filteredDaily = daily.filter((item: any) => item.streamer === address);
 
     const monthly: any = useGetAllMonthlyStream();
-    const filteredMonthly = monthly.filter((item: any) => item.streamer === address);
+
+    const filteredDaily = useMemo(
+        () => daily.filter((item: any) => item.streamer === address),
+        [daily, address]
+    );
+
+    const filteredMonthly = useMemo(
+        () => monthly.filter((item: any) => item.streamer === address),
+        [monthly, address]
+    );
 
     const subscriptions: any = useGetUserSubscriptions(address);
 
@@ -75,11 +83,9 @@ const PieChart = () => {
     })
 
     useEffect(() => {
-        if (subscriptions) {
-            setData({
-                series: [(filteredDaily.length + filteredMonthly.length), subscriptions.length]
-            })
-        }
+        setData({
+            series: [(filteredDaily.length + filteredMonthly.length), subscriptions.length]
+        })
     }, [filteredDaily, filteredMonthly, subscriptions])
 
 

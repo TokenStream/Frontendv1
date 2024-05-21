@@ -3,12 +3,15 @@ import { useCallback, useEffect, useState } from "react";
 import { readOnlyProvider, wssProvider } from "@/constants/provider";
 import { ethers } from "ethers";
 import { getSalaryStreamContract } from "@/constants/contracts";
+import { useLocation } from "react-router-dom";
 
 const useGetAllDailyStream = () => {
     const [data, setData] = useState([]);
     const [streamCount, setStreamCount] = useState<number>(0);
     const [streamPausedCount, setStreamPausedCount] = useState<number>(0);
     const [streamResumedCount, setStreamResumedCount] = useState<number>(0);
+
+    const { pathname } = useLocation();
 
     const fetchUserSalaryStreams = useCallback(async () => {
         try {
@@ -47,9 +50,12 @@ const useGetAllDailyStream = () => {
     }, [fetchUserSalaryStreams]);
 
 
-    setTimeout(() => {
-        fetchUserSalaryStreams();
-    }, 3000)
+    if (pathname === "/user/updatesalarystream") {
+        setTimeout(() => {
+            fetchUserSalaryStreams();
+        }, 8000)
+    }
+
 
 
     useEffect(() => {

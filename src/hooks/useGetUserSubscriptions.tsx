@@ -3,12 +3,15 @@ import { useCallback, useEffect, useState } from "react";
 import { readOnlyProvider, wssProvider } from "@/constants/provider";
 import { ethers } from "ethers";
 import { getSubscriptionContract } from "@/constants/contracts";
+import { useLocation } from "react-router-dom";
 
 const useGetUserSubscriptions = (address: any) => {
     const [data, setData] = useState([]);
     const [subsCount, setSubsCount] = useState<number>(0);
     const [subsPausedCount, setSubsPausedCount] = useState<number>(0);
     const [subsResumedCount, setSubsResumedCount] = useState<number>(0);
+
+    const { pathname } = useLocation();
 
     const fetchUserSubscriptions = useCallback(async () => {
         try {
@@ -43,9 +46,13 @@ const useGetUserSubscriptions = (address: any) => {
         fetchUserSubscriptions();
     }, [fetchUserSubscriptions]);
 
-    setTimeout(() => {
-        fetchUserSubscriptions();
-    }, 3000)
+    if (pathname === "/user/updatesubscription") {
+        setTimeout(() => {
+            fetchUserSubscriptions();
+            console.log("fetched data");
+        }, 8000)
+    }
+
 
 
     useEffect(() => {

@@ -29,21 +29,15 @@ const Signup = () => {
 
     const change = useCallback(async () => {
         if (isConnected) {
-            if (owner === address) {
-                navigate("/admin");
-            } else if (user.address && user.address !== ZeroAddress) {
-                navigate("/user");
-            } else {
-                navigate("/signup");
-            }
+            navigate("/signup");
         } else {
             navigate("/");
         }
-    }, [isConnected, navigate, user.address, owner, address]);
+    }, [isConnected, navigate]);
 
     useEffect(() => {
         change();
-    }, [change, isConnected, user.address]);
+    }, [change, isConnected]);
 
     return (
         <section className="w-full h-screen flex bg-gray-950">
@@ -52,7 +46,52 @@ const Signup = () => {
                     <img src={coverImg} alt="image" className="w-full h-full object-cover" />
                 </aside>
                 <aside className="flex flex-col items-center relative px-10 justify-center">
-                    <SignupForm />
+                    {
+                        owner === address ?
+                            <section className="w-full flex flex-col gap-3 border border-gray-700 pt-24 pb-12 px-6 rounded-md relative">
+                                <div className="w-full flex flex-col mb-2">
+                                    <h1 className="text-4xl text-gray-200 font-belanosima">Welcome Back Admin</h1>
+                                    <p className="text-gray-400 font-barlow">Login to access your dashboard</p>
+                                </div>
+
+                                <div className="absolute -top-12 left-8 w-28 h-28 overflow-hidden rounded-full border-2 border-gray-700">
+                                    <img src={`https://github.com/shadcn.png`} alt="avatar" className="w-full h-full object-cover" />
+                                </div>
+
+                                <Button
+                                    type="submit"
+                                    className={`text-gray-100 text-sm mt-4 font-barlow px-4 py-2 flex justify-center items-center gap-1 bg-sky-500 hover:bg-emerald-500 `}
+                                    onClick={() => navigate('/admin')}
+                                >
+                                    <span className="flex items-center">Login
+                                        <PiSignInFill className="text-xl ml-1" />
+                                    </span>
+                                </Button>
+                            </section>
+                            : user?.address && user?.address !== ZeroAddress ?
+                                <section className="w-full flex flex-col gap-3 border border-gray-700 pt-24 pb-12 px-6 rounded-md relative">
+                                    <div className="w-full flex flex-col mb-2">
+                                        <h1 className="text-4xl text-gray-200 font-belanosima">Welcome Back</h1>
+                                        <p className="text-gray-400 font-barlow">Login to access your dashboard</p>
+                                    </div>
+
+                                    <div className="absolute -top-12 left-8 w-28 h-28 overflow-hidden rounded-full border-2 border-gray-700">
+                                        <img src={`https://github.com/shadcn.png`} alt="avatar" className="w-full h-full object-cover" />
+                                    </div>
+
+                                    <Button
+                                        type="submit"
+                                        className={`text-gray-100 text-sm mt-4 font-barlow px-4 py-2 flex justify-center items-center gap-1 bg-sky-500 hover:bg-emerald-500 `}
+                                        onClick={() => navigate('/user')}
+                                    >
+                                        <span className="flex items-center">Login
+                                            <PiSignInFill className="text-xl ml-1" />
+                                        </span>
+                                    </Button>
+                                </section>
+                                : <SignupForm />
+                    }
+
 
                     <Button onClick={() => navigate('/')} className="bg-sky-500 text-white rounded-md p-3 hover:bg-sky-600 transition duration-300 focus:outline-none absolute top-8 left-8">
                         <IoIosArrowRoundBack className="text-2xl" />
